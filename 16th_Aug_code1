@@ -1,0 +1,51 @@
+
+
+function square(x){
+    return x*x;
+}
+
+display(square(4)); //canot reference before 
+
+const name = 'lavanya';
+display(name);
+
+4>9;
+
+// conditional statement
+
+/*
+if(age>=18){
+        return true;
+    }
+    else if(age<18){
+        return false;
+    }
+    else{
+        return age;
+    }
+*/
+
+function adult(age){
+    return age>=18;
+}
+
+function movie(age){
+    return adult(age) ? "True" : "young";
+    // the thing ? if true : if false
+}
+
+display(movie(15));
+
+// f(x) (x, x>=0, -x otherwise) -> absolute value
+
+const x = -8;
+
+x>=0 ? x : -x;
+
+
+function abs(x){
+    return x >= 0 ? x:-x;
+    
+}
+
+abs(8);
