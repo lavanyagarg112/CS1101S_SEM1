@@ -1,4 +1,4 @@
-import {rcross, sail, corner, nova, heart, show, red, quarter_turn_right} from "rune";
+import { repeat_pattern, stack, rcross, sail, corner, nova, pink, heart, show, stackn, red, quarter_turn_right} from "rune";
 
 
 // transformation 
@@ -19,3 +19,71 @@ function quarter_turn_left(rune){
 show(quarter_turn_right(turn_upside_down(heart)));
 
 show(quarter_turn_left(heart));
+
+// stack
+
+show(stack(quarter_turn_left(heart), quarter_turn_left(heart)));
+
+function beside2(rune1, rune2){
+    return quarter_turn_right(stack(quarter_turn_left(rune1), quarter_turn_left(rune2)));
+}
+
+show(beside2(heart,nova));
+
+// first one is right and second left because of the rotation
+
+// if we switch the rotation:
+
+function beside(rune1, rune2){
+    return quarter_turn_left(stack(quarter_turn_right(rune1), quarter_turn_right(rune2)));
+}
+
+show(beside(heart,nova));
+
+// stackn
+
+show(stackn(15, corner));
+
+const my_quilt = 
+    stackn(11,
+            quarter_turn_right(
+                stackn(18, quarter_turn_left(nova))));
+                
+show(my_quilt);
+
+// rows*columns
+                
+function quilt(m,n, rune){
+    return stackn(m,
+            quarter_turn_right(
+                stackn(n, quarter_turn_left(rune))));
+
+}
+
+show(quilt(20,10,pink(heart)));
+
+// cool stuff
+
+function make_cross(rune){
+    return stack(beside(quarter_turn_right(rune),turn_upside_down(rune)), beside(rune, quarter_turn_left(rune)));
+}
+show(make_cross(rcross));
+
+show(make_cross(make_cross(rcross)));
+
+// repeat pattern to repeat transformation - 3 arguments
+
+show(repeat_pattern(3, quarter_turn_right, heart));
+
+show(repeat_pattern(3, make_cross, rcross));
+
+// power of abstraction - once we give soemthing a name we dont have to understand how to use it after that
+// abstraction allows to master complexity
+
+
+
+
+
+
+
+
