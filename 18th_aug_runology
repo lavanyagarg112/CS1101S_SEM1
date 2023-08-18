@@ -1,2 +1,8 @@
-import {rcross, sail, corner, nova, heart, show} from "rune";
-show(rcross);
+import {rcross, sail, corner, nova, heart, show, red, quarter_turn_right} from "rune";
+
+
+// transformation 
+show(red(sail));
+
+show(quarter_turn_right(red(heart)));
+
