@@ -1,0 +1,2 @@
+import {rcross, sail, corner, nova, heart, show} from "rune";
+show(rcross);
