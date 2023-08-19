@@ -1,0 +1,53 @@
+// start new code here and then save as to actual stuff
+
+// Linear recursion and iteration
+
+// factorial type 1
+
+function factorial(n){
+    return n===1
+    ? 1
+    : n*factorial(n-1);
+}
+
+display(factorial(5));
+
+// factorial type 2
+
+function factorial2(n){
+    return factorial_itr(1,1,n);
+}
+
+function factorial_itr(product, counter, max_count){
+    return counter>max_count
+    ? product
+    : factorial_itr(product*counter, counter+1, max_count);
+}
+
+display(factorial2(6));
+
+// practice
+
+function A(x, y) {
+    return y === 0
+           ? 0
+           : x === 0
+           ? 2 * y
+           : y === 1
+           ? 2
+           : A(x - 1, A(x, y - 1)) ;
+}
+
+function h(n){
+    return A(2,n);
+}
+
+function k(n){
+    return 5*n*n;
+}
+
+/* write the output in mathematical form for h(n) -
+for example for k(n), the mathematical form is 5(n^2). */
+
+
+
