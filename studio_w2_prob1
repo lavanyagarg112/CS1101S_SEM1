@@ -1,0 +1,48 @@
+// studio week 2 problem 1 with straightforward solution
+
+function biggie_size(reg){
+    return reg<=4
+    ? reg+4
+    : 'Invalid Input';
+}
+
+display(biggie_size(2));
+
+/* studio week 2 problem 1 with readible output
+
+function encode(n){
+    return n==='Classic Single Combo'
+    ? 1
+    : n==='Classic Double With Cheese Combo'
+    ? 2
+    : n==='Classic Triple with Cheese Combo'
+    ? 3
+    : n==='Avant-Garde Quadruple with Guacamole Combo'
+    ? 4
+    : 9;
+}
+
+function decode(num){
+    return num===5
+    ? 'Classic Single Combo with fries and drink'
+    : num===6
+    ? 'Classic Double With Cheese Combo with fries and drink'
+    : num===7
+    ? 'Classic Triple with Cheese Combo with fries and drink'
+    : num===8
+    ? 'Avant-Garde Quadruple with Guacamole Combo'
+    : 'Invalid Input';
+}
+
+function biggie_size(regular){
+    return regular+4;
+}
+
+const name = 'Classic Single Combo';
+
+display(decode(biggie_size(encode(name))));
+
+*/
+
+
+
