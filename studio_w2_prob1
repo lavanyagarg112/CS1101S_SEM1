@@ -1,14 +1,4 @@
-// studio week 2 problem 1 with straightforward solution
-
-function biggie_size(reg){
-    return reg<=4
-    ? reg+4
-    : 'Invalid Input';
-}
-
-display(biggie_size(2));
-
-/* studio week 2 problem 1 with readible output
+// studio week 2
 
 function encode(n){
     return n==='Classic Single Combo'
@@ -19,11 +9,27 @@ function encode(n){
     ? 3
     : n==='Avant-Garde Quadruple with Guacamole Combo'
     ? 4
+    : n==='Classic Single Combo with fries and drink'
+    ? 5
+    : n==='Classic Double With Cheese Combo with fries and drink'
+    ? 6
+    : n==='Classic Triple with Cheese Combo with fries and drink'
+    ? 7
+    : n==='Avant-Garde Quadruple with Guacamole Combo'
+    ? 8
     : 9;
 }
 
 function decode(num){
-    return num===5
+    return num===1
+    ? 'Classic Single Combo'
+    : num===2
+    ? 'Classic Double With Cheese Combo'
+    : num===3
+    ? 'Classic Triple with Cheese Combo'
+    : num===4
+    ? 'Avant-Garde Quadruple with Guacamole Combo'
+    :num===5
     ? 'Classic Single Combo with fries and drink'
     : num===6
     ? 'Classic Double With Cheese Combo with fries and drink'
@@ -34,15 +40,101 @@ function decode(num){
     : 'Invalid Input';
 }
 
-function biggie_size(regular){
-    return regular+4;
+
+// studio week 2 problem 1 with straightforward solution
+
+display('***');
+display('prob1');
+
+function biggie_size(reg){
+    return reg<=4
+    ? reg+4
+    : 9;
 }
 
-const name = 'Classic Single Combo';
+const reg_size = 'Classic Single Combo';
 
-display(decode(biggie_size(encode(name))));
+display('regular size:');
+display(reg_size);
+display('biggie size:');
+display(decode(biggie_size(encode(reg_size))));
 
-*/
+// prob2
+
+display('***');
+display('prob2');
+
+function unbiggie_size(big){
+    return big>=5 && big<=8
+    ? big-4
+    : 9;
+}
+
+const big_size = 'Classic Triple with Cheese Combo with fries and drink';
+
+display('biggie size:');
+display(big_size);
+display('regular size:');
+display(decode(unbiggie_size(encode(big_size))));
+
+// prob3
+
+display('***');
+display('prob3');
+
+function is_biggie_size(combo){
+    return combo<=4
+    ? true
+    : combo<=8
+    ? false
+    : 'Invalid Input';
+}
+
+const sel_combo = 'Classic Single Combo with fries and drink';
+
+display('combo chosen:');
+display(sel_combo);
+display('checking if biggie exists...');
+display(is_biggie_size(encode(sel_combo)));
+
+
+// prob4
+
+display('***');
+display('prob4');
+
+function combo_price(com){
+    return com<=4
+    ? com*1.17
+    : com>8
+    ? 'Invalid Input'
+    : ((com-4)*1.17)+0.50;
+}
+
+const sel_com = 'Classic Single Combo with fries and drink';
+
+display('combo chosen:');
+display(sel_com);
+display('Price:');
+display(combo_price(encode(sel_com)));
+
+// prob5
+
+display('***');
+display('prob5');
+
+function empty_order(){
+    
+}
+
+
+
+
+
+
+
+
+
 
 
 
