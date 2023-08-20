@@ -124,12 +124,57 @@ display('***');
 display('prob5');
 
 function empty_order(){
-    
+    return 0;
 }
 
+display(empty_order());
 
+// prob6
 
+display('***');
+display('prob6');
 
+function add_to_order(order,combo){
+    return stringify(order)+ stringify(combo);
+}
+
+display(add_to_order(1,2));
+
+//prob7
+
+display('***');
+display('prob7');
+
+function last_combo(combo){
+    return combo%10; 
+}
+
+const lst_combo = 421;
+
+display('combo chosen:');
+display(lst_combo);
+display('last combo:');
+display(last_combo(lst_combo));
+
+//prob 8
+
+display('***');
+display('prob8');
+
+function other_combos(order){
+    return math_floor(order/10);
+}
+
+const ord = 3412;
+
+display('Order chosen:');
+display(ord);
+display('Order without last combo:');
+display(other_combos(ord));
+
+// the end
+
+display('***');
 
 
 
