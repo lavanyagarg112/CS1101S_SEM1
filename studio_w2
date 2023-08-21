@@ -38,9 +38,7 @@ display('***');
 display('prob3');
 
 function is_biggie_size(combo){
-    return combo<=4
-    ? true
-    : false;
+    return combo>4;
 }
 
 const sel_combo = 5;
@@ -57,9 +55,9 @@ display('***');
 display('prob4');
 
 function combo_price(com){
-    return com<=4
-    ? com*1.17
-    : ((com-4)*1.17)+0.50;
+    return is_biggie_size(com)
+    ? (unbiggie_size(com)*1.17)+0.50
+    : com*1.17;
 }
 
 const sel_com = 6;
