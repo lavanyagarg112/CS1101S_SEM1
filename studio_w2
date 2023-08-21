@@ -62,7 +62,7 @@ function combo_price(com){
     : ((com-4)*1.17)+0.50;
 }
 
-const sel_com = 5;
+const sel_com = 6;
 
 display('combo chosen:');
 display(sel_com);
@@ -78,6 +78,7 @@ function empty_order(){
     return 0;
 }
 
+display('Empty order:');
 display(empty_order());
 
 // prob6
