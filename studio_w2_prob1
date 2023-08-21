@@ -1,5 +1,6 @@
 // studio week 2
 
+/*
 function encode(n){
     return n==='Classic Single Combo'
     ? 1
@@ -39,6 +40,7 @@ function decode(num){
     ? 'Avant-Garde Quadruple with Guacamole Combo'
     : 'Invalid Input';
 }
+*/
 
 
 // studio week 2 problem 1 with straightforward solution
@@ -49,7 +51,7 @@ display('prob1');
 function biggie_size(reg){
     return reg<=4
     ? reg+4
-    : 9;
+    : 'Invalid Input'; // if using encode decode: use 9
 }
 
 //const reg_size = 'Classic Single Combo';
@@ -69,7 +71,7 @@ display('prob2');
 function unbiggie_size(big){
     return big>=5 && big<=8
     ? big-4
-    : 9;
+    : 'Invalid Input'; // if using encode decode: use 9
 }
 
 //const big_size = 'Classic Triple with Cheese Combo with fries and drink';
