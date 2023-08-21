@@ -135,7 +135,7 @@ display('***');
 display('prob6');
 
 function add_to_order(order,combo){
-    return stringify(order)+ stringify(combo);
+    return (order*10)+combo;
 }
 
 display(add_to_order(1,2));
