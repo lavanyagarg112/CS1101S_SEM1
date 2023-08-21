@@ -6,9 +6,7 @@ display('***');
 display('prob1');
 
 function biggie_size(reg){
-    return reg<=4
-    ? reg+4
-    : 'Invalid Input'; 
+    return reg+4;
 }
 
 const reg_size = 1;
@@ -24,9 +22,7 @@ display('***');
 display('prob2');
 
 function unbiggie_size(big){
-    return big>=5 && big<=8
-    ? big-4
-    : 'Invalid Input'; 
+    return big-4;
 }
 
 const big_size = 7;
@@ -44,9 +40,7 @@ display('prob3');
 function is_biggie_size(combo){
     return combo<=4
     ? true
-    : combo<=8
-    ? false
-    : 'Invalid Input';
+    : false;
 }
 
 const sel_combo = 5;
@@ -65,8 +59,6 @@ display('prob4');
 function combo_price(com){
     return com<=4
     ? com*1.17
-    : com>8
-    ? 'Invalid Input'
     : ((com-4)*1.17)+0.50;
 }
 
