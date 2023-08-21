@@ -138,7 +138,15 @@ function add_to_order(order,combo){
     return (order*10)+combo;
 }
 
-display(add_to_order(1,2));
+const ord_chosen = 1;
+const comb_chosen = 2;
+
+display('Order chosen:');
+display(ord_chosen);
+display('combo chosen:');
+display(comb_chosen);
+display('Final order:');
+display(add_to_order(ord_chosen,comb_chosen));
 
 //prob7
 
