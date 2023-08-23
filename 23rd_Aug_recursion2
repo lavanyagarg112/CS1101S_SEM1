@@ -11,7 +11,7 @@ function quarter_turn_left(rune){
 quarter_turn_left(heart);
 
 /*
-flow:
+flow: applicative substitution
 
 qtl(heart)
 qtr(tud(heart))
