@@ -25,3 +25,10 @@ function stackn(n, rune){
 }
 
 show(stackn(5,heart));
+
+/*
+solution for n using solution for n-1 -> wishful thinking
+*/
+
+// == : checks for type -> verify
+// === : checks for equivalence
