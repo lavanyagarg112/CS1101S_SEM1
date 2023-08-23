@@ -1,1 +1,25 @@
-import (heart) from rune;
+import {heart, quarter_turn_right} from 'rune';
+
+function turn_upside_down(rune){
+    return quarter_turn_right(quarter_turn_right(rune));
+}
+
+function quarter_turn_left(rune){
+    return quarter_turn_right(turn_upside_down(rune));
+}
+
+quarter_turn_left(heart);
+
+/*
+flow:
+
+qtl(heart)
+qtr(tud(heart))
+qtr(qtr(qtr(heart)))
+
+now start evaluating cause we reached primitive
+
+qtr(qtr(right heart))
+qtr(right right heart)
+right right right heart
+*/
