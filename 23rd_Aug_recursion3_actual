@@ -19,8 +19,8 @@ show(stack_frac(1/4, heart,
 // overwriting primitive function
 
 function stackn(n, rune){
-    return n===2
-    ? stack_frac(1/n,rune,rune) // terminating condition
+    return n===1
+    ? rune // terminating condition
     :stack_frac(1/n, rune, stackn(n-1, rune));
 }
 
