@@ -1,1 +1,27 @@
-// start new code here and then save as to actual stuff
+import {heart, show, stack, stack_frac, sail} from 'rune';
+
+// show(stackn(3,heart));
+
+show(stack(stack(heart, heart), stack(heart,heart)));
+
+// stack_frac(r,heart, sail)
+
+// specifies how much the top one should take up and the bottom one takes the rest
+
+show(stack_frac(1/3, heart,stack(heart,heart)));
+
+show(stack_frac(1/2,stack_frac(1/2, heart, heart), stack_frac(1/2, heart, heart)));
+
+show(stack_frac(1/4, heart, 
+                stack_frac(1/3, heart,
+                            stack_frac(1/2, heart, heart))));
+                            
+// overwriting primitive function
+
+function stackn(n, rune){
+    return n===2
+    ? stack_frac(1/n,rune,rune) // terminating condition
+    :stack_frac(1/n, rune, stackn(n-1, rune));
+}
+
+show(stackn(5,heart));
