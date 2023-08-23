@@ -26,6 +26,8 @@ by the recursion??
 
 // applicative model
 
+// iterative process: no deffered application
+
 function repeat_pattern(n,pat,rune){
     return n===0
     ? rune
