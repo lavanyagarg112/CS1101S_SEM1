@@ -22,5 +22,5 @@ function spiral(thickness, depth) {
 
 
 // Test
-show(spiral(1/5, 3));
+show(spiral(1/5, 8));
 
