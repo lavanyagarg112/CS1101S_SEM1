@@ -7,14 +7,20 @@ function hook(frac) {
 }
 
 
+
 function spiral(thickness, depth) {
 
-    return beside_frac(1-(1/2*thickness), stack_frac(1/2*thickness, square, blank), stack_frac(thickness, square, blank));
+    return depth <= 1
+    ? beside_frac(1-(1/2*thickness), stack_frac(1/2*thickness*depth, square, blank), stack_frac(thickness*depth, square, blank))
+    : stack(beside_frac(1-(1/2*thickness), stack_frac(1/2*thickness, square, blank), stack_frac(thickness, square, blank)),quarter_turn_right(spiral(thickness, depth-1)));
     
 }
 
 
 
+
+
+
 // Test
-show(spiral(1/6, 1));
+show(spiral(1/5, 1));
 
