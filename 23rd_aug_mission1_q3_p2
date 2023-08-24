@@ -16,5 +16,5 @@ function spiral(thickness, depth) {
 
 
 // Test
-show(spiral(1, 1));
+show(spiral(1/6, 1));
 
