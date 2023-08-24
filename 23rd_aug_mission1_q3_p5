@@ -10,11 +10,8 @@ function hook(frac) {
 
 function spiral(thickness, depth) {
 
-    return depth <= 1
-    ? beside_frac(1-(1/2*thickness), stack_frac(1/2*thickness*depth, square, blank), stack_frac(thickness*depth, square, blank))
-    : depth%4!==0
-    ? beside_frac(1-(1/2*thickness), stack_frac(1/2*thickness, square, blank), stack_frac(thickness, square, blank))
-    : beside_frac(1-(1/2*thickness), stack_frac(1/2*thickness, square, blank), stack_frac(thickness, square, quarter_turn_right(spiral(thickness,depth-1))));
+    return quarter_turn_left(stack_frac(1/2*thickness, square, blank));
+
     
 }
 
