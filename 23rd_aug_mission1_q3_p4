@@ -17,6 +17,8 @@ function spiral(thickness, depth) {
 }
 
 // the spiral is confined within the thickness so need to get it outside
+// try conditional
+
 
 
 
