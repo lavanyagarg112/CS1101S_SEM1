@@ -10,7 +10,7 @@ function hook(frac) {
 
 function spiral(thickness, depth) {
 
-    return quarter_turn_left(stack_frac(1/2*thickness, square, blank));
+    return 
 
     
 }
@@ -24,5 +24,5 @@ function spiral(thickness, depth) {
 
 
 // Test
-show(spiral(1/5, 8));
+show(spiral(1/5, 2));
 
