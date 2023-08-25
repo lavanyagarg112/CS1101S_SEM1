@@ -1,1 +1,14 @@
-// start new code here and then save as to actual stuff
+// copy your hook function from Question 2 here if required
+
+import 
+
+function hook(frac) {
+    return stack_frac(1/2,square,beside_frac(1-frac,blank,square));
+}
+
+function spiral(thickness, depth) {
+    return stack_frac(1/2*thickness,square,spiral(thickness,depth) );
+}
+
+// Test
+show(spiral(1 / 5, 20));
