@@ -1,14 +1,18 @@
 // copy your hook function from Question 2 here if required
 
-import 
+import {square, blank, stack, beside, stack_frac, beside_frac, quarter_turn_right, quarter_turn_left, turn_upside_down, make_cross, show} from 'rune';
 
 function hook(frac) {
     return stack_frac(1/2,square,beside_frac(1-frac,blank,square));
 }
 
 function spiral(thickness, depth) {
-    return stack_frac(1/2*thickness,square,spiral(thickness,depth) );
+    return depth===1
+    ? stack_frac(1/2*thickness,square,blank)
+    : depth%1===2
+    ? stack_frac(1/2*thickness,blank,quarter_turn_right(spiral(1/2*thickness,depth-1)) )
+    : stack_frac(1/2*thickness,square,quarter_turn_right(spiral(thickness,depth-1)) );
 }
 
 // Test
-show(spiral(1 / 5, 20));
+show(spiral(1 / 5, 3));
