@@ -9,9 +9,15 @@ function hook(frac) {
 
 
 function spiral(thickness, depth) {
+    
+    //depth 2
 
-    return 
+    // return beside_frac(1-(1/2*thickness), stack_frac(1/2, stack_frac(thickness, square, blank),beside_frac(1-1/2*thickness, blank, stack_frac(1-thickness, blank, square))), stack_frac(1, square, blank));
 
+    // depth 3
+    
+    return beside_frac(1-(1/2*thickness), stack_frac(1/2, stack_frac(thickness, square, blank),beside_frac(1-1/2*thickness, stack_frac(1-thickness, blank, square), stack_frac(1-thickness, blank, square))), stack_frac(1, square, blank));
+    
     
 }
 
@@ -24,5 +30,5 @@ function spiral(thickness, depth) {
 
 
 // Test
-show(spiral(1/5, 2));
+show(spiral(1/5, 1));
 
