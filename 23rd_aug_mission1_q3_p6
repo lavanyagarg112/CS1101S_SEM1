@@ -12,7 +12,7 @@ function spiral(thickness, depth) {
 
     return depth <= 1
     ? beside_frac(1-(1/2*thickness), stack_frac(1/2*thickness*depth, square, blank), stack_frac(thickness*depth, square, blank))
-    : beside_frac(1-(1/2*thickness), stack_frac(1/2*thickness, square, blank), stack_frac(thickness, square, quarter_turn_right(spiral(thickness,depth-1))));
+    : stack(beside_frac(1-(1/2*thickness), stack_frac(1/2*thickness, square, blank), stack_frac(thickness, square, blank)),quarter_turn_right(spiral(thickness,depth-1)));
     
 }
 
