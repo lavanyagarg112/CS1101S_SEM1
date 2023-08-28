@@ -41,3 +41,7 @@ show(moony(5));
 // order of growth - theta(n) -> linear space and time (number of circles)
 // size -> number of deferred operations
 // assumption -> resize
+
+// primitive functions remain constant with time and take constant space
+// assuming the combined runes take the same space as original (one picture)
+// being resized^
