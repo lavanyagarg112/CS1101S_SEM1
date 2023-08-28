@@ -1,1 +1,14 @@
-// start new code here and then save as to actual stuff
+import {heart, make_cross, rcross, from_url, show, stack_frac, stack,beside_frac, beside, blank, quarter_turn_right, quarter_turn_left, stackn} from 'rune';
+
+function persian(rune, count) {
+    return count===1
+    ? rune
+    : beside_frac(1/count, stackn(count,rune),beside_frac(1-1/(count-1),stack_frac(1/count,quarter_turn_left(stackn(count-2, quarter_turn_right(rune))),stack_frac(1-1/(count-1),blank,quarter_turn_left(stackn(count-2, quarter_turn_right(rune))))),stackn(count,rune)));
+}
+
+// Tests
+show(persian(heart, 7));
+//show(persian(make_cross(rcross), 5));
+//const paw = from_url("https://i.imgur.com/GJg95B8.png");
+//show(persian(paw, 5));
+
