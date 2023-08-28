@@ -38,6 +38,6 @@ function moony(n){
 show(moony(5));
 
 // recursive process
-// order of growth - theta(n) -> linear space and time
+// order of growth - theta(n) -> linear space and time (number of circles)
 // size -> number of deferred operations
 // assumption -> resize
