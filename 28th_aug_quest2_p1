@@ -1,1 +1,17 @@
-// start new code here and then save as to actual stuff
+import {beside_frac,stackn, random_color, heart, show} from 'rune';
+
+function besiden(n, rune) {
+    return n===1
+    ? rune
+    : beside_frac(1/n,rune,besiden(n-1,rune));
+}
+
+function carpet(n, m, rune) {
+    return stackn(n,besiden(m,rune));
+}
+
+function randomly_colored_carpet(n, m, rune) {
+    
+}
+
+show(randomly_colored_carpet(10, 10, heart));
