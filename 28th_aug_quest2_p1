@@ -11,7 +11,9 @@ function carpet(n, m, rune) {
 }
 
 function randomly_colored_carpet(n, m, rune) {
-    
+    return n===1
+    ? rune
+    : stackn(n,besiden(m,randomly_colored_carpet(n-1,m,random_color(rune))));
 }
 
 show(randomly_colored_carpet(10, 10, heart));
