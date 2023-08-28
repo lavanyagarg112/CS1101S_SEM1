@@ -1,0 +1,13 @@
+import {heart, make_cross, rcross, from_url, show, stack_frac, stack,beside_frac, beside, quarter_turn_right, quarter_turn_left, stackn} from 'rune';
+
+function persian(rune, count) {
+    return count===1
+    ? rune
+    : beside_frac(1/count, rune,persian(rune,count-1));
+}
+
+// Tests
+show(persian(heart, 7));
+//show(persian(make_cross(rcross), 5));
+//const paw = from_url("https://i.imgur.com/GJg95B8.png");
+//show(persian(paw, 5));
