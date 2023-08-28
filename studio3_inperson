@@ -45,3 +45,5 @@ show(moony(5));
 // primitive functions remain constant with time and take constant space
 // assuming the combined runes take the same space as original (one picture)
 // being resized^
+
+// if separate, then n^2 cause pic is a square
