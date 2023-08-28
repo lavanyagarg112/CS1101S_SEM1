@@ -16,6 +16,7 @@ function moony_2(n){
 
 show(moony_2(5));
 
+
 function moony(n){
     return n===1
     ? circle
@@ -25,3 +26,6 @@ function moony(n){
 show(moony(5));
 
 // recursive process
+// order of growth - theta(n) -> linear space and time
+// size -> number of deferred operations
+// assumption -> resize
