@@ -1,0 +1,19 @@
+import {beside_frac,stackn, random_color, heart, show, stack_frac, circle} from 'rune';
+
+function besiden(n, rune) {
+    return n===1
+    ? rune
+    : beside_frac(1/n,rune,besiden(n-1,rune));
+}
+
+function carpet(n, m, rune) {
+    return stackn(n,besiden(m,rune));
+}
+
+function stack_carpet(n, m, rune) {
+    return n===1
+    ? random_color(rune)
+    : stack_frac(1-1/n,stack_carpet(n-1,m,random_color(rune)),random_color(rune));
+}
+
+show(stack_carpet(10, 10, heart));
