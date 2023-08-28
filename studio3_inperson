@@ -12,7 +12,7 @@ import {square,
 
 function moony_1(rune){
     
-    return beside(stack(circle, square),stack(blank,rune));
+    return beside(stack(circle, square),stack(blank, rune));
     
 }
 
@@ -31,8 +31,8 @@ function moony(n){
     return n === 1
            ? circle
            : beside_frac(1 / n,
-                        stack_frac(1 / n,circle,square),
-                        stack_frac(1 / n,blank,moony(n - 1)));
+                        stack_frac(1 / n, circle, square),
+                        stack_frac(1 / n, blank, moony(n - 1)));
 }
 
 show(moony(5));
