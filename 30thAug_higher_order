@@ -28,6 +28,7 @@ show(fractal_1(heart,3));
 
 // recursion in constant
 
+/*
 function fractal_2(rune, n){
     const smaller_frac = fractal_2(rune, n - 1); // local constant
     
@@ -39,8 +40,25 @@ function fractal_2(rune, n){
         : beside(rune,
             stack(smaller_frac,smaller_frac));
 }
+*/
 
 // show(fractal_2(heart,3));
 
 // we can do it in the conditional statement?
+
+function fractal_2(rune, n){
+    if (n === 1){
+        return rune;
+    } else {
+        const smaller_frac = fractal_2(rune, n - 1);
+        return beside(rune,
+            stack(smaller_frac, smaller_frac));
+    }
+}
+
+show(fractal_2(heart,3));
+
+// a block can have local names defined only within that block
+
+
 
