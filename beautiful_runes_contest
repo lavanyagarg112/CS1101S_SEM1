@@ -8,8 +8,9 @@ import {blank, circle, corner, heart, nova, pentagram, rcross, ribbon,
 
 
 // My contest entry
-function runes_contest() {
+function runes_contest(transform, rune) {
+    return color(transform(rune),0.55,0.78,0.8);
 }
 
 // Keep this show function call
-show(runes_contest());
+show(runes_contest(make_cross,rcross));
