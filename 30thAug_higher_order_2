@@ -1,1 +1,68 @@
-// start new code here and then save as to actual stuff
+// rick the rabbit
+
+/*
+
+2 stairs
+hop hop skip
+
+3 stairs
+skip hop
+hop skip
+jump
+
+*/
+
+function rick_the_rabbit(n){
+    return n < 0
+           ? 0
+           : n === 0
+           ? 1
+           : rick_the_rabbit(n - 1) // rick hops
+           +
+           rick_the_rabbit(n - 2) // rick skips
+           +
+           rick_the_rabbit(n - 3); // rick jumps
+}
+
+// coin change problem
+
+/*
+
+given: different kinds of coins
+given: amount of money in cents
+wanted: number of ways to change amt into coins
+
+order of coins dont matter
+cents: 5,10,20,50, 100
+
+*/
+
+/*
+
+120 cents
+
+highest coin is either 100 or not
+
+*/
+
+function first_denomination ( kinds_of_coins ) {
+    return kinds_of_coins === 1 ? 5 :
+           kinds_of_coins === 2 ? 10 :
+           kinds_of_coins === 3 ? 20 :
+           kinds_of_coins === 4 ? 50 :
+           kinds_of_coins === 5 ? 100 : 0;
+}
+
+function cc(amount, kind_of_coins){
+    return amount === 0
+           ? 1
+           : amount < 0 || kind_of_coins === 0
+           ? 0
+           : cc(amount - first_denomination(kind_of_coins), kind_of_coins)
+             +
+             cc(amount, kind_of_coins - 1);
+    
+}
+
+cc(20, 3);
+
