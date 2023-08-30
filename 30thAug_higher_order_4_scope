@@ -24,4 +24,45 @@ different type of operations on different type of data
 
 quarter_turn_right takes on rune
 square function takes only number
+
+not all functions apply to all values
+
+
+
+source 1 types
+
+const x:number = 1;
+
 */
+
+// switch to source ch1 typed under variants
+
+function square(x:number):number{
+    return x*x;
+}
+
+display(square(3));
+// square('A'); // doesnt even display the previous step before showing the error
+
+// square('4'); // doesnt work, and output is only the errors, not the output?
+
+function greater_than_3(x: number): boolean{
+    return x>3;
+}
+
+//const x = (see the recording)
+
+// using the repeat pattern function for numbers:
+
+function rpn(n:number, pat:(number) => number, x:number):number{
+    return n === 0
+        ? x
+        : rpn(n-1, pat, pat(x));
+}
+
+rpn(3,square,2);
+// rpn(3, greater_than_3, 2);
+
+// this allows us to catch errors
+
+
