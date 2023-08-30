@@ -1,1 +1,15 @@
-// start new code here and then save as to actual stuff
+import {blank, circle, corner, heart, nova, pentagram, rcross, ribbon,
+        sail, square, triangle, black, blue, brown, color, green, indigo, 
+        orange, pink, purple, random_color, red, white, yellow, 
+        beside, beside_frac, flip_horiz, flip_vert, make_cross, overlay,
+        overlay_frac, quarter_turn_left, quarter_turn_right, repeat_pattern,
+        rotate, scale, scale_independent, show, stack, stack_frac, stackn,
+        translate, turn_upside_down} from 'rune';
+
+
+// My contest entry
+function runes_contest() {
+}
+
+// Keep this show function call
+show(runes_contest());
