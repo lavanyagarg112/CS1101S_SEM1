@@ -1,1 +1,152 @@
-// start new code here and then save as to actual stuff
+// passing funtions to functions
+
+function f(h, x){
+    return h(x);
+}
+
+function g(y){
+    return y + 1;
+}
+
+f(g, 7);
+
+// examples
+// repeat_pattern
+// transform_mosaic
+
+function sum_integers(a, b){
+    return a > b
+        ? 0
+        : a + sum_integers(a + 1, b);
+}
+
+sum_integers(4, 6);
+
+// alternate cubes
+
+function cube(x) {
+    return x * x * x;
+}
+
+function sum_skip_cubes(a, b){
+    return a > b
+        ? 0
+        : cube(a) + sum_skip_cubes(a + 2, b);
+}
+
+sum_skip_cubes(1,5);
+
+// abstraction cause very similar
+
+/*
+function sum(a, b){
+    return a > b ? 0
+                 : (compute value with a)
+                 + 
+                 sum((next value from a), b);
+}
+*/
+
+
+function sum ( term , a , next , b ) {
+    return a > b ? 0
+                 : term ( a )
+                 +
+                 sum ( term , next ( a ) , next , b );
+}
+
+/*
+
+function plus_two(x){
+    return x + 2;
+}
+
+function sum_skip_cubes2(a, b){
+    return sum(cube, a, plus_two, b);
+}
+
+sum_skip_cubes2(1,5);
+
+*/
+
+// or
+
+/*
+
+function sum_skip_cubes2(a, b){
+
+    function cube(x) {
+        return x * x * x;
+    }
+    
+    function plus_two(x){
+        return x + 2;
+    }
+
+    return sum(cube, a, plus_two, b);
+}
+
+makes the code neater
+we dont need this functions outside anyway
+
+
+*/
+
+// (x1, x2) -> x1 + x2
+// x1 -> x1 + 1
+
+
+// alternate - arrow token
+
+function sum_skip_cubes2(a, b){
+
+    return sum(x => x * x * x, a, x => x + 2, b);
+}
+
+sum_skip_cubes2(1,5);
+
+
+// => another way to declare function
+
+/*
+function plus4(x) {
+    return x + 4;
+}
+
+can be written as:
+*/
+
+const plus4 = x => x + 4;
+
+plus4(5);
+
+
+function make_adder(x) {
+    /*
+    function adder(y) {
+        return x + y;
+    }
+    
+    return adder;
+    */
+    
+    return y => x + y;
+}
+
+/*
+const adder_four = make_adder(4);
+adder_four(6);
+*/
+
+(make_adder(4))(6);
+
+const adder_1 = make_adder(1);
+const adder_2 = make_adder(2);
+
+adder_1(10); // returns 11
+adder_2(20) // returns 22
+
+
+
+
+
