@@ -1,1 +1,27 @@
-// start new code here and then save as to actual stuff
+// pre declared names
+// constant declarations
+// parameters of function declarations and lambda expressions
+// function name of function declarations
+
+// scope: refers to the closest surrounding declaration, block
+
+
+// bonus topics 
+// types
+
+/*
+numbers
+strings
+booleans
+undefined?
+function
+arrays?
+float?
+
+runes?
+
+different type of operations on different type of data
+
+quarter_turn_right takes on rune
+square function takes only number
+*/
