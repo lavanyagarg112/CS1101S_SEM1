@@ -26,6 +26,8 @@ function fractal_1(rune, n){
 
 show(fractal_1(heart,3));
 
+// recursion in constant
+
 function fractal_2(rune, n){
     const smaller_frac = fractal_2(rune, n - 1); // local constant
     
@@ -39,3 +41,6 @@ function fractal_2(rune, n){
 }
 
 // show(fractal_2(heart,3));
+
+// we can do it in the conditional statement?
+
