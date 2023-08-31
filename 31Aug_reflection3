@@ -4,24 +4,19 @@ function sum(term, a, next, b) {
         : term(a) + sum(term, next(a), next, b);
 }
 
-function my_sum(n){
-    return sum(x => x * (x + 1), 1, y => y + 1, n);
-}
 
-display(my_sum(2));
-
-function iter(term, a, next, b, accumulator){
+function sum2(term, a, next, b, total) {
     return a > b
-        ? 0
-        : iter(term, next(a), next, b, term(a) + accumulator);
+        ? total
+        : sum2(term, next(a), next, b, total + term(a));
 }
 
-function sum_iter(term, a, next, b){
-    return iter(term, a, next, b, 0); // 0: accumulator
+function my_sum(n){
+    return sum2(x => x * (x + 1), 1, y => y + 1, n, 0);
 }
 
-function my_sum2(n){
-    return sum_iter(x => x * (x + 1), 1, y => y + 1, n);
-}
+(my_sum(2));
 
-display(my_sum2(2));
+
+
+
