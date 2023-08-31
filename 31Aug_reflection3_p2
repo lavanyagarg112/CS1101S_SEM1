@@ -1,0 +1,14 @@
+function sn(n) {
+    
+    
+    function helper(counter, total, final) {
+        return counter > final 
+        ? total
+        : helper(counter+1, total + (counter)*(counter+1), final);
+    }
+    
+    return helper(1, 0, n);
+}
+
+
+
