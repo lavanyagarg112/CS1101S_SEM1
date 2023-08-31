@@ -1,0 +1,31 @@
+const x = 5;
+function f(g) {
+    //const x = 3;
+    return x => x + g(x);
+}
+
+
+function g(f, y) {
+    const h = (y, f) => y(f);
+    return h(f, y);
+}
+
+g(y => y + 2, 5);
+
+
+/*
+
+h = (y, f) => y(f)
+
+return h(y => y+ 2, 5)
+
+h(a,b) = a(b)
+
+y => y + 2 (5)
+
+
+
+
+
+
+*/
