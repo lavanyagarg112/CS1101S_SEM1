@@ -1,1 +1,82 @@
 // curves
+
+import {make_point, 
+        draw_connected, 
+        draw_connected_full_view_proportional,
+        x_of,
+        y_of, 
+        rotate_around_origin, 
+        translate, 
+        connect_rigidly} from 'curve';
+
+function unit_circle(t){
+    return make_point(math_cos(2 * math_PI * t),
+                    math_sin(2 * math_PI * t));
+}
+
+function unit_line_at(y){
+    return t => make_point(t, y);
+}
+
+const unit_line = unit_line_at(0);
+
+draw_connected(200)(unit_circle);
+
+draw_connected_full_view_proportional(200)(unit_circle);
+
+draw_connected_full_view_proportional(8)(unit_circle);
+
+// spiral
+
+function spiral_one(t) {
+    const p = unit_circle(t);
+    return make_point(t * x_of(p), t * y_of(p));
+}
+
+draw_connected_full_view_proportional(200)(spiral_one);
+
+// number of revolutions is parameter
+
+/*
+function spiral(rev, t) {
+    const p = unit_circle((t * rev) % 1);
+    return make_point(t * x_of(p), t * y_of(p));
+}
+
+draw_connected_full_view_proportional(200)(spiral);
+*/
+
+function spiral(rev) {
+    return t => {
+        const p = unit_circle((t * rev) % 1);
+        return make_point(t * x_of(p), t * y_of(p));
+    };
+}
+
+draw_connected_full_view_proportional(200)(spiral(33));
+
+
+// transformation of curves
+
+const rot_line = rotate_around_origin(0, 0, math_PI / 6)(unit_line);
+
+const shift_rot_line = translate(0, 0.25, 0)(rot_line);
+
+draw_connected(200)(shift_rot_line);
+
+function compose(f, g){
+    return x => f(g(x));
+}
+
+const shift_rot = compose(translate(0, 0.25, 0),
+                        rotate_around_origin(0, 0, math_PI / 6));
+                        
+const shifted_rot_line = shift_rot(unit_line);
+
+draw_connected(200)(shifted_rot_line);
+
+// connecting curves
+
+// coloured curves
+
+                        
