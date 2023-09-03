@@ -8,3 +8,5 @@ function pascal (row, column){
 }
 
 pascal(4,3);
+
+// recursive process
