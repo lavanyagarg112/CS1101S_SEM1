@@ -1,9 +1,2 @@
-import {make_point, draw_connected_full_view_proportional, translate, unit_line_at, rotate_around_origin} from 'curve';
+// cannot use rotate
 
-function vertical_line(pt, length) {
-    const x = translate(pt,0,0)(rotate_around_origin(0,0,math_PI/2)(unit_line_at(pt)));
-    return draw_connected_full_view_proportional(length)(x);
-}
-
-
-vertical_line(9,10);
