@@ -1,0 +1,10 @@
+function pascal (row, column){
+    
+    return column > row
+        ? 0
+        :row === 0 || column === 0
+        ? 1
+        : pascal(row-1,column) + pascal(row-1,column-1);
+}
+
+pascal(4,2);
