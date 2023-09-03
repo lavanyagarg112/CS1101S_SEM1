@@ -25,8 +25,8 @@ function s_generator(pt) {
     return t => t < 0.5
         ? make_point(math_cos((2 * math_PI * 1.5*t)) + x_of(pt), 
                         math_sin((2 * math_PI * 1.5*t)) + y_of(pt)+1)
-        : make_point(-1 * (math_cos((2 * math_PI * (-0.75 * t))) + (-1 * x_of(pt))), 
-                      -1 * (math_sin((2 * math_PI* (-0.75 * t))) + (-1*y_of(pt))+1));
+        : make_point(-1 * (math_cos((2 * math_PI * (-1 * t))) + (-1 * x_of(pt))), 
+                      -1 * (math_sin((2 * math_PI* (-1 * t))) + (-1*y_of(pt))+1));
 
 }
 // Test
