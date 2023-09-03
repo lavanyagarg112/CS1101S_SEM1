@@ -23,10 +23,10 @@ function s_generator(pt) {
 
 function s_generator(pt) {
     return t => t < 0.5
-        ? make_point(math_cos((2 * math_PI * 1.5*t)) + x_of(pt), 
-                        math_sin((2 * math_PI * 1.5*t)) + y_of(pt)+1)
-        : make_point(-1* (math_cos((2 * math_PI * (-1.5 * (t - 0.32)))) + (-1 * x_of(pt))), 
-                      -1 * (math_sin((2 * math_PI* (-1.5 * (t - 0.32)))) + (-1*y_of(pt))+1));
+        ? make_point(math_cos((2 * math_PI * 1.5*(t))) + x_of(pt), 
+                        math_sin((2 * math_PI * 1.5*(t))) + y_of(pt)+1)
+        : make_point(-1* (math_cos((2 * math_PI * (-1.5 * (t - 0.35)))) + (-1 * x_of(pt))), 
+                      -1 * (math_sin((2 * math_PI* (-1.5 * (t - 0.35)))) + (-1*y_of(pt))+1));
 
 }
 // Test
