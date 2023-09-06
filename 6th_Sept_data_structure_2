@@ -1,14 +1,42 @@
 // lists from pair
 // pair(data, pair(...)) - nested pair
 
-const denoms = pair(100,pair(50,pair(20,pair(10,5)));
+//const denoms = pair(100,pair(50,pair(20,pair(10,5)));
 
-head(denoms) // 100 -> single elements
-tail(denoms) // pair(50,pair(20,pair(10,5))) -> set of remaining elements 
+//head(denoms); // 100 -> single elements
+//tail(denoms);  // pair(50,pair(20,pair(10,5))) -> set of remaining elements 
 
 // when denoms = (100,50)
 // it should return 50 and set of elements
 
-// => empty list
+// => empty list : null 
+
+const denoms = pair(100,
+                    pair(50,
+                        pair(20,
+                            pair(10,
+                                pair(5,
+                                    null)))));
+                                                
+// a list is either a null or a pair whose tail is a list (recursive definition of list cause we are using list itself to define list)
+
+const my_list = null;
+const your_list = pair(8, null);
+// null is a list
+
+// evaluation of null in an if condition?
+
+
+// retreiving data from the list:
+
+head(denoms); // 100
+head(tail(denoms)); // 50
+head(tail(tail(denoms))); // 20
+head(tail(tail(tail(denoms)))); // 10
+head(tail(tail(tail(tail(denoms))))); // 5
+tail(tail(tail(tail(tail(denoms))))); // null
+
+// null is absence of value?
+
 
 
