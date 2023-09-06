@@ -1,3 +1,8 @@
 // lists from pair
 // pair(data, pair(...)) - nested pair
 
+const denoms = pair(100,pair(50,pair(20,pair(10,5)));
+
+head(denoms) // 100 -> single elements
+tail(denoms) // pair(50,pair(20,pair(10,5))) -> set of remaining elements 
+
