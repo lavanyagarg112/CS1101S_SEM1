@@ -6,3 +6,9 @@ const denoms = pair(100,pair(50,pair(20,pair(10,5)));
 head(denoms) // 100 -> single elements
 tail(denoms) // pair(50,pair(20,pair(10,5))) -> set of remaining elements 
 
+// when denoms = (100,50)
+// it should return 50 and set of elements
+
+// => empty list
+
+
