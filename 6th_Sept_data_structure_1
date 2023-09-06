@@ -49,7 +49,7 @@ function denom(x){
 
 function add_rat(x, y){
     return make_rat(numer(x) * denom(y) +
-                    numer(y) * denom(y) +
+                    numer(y) * denom(y),
                     denom(x) * denom(y));
 }
 
@@ -68,6 +68,15 @@ function add_rat(x, y){
 function rat_to_string(x) {
     return stringify(numer(x)) + '/' + stringify(denom(x));
 }
+
+display(rat_to_string(add_rat(make_rat(1,2), make_rat(1,3)))); 
+// why is the above giving wrong answer?
+
+// gcd
+
+// implementation details of this invisible to user
+
+
 
 
 
