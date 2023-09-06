@@ -1,1 +1,31 @@
-// start new code here and then save as to actual stuff
+// pair(x,y) - returns pair made of x and y
+// is_pair(p) - returns true iff p is a pair
+// null - empty list
+// is_null(xs) - returns true iff xs is the empty list null
+// head(p)
+// tail(p)
+// list(x1,...,xn) - returns list
+
+// it can be tedious to write a list manually with pair and null 
+
+const first_denomination = list(100, 50, 20, 10, 5);
+
+// binary function : function that accepts two parameters
+// ternary function : 3
+// unary function : 1
+// nullary : zero parameters
+
+// box notations
+
+// pair(x,y) printed as [x,y]
+// empty list as null 
+
+// list notation
+
+// same as box notation but for within the box notation, if we have a list structure, rather than showing the nested pairs, list notation would show a nicely formatted list(...)
+
+
+// display_list(x)
+
+display_list(pair(pair(pair(7,8), pair(1, pair(2, null))),6)); // gives list(...),6
+display(pair(pair(pair(7,8), pair(1, pair(2, null))),6));
