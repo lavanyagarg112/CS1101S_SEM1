@@ -1,0 +1,75 @@
+// simplest data structure : pair
+// (x,y)
+
+function make_point(x,y){
+    
+    return component => component === 0 ? x : y;
+}
+
+// to get x 
+
+function x_of(p){
+    return p(0);
+}
+
+function y_of(p){
+    return p(1);
+}
+
+x_of(make_point(3,4));
+
+
+const pair = (x,y) => f => f(x,y);
+
+// const p = pair(1,2);
+// input to function f needs two arguments
+// f => (x,y) => x 
+
+// (f => f(1,2)(lambda expression input for f))
+
+const head = p => p((x,y) => x);
+const tail = p => p((x,y) => y);
+
+// rational number 
+// a pair consisting of a denominator and numerator
+
+function make_rat(n, d){
+    return pair(n, d);
+}
+
+function numer(x){
+    return head(x);
+}
+
+function denom(x){
+    return tail(x);
+}
+
+// rational number arithmetic system
+
+function add_rat(x, y){
+    return make_rat(numer(x) * denom(y) +
+                    numer(y) * denom(y) +
+                    denom(x) * denom(y));
+}
+
+
+// similarly for subtraction, multiplication and division
+
+// equality of rational numbers
+
+
+// dont have to reduce to lowest form to check
+// instead can cross multiply and check
+
+// visualising rational numbers
+
+
+function rat_to_string(x) {
+    return stringify(numer(x)) + '/' + stringify(denom(x));
+}
+
+
+
+
+
