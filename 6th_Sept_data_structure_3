@@ -48,6 +48,7 @@ draw_data(pair(1, pair(2, pair(3, null))));
 // length of non empty list: 1 + length of tail
 // recursive process
 
+
 function length(xs) {
     draw_data(xs);
     return is_null(xs)
@@ -61,8 +62,9 @@ length(list(4,5,6));
 // iterative version
 
 function length_iter(xs) {
-    
+    draw_data("length_iter", xs);
     function len(ys, counted_so_far) { // helper function
+        draw_data("len", ys, counted_so_far);
         return is_null(ys)
             ? counted_so_far
             : len(tail(ys), counted_so_far + 1);
@@ -70,4 +72,6 @@ function length_iter(xs) {
     
     return len(xs, 0);
 }
+
+length_iter(list(4,5,6,7));
 
