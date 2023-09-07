@@ -3,4 +3,5 @@ display(5, 'the explanation:');
 // returns 5
 // display second part ?
 
-draw_data(pair(pair(x => x+2, 5), pair('string', null)));
+const p = draw_data(pair(pair(x => x+2, false), pair('string', pair(5,null))));
+//(head);
