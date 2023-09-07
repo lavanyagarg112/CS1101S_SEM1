@@ -17,18 +17,10 @@ function gcd(a, b){
         : gcd(b, a % b);
 }
 
-function lte(rat1, rat2){
-    return (numer(rat1) * denom(rat2)) / gcd(numer(rat1), denom(rat1)) <= 
-            (numer(rat2) * denom(rat1)) / gcd(numer(rat1), denom(rat1))
-        ? true
-        : false;
-}
-
 display(gcd(-1,1));
 display(gcd(-1,3));
 
 
-display(lte(make_rat(-1, 1), make_rat(-1, 3)));
 display(numer(make_rat(-1,1)));
 display(denom(make_rat(-1,1)));
 display(numer(make_rat(-1,3)));
