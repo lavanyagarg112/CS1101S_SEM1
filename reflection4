@@ -11,5 +11,6 @@ head(p);
 
 // list notation: display_list
 
-// const p = pair(pair(1, pair(2, null)), 7) -> not a list as the tail is not a list
+const lst = pair(pair(1, pair(2, null)), 7); // not a list as the tail is not a list
 
+display_list(lst); // only the head is the list
