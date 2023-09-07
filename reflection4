@@ -4,4 +4,4 @@ display(5, 'the explanation:');
 // display second part ?
 
 const p = draw_data(pair(pair(x => x+2, false), pair('string', pair(5,null))));
-//(head);
+head(p);
