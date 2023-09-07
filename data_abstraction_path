@@ -1,1 +1,36 @@
-// start new code here and then save as to actual stuff
+function make_rat(n, d){
+    const g = gcd(n, d);
+    return pair(n / g, d / g);
+}
+
+function numer(rat){
+    return head(rat);
+}
+
+function denom(rat){
+    return tail(rat);
+}
+
+function gcd(a, b){
+    return b === 0
+        ? a
+        : gcd(b, a % b);
+}
+
+function lte(rat1, rat2){
+    return (numer(rat1) * denom(rat2)) / gcd(numer(rat1), denom(rat1)) <= 
+            (numer(rat2) * denom(rat1)) / gcd(numer(rat1), denom(rat1))
+        ? true
+        : false;
+}
+
+display(gcd(-1,1));
+display(gcd(-1,3));
+
+
+display(lte(make_rat(-1, 1), make_rat(-1, 3)));
+display(numer(make_rat(-1,1)));
+display(denom(make_rat(-1,1)));
+display(numer(make_rat(-1,3)));
+display(denom(make_rat(-1,3)));
+
