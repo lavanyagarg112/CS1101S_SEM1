@@ -6,7 +6,7 @@ function every_second(lst){
 
 display(every_second(list("a", "x", "b", "y", "c", "z", "d")));
 
-/*
+
 function sums(lst){
     
     
@@ -28,8 +28,8 @@ function sums(lst){
     
     
 }
-*/
 
+/*
 // alternative
 
 function sums(lst){
@@ -46,5 +46,5 @@ function sums(lst){
     return list(sum(even), sum(odd));
     
 }
-
+*/
 sums(list(1, 2, 3, 4, 5));
