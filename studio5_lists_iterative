@@ -16,24 +16,20 @@ display(every_second(list("a", "x", "b", "y", "c", "z", "d")));
 function sums(lst){
     
     
-    function odd(lst){
-        return is_null(lst) || is_null(tail(lst)) 
-        ? 0
-        : head(tail(lst)) + odd(tail(tail(lst)));
-    }
-    
-    function even(lst){
-        return is_null(lst)
-        ? 0
-        : is_null(tail(lst)) 
-        ? head(lst)
-        : head(lst) + even(tail(tail(lst)));
-    }
-    
-    return list(even(lst),odd(lst));
+    return sumss(items, 0, 0, true);
     
     
 }
+
+function sumss(items, x, y, iseven){
+    
+    return is_null(items) ? pair(x, pair(y, null))
+        : iseven
+        ? sumss(tail(items), x + list_ref(items, 0), y, false)
+        : sumss(tail(items), x, y + list_ref(items, 0), true);
+    
+}
+
 */
 
 // alternative
