@@ -1,0 +1,11 @@
+
+
+function every_second(lst){
+    return is_null(tail(lst)) 
+    ? null
+    : is_null(tail(tail(lst)))
+    ? pair(head(tail(lst)), null)
+    : pair(head(tail(lst)), every_second(tail(tail(lst))));
+}
+
+every_second(list("a", "x", "b", "y", "c", "z", "d"));
