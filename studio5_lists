@@ -1,8 +1,6 @@
 function every_second(lst){
-    return is_null(tail(lst)) 
+    return is_null(lst) || is_null(tail(lst)) 
     ? null
-    : is_null(tail(tail(lst)))
-    ? pair(head(tail(lst)), null)
     : pair(head(tail(lst)), every_second(tail(tail(lst))));
 }
 
@@ -13,15 +11,15 @@ function sums(lst){
     
     
     function odd(lst){
-        return is_null(tail(lst)) 
+        return is_null(lst) || is_null(tail(lst)) 
         ? 0
-        : is_null(tail(tail(lst)))
-        ? head(tail(lst))
         : head(tail(lst)) + odd(tail(tail(lst)));
     }
     
     function even(lst){
-        return is_null(tail(lst)) || is_null(tail(tail(lst)))
+        return is_null(lst)
+        ? 0
+        : is_null(tail(lst)) 
         ? head(lst)
         : head(lst) + even(tail(tail(lst)));
     }
