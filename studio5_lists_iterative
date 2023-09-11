@@ -1,12 +1,12 @@
 function every_second(lst){
-    return every_iter(lst, head(tail(lst)));
+    return reverse(every_iter(lst,null));
 }
 
 function every_iter(lst, final){
     
     return is_null(lst) || is_null(tail(lst))
         ? final
-        : every_iter(tail(tail(lst)), );
+        : every_iter(tail(tail(lst)), pair(head(tail(lst)), final));
     
 }
 
@@ -55,4 +55,4 @@ function sums(lst){
     
 }
 
-sums(list(1,2,3,4));
+sums(list(1,2,3,4,5));
