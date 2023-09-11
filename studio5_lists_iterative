@@ -28,6 +28,7 @@ function sumss(items, x, y, iseven){
         ? sumss(tail(items), x + list_ref(items, 0), y, false)
         : sumss(tail(items), x, y + list_ref(items, 0), true);
     
+    // instead of list_ref(items,0), can write head(items)
 }
 
 */
