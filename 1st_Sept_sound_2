@@ -25,5 +25,14 @@ const doremi_wave =
         
 const doremi = make_sound(doremi_wave, 1.5);
 
-play(doremi);
+// play(doremi);
+
+const combined = 
+        t => t< 0.5 
+                ? math_sin(2 * math_PI * 500 * t)
+                : math_sin(2 * math_PI * 750 * t);
+                    
+const p = make_sound(combined, 3);
+
+play(p);
 
