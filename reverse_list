@@ -1,0 +1,26 @@
+/*
+
+function reverse(lst) {
+    return reverse_iter(lst, null);
+
+
+}
+
+function reverse_iter(lst, final){
+    
+    return is_null(lst) 
+        ? final
+        : reverse_iter(tail(lst), pair(head(lst), final));
+    
+}
+
+*/
+
+function reverse2(lst){
+    return is_null(lst)
+        ? null 
+        : pair(reverse() ,null);
+}
+
+
+reverse2(list(1,2,3,4,5));
