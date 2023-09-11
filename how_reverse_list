@@ -1,0 +1,7 @@
+function reverse(lst) {
+    return is_null(tail(lst))
+    ? head(lst)
+    : pair(pair(reverse(tail(lst)), head(lst)), null);
+}
+
+reverse(list(1, 2, 3, 4));
