@@ -1,0 +1,50 @@
+function every_second(lst){
+    return is_null(lst) || is_null(tail(lst)) 
+    ? null
+    : pair(head(tail(lst)), every_second(tail(tail(lst))));
+}
+
+display(every_second(list("a", "x", "b", "y", "c", "z", "d")));
+
+/*
+function sums(lst){
+    
+    
+    function odd(lst){
+        return is_null(lst) || is_null(tail(lst)) 
+        ? 0
+        : head(tail(lst)) + odd(tail(tail(lst)));
+    }
+    
+    function even(lst){
+        return is_null(lst)
+        ? 0
+        : is_null(tail(lst)) 
+        ? head(lst)
+        : head(lst) + even(tail(tail(lst)));
+    }
+    
+    return list(even(lst),odd(lst));
+    
+    
+}
+*/
+
+// alternative
+
+function sums(lst){
+    
+    function sum(lst){
+        return is_null(lst) 
+            ? 0
+            : head(lst) + sum(tail(lst));
+    }
+    
+    const odd = every_second(lst);
+    const even = every_second(pair(0,lst));
+    
+    return list(sum(even), sum(odd));
+    
+}
+
+sums(list(1, 2, 3, 4, 5));
