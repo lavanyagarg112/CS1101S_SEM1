@@ -1,12 +1,12 @@
 function every_second(lst){
-    return every_iter(lst, null);
+    return every_iter(lst, head(tail(lst)));
 }
 
 function every_iter(lst, final){
     
     return is_null(lst) || is_null(tail(lst))
         ? final
-        : every_iter(tail(tail(lst)), pair(head(tail(lst)), final));
+        : every_iter(tail(tail(lst)), );
     
 }
 
