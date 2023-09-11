@@ -1,7 +1,13 @@
 function every_second(lst){
-    return is_null(lst) || is_null(tail(lst)) 
-    ? null
-    : pair(head(tail(lst)), every_second(tail(tail(lst))));
+    return every_iter(lst, null);
+}
+
+function every_iter(lst, final){
+    
+    return is_null(lst) || is_null(tail(lst))
+        ? final
+        : every_iter(tail(tail(lst)), pair(head(tail(lst)), final));
+    
 }
 
 display(every_second(list("a", "x", "b", "y", "c", "z", "d")));
@@ -35,10 +41,15 @@ function sums(lst){
 function sums(lst){
     
     function sum(lst){
-        return is_null(lst) 
-            ? 0
-            : head(lst) + sum(tail(lst));
+        return helper(lst, 0);
     }
+    
+    function helper(lst, total){
+        return is_null(lst)
+            ? total
+            : helper(tail(lst), total + head(lst));
+    }
+    
     
     const odd = every_second(lst);
     const even = every_second(pair(0,lst));
