@@ -6,7 +6,7 @@ function every_second(lst){
 
 display(every_second(list("a", "x", "b", "y", "c", "z", "d")));
 
-
+/*
 function sums(lst){
     
     
@@ -25,6 +25,25 @@ function sums(lst){
     }
     
     return list(even(lst),odd(lst));
+    
+    
+}
+*/
+
+// alternative
+
+function sums(lst){
+    
+    function sum(lst){
+        return is_null(lst) 
+            ? 0
+            : head(lst) + sum(tail(lst));
+    }
+    
+    const odd = every_second(lst);
+    const even = every_second(pair(0,lst));
+    
+    return list(sum(even), sum(odd));
     
 }
 
