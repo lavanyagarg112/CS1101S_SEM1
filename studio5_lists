@@ -1,5 +1,3 @@
-
-
 function every_second(lst){
     return is_null(tail(lst)) 
     ? null
