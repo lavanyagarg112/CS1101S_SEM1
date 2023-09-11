@@ -8,7 +8,7 @@ function every_second(lst){
     : pair(head(tail(lst)), every_second(tail(tail(lst))));
 }
 
-every_second(list("a", "x", "b", "y", "c", "z", "d"));
+display(every_second(list("a", "x", "b", "y", "c", "z", "d")));
 
 
 function sums(lst){
@@ -16,21 +16,20 @@ function sums(lst){
     
     function odd(lst){
         return is_null(tail(lst)) 
-        ? null
+        ? 0
         : is_null(tail(tail(lst)))
-        ? pair(head(tail(lst)), null)
-        : pair(head(tail(lst)), odd(tail(tail(lst))));
+        ? head(tail(lst))
+        : head(tail(lst)) + odd(tail(tail(lst)));
     }
     
     function even(lst){
         return is_null(tail(lst)) || is_null(tail(tail(lst)))
-        ? pair(head(lst), null)
-        : pair(head(lst), even(tail(tail(lst))));
+        ? head(lst)
+        : head(lst) + even(tail(tail(lst)));
     }
     
-    return even(lst);
+    return list(even(lst),odd(lst));
     
 }
 
-sums(list("a", "x", "b", "y", "c", "z"));
-
+sums(list(1, 2, 3, 4, 5));
