@@ -10,6 +10,8 @@ function every_iter(lst, final){
     
 }
 
+// can we not use reverse?
+
 display(every_second(list("a", "x", "b", "y", "c", "z", "d")));
 
 /*
