@@ -58,4 +58,4 @@ function sums(lst){
     
 }
 
-sums(list(1, 2, 3, 4, 5));
+sums(list(1,2,3,4));
