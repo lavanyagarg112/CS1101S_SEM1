@@ -1,0 +1,13 @@
+// refining list definition
+
+// A list of a certain data type is null or a pair
+// whose head is of that data type or 
+// whose tail is a list of that data type
+
+// example: list of numbers
+
+// should be null, or a pair whose head is a number and 
+// whose tail is a list of numbers
+
+
+
