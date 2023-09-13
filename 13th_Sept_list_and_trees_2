@@ -47,5 +47,27 @@ function reverse2(lst){
 
 reverse2(list(1,2,3,4,5,6));
 
-// run time -
+// run time - n + (n-1) + (n-2)....(for every tail we take) -> n(n-1)/2 -> theta(n^2)
+// not theta(n^2/2 - n/2) because we 
+
+
+// third attempt to make it more efficient
+
+function reverse3(xs){
+    function rev(original, reversed){
+        return is_null(original)
+            ? reversed
+            : rev(tail(original),
+            pair(head(original), reversed));
+        
+        
+    }
+    
+    return rev(xs, null);
+}
+
+reverse3(list(1,2,3,4,5));
+
+// time -> theta(n) due to pair
+
 
