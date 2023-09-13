@@ -10,4 +10,39 @@
 // whose tail is a list of numbers
 
 
+// const lst = null; -> can be a list of any type
+
+// we can have a list of mixed types - it would just be known as "list"
+// now we are trying to define a list of a particular type
+
+
+
+
+
+
+// Calculating the length of the list
+
+// recursive
+
+function length(xs){
+    return is_null(xs)
+        ? 0
+        : 1 + length(tail(xs));
+}
+
+// iterative
+
+function lenght_iter(xs){
+    
+    function len(ys, sofar){
+        
+        return is_null(ys)
+            ? sofar
+            : len(tail(ys), 1 + sofar);
+        
+    }
+    
+    return len(xs, 0);
+    
+}
 
