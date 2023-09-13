@@ -1,1 +1,36 @@
-// start new code here and then save as to actual stuff
+// converting any recursive function to iterative
+
+function append1(xs, ys) {
+    return is_null(xs)
+        ? ys
+        : pair(head(xs), append(tail(xs), ys));
+}
+
+// converting to iterative
+
+// first attempt
+
+function append_iter1(xs, ys) {
+    return is_null(xs)
+           ? ys
+           : append_iter(tail(xs), pair(head(xs), ys));
+}
+
+// wrong cause first list is actually getting reversed
+
+// second attempt: reverse the first list
+
+function append_iter2(xs, ys) {
+    return is_null(xs)
+           ? ys
+           : append_iter2(tail(xs), pair(head(xs), ys));
+}
+
+function append2(xs, ys) {
+    return append_iter2(reverse(xs), ys);
+}
+
+// now a bit more general - using Continuation-Passing Style (CPS)
+
+
+
