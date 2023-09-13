@@ -1,1 +1,35 @@
-// start new code here and then save as to actual stuff
+// append
+
+// wanted: append(list(1,2,3), list(4,5,6)) -> list(1,2,3,4,5,6)
+
+// attempt 1
+
+const append1 = pair;
+
+append1(list(1,2,3), list(4,5,6));
+
+// not our desired result
+
+// attempt 2
+
+// if list1 is empty, we return list2 -> strategy
+// append the tail of list 1 to list 2
+// form a pair of the head and the result
+
+
+function append2(xs, ys){
+    return is_null(xs)
+        ? ys
+        : pair(head(xs), append2(tail(xs), ys));
+}
+
+append2(list(1,2,3), list(4,5,6));
+
+// order of growth in time - theta(n) - ength of xs only cause we only traverse through xs
+// order of growth in space - theta(n)
+
+// number of deferred operations is n
+// but here we have data structures
+// everytime we call the pair function, we need space in memory
+// so n more spaces for creating the boxes
+// theta(2n) which is basically theta(n) cause the constant doesnt matter
