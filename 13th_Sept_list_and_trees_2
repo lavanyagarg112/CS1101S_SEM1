@@ -34,3 +34,18 @@ append2(list(1,2,3), list(4,5,6));
 // so n more spaces for creating the boxes
 // theta(2n) which is basically theta(n) cause the constant doesnt matter
 
+
+// reverse attempt 1 - in studio sheet 5
+
+// reverse attempt 2
+
+function reverse2(lst){
+    return is_null(lst)
+        ? null 
+        : append(reverse2(tail(lst)), list(head(lst)));
+}
+
+reverse2(list(1,2,3,4,5,6));
+
+// run time -
+
