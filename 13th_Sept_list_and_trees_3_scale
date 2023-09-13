@@ -1,1 +1,10 @@
-// start new code here and then save as to actual stuff
+// scaling a function by a factor of k
+
+function scale_list(xs, k) {
+    return is_null(xs)
+        ? null
+        : pair(k * head(xs),
+        scale_list(tail(xs), k));
+}
+scale_list(list(1, 2, 3), 10);
+
