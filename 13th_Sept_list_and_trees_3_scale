@@ -112,6 +112,7 @@ function list_sum(xs){
 // due to deferred operations and applicative order reduction 
 
 // example if multiplication of all elements then * instead of +
+// base case from 0 to 1
 
 
 
