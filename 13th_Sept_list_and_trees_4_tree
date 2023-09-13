@@ -57,3 +57,18 @@ function count_data_items(tree){
 // map function may help
 
 
+// mapping over trees
+
+function map_tree(f, tree){
+    
+    return map(sub_tree => 
+                    ! is_list(sub_tree)
+                    ? f(sub_tree)
+                    : map_tree(f, sub_tree));
+    
+}
+
+function scale_tree(tree, k) {
+    return map_tree(data_item => data_item * k, tree);
+}
+
