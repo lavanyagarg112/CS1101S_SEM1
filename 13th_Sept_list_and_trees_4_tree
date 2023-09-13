@@ -1,1 +1,15 @@
-// start new code here and then save as to actual stuff
+// trees
+
+// a tree of a certain data type is a list whose elements are of that data typew
+// or trees of that data type
+
+// tree of numbers:
+// const treeA = list(1,2,3,4)
+// const treeB = list(list(1,2), list(3,4))
+// const treeC = null; // can be a tree of anytype - basically empty tree of anytype
+
+// const treeD = list(list(1,2), null, 3, list(4, null));
+// still a tree of numbers^
+
+// cannot have a tree of nulls or a tree of pairs since they are not data types as such
+
