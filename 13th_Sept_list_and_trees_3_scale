@@ -64,6 +64,43 @@ const my_copy = copy(original);
 
 // taking even numbers from the list
 
+function even_numbers2(xs){
+    return is_null(xs)
+        ? is_null
+        : head(xs) % 2 === 0
+        ? pair(head(xs), even_numbers2(tail(xs)))
+        : even_numbers2(tail(xs));
+}
+
+// if we take head(xs) % 2 === 0 as the function 
+
+// abstration: filter
+
+function filter(pred, xs){
+    return is_null(xs)
+        ? is_null
+        : pred(head(xs)) // if predicate is true
+        ? pair(head(xs), filter(pred, tail(xs)))
+        : filter(pred, tail(xs));
+}
+
+// based on the predicate, number of elements changes
+// atmost n 
+
+// predicate is applied for each element 
+// it should be either true of false only
+
+
+
+function even_numbers(xs){
+    const pred = x => x % 2 === 0;
+    
+    return filter(pred, xxs);
+    
+    
+}
+
+
 
 
 
