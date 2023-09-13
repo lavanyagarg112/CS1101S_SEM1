@@ -101,8 +101,11 @@ function even_numbers(xs){
 
 // summing the elemnts of the list
 
-
-
+function list_sum(xs){
+    return is_null(xs)
+        ? 0
+        : head(xs) + list_sum(tail(xs));
+}
 
 
 
