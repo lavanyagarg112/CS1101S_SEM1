@@ -39,5 +39,35 @@ square_list(list(1, 2, 3, 4));
 
 // applying a function element wise to the list
 
+function map(f, xs) {
+    return is_null(xs)
+        ? null
+        : pair(f(head(xs)), map(f, tail(xs)));
+}
+
+// using map
+
+function scale_list(xs, k) {
+    return map(x => k * x, xs);
+}
+function square_list(xs) {
+    return map(x => x * x, xs);
+}
+
+// making a copy of the list
+
+function copy(xs) {
+    return map(x => x, xs);
+}
+const original = list(1, 3, 5);
+const my_copy = copy(original);
+
+// taking even numbers from the list
+
+
+
+
+
+
 
 
