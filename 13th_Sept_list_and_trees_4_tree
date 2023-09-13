@@ -13,3 +13,11 @@
 
 // cannot have a tree of nulls or a tree of pairs since they are not data types as such
 
+// the root of top lol: eg
+// [[1,[2,null]],3,4]
+// first root out 3 and 4 and then further another branch for 1 and 2
+
+// alternative definition of trees in terms of pairs - see slides
+
+
+
