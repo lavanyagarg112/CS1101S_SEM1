@@ -1,10 +1,39 @@
 // scaling a function by a factor of k
 
-function scale_list(xs, k) {
+function scale_list2(xs, k) {
+    return is_null(xs)
+        ? null
+        : pair(k * head(xs),
+        scale_list2(tail(xs), k));
+}
+scale_list2(list(1, 2, 3), 10);
+
+// new type annotations: Pair<?,?>, List<?>, null
+
+/*
+function scale_list(xs : list<number>, k : number){
     return is_null(xs)
         ? null
         : pair(k * head(xs),
         scale_list(tail(xs), k));
 }
-scale_list(list(1, 2, 3), 10);
+
+scale_list(list("A", "B", "C"), 10);
+scale_list(list("A", "B", "C"), "D");
+scale_list(list(1, 2, 3), "D");
+*/
+
+// squaring a lift
+
+function square_list(xs) {
+    const square = x => x * x;
+    return is_null(xs)
+        ? null
+        : pair(square(head(xs)),
+        square_list(tail(xs)));
+}
+
+square_list(list(1, 2, 3, 4));
+
+// mapping abstraction
 
