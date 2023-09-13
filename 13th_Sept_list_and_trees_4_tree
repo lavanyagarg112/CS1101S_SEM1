@@ -53,5 +53,7 @@ function count_data_items(tree){
 
 // scale a tree
 
+// tree is still a list with some additional conditions
+// map function may help
 
 
