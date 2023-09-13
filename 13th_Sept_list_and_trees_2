@@ -30,6 +30,7 @@ append2(list(1,2,3), list(4,5,6));
 
 // number of deferred operations is n
 // but here we have data structures
-// everytime we call the pair function, we need space in memory
+// everytime we call the pair function, we need space in memory -> even if it is iterative
 // so n more spaces for creating the boxes
 // theta(2n) which is basically theta(n) cause the constant doesnt matter
+
