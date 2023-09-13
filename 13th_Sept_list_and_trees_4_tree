@@ -33,5 +33,21 @@ A tree of a certain data type is
 
 // counting data items in a tree
 
+// if list is empty return 0
+// add number of items in head to number of items in tail
+
+
+// if head is a tree/list we count
+// if not, its a data item and we add 1
+
+
+function count_data_items(tree){
+    return is_null(tree)
+        ? 0
+        : (is_list(head(tree)) ? count_data_items(head(tree)) : 1)
+        +
+        count_data_items(tail(tree));
+}
+
 
 
