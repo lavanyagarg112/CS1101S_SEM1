@@ -46,3 +46,41 @@ function append(xs, ys){
 // function that has to be stored until the deferred operations are made
 // additional paramenter c : continuations
 
+function factorial(n) { // Recursive process
+    return n === 1 
+           ? 1
+           : n * factorial(n - 1);
+}
+
+function fac(n, c){ // Iterative process
+    return n === 1
+           ? c(1)
+           : fac(n - 1, x => c(n * x));
+}
+
+function factorial_iter(n){
+    return fac(n, x => x);
+}
+
+// another example
+
+import { beside, heart, show, stack } from "rune";
+
+function fractal_5(rune, n) { // recursive
+   return n === 1 
+      ? rune
+      : beside(rune,
+               fractal_5(stack(rune, rune), n - 1));
+}
+
+function frac(rune, n, c) { // iterative
+    return n === 1 
+           ? c(rune)
+           : frac(stack(rune, rune), n - 1, 
+                  res => c(beside(rune, res)));
+}
+function fractal_5_iter(rune, n) {
+    return frac(rune, n, rune => rune);
+}
+
+
