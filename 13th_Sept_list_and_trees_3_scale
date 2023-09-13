@@ -35,5 +35,9 @@ function square_list(xs) {
 
 square_list(list(1, 2, 3, 4));
 
-// mapping abstraction
+// abstraction: map
+
+// applying a function element wise to the list
+
+
 
