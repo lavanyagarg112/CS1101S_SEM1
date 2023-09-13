@@ -97,8 +97,10 @@ function even_numbers(xs){
     
     return filter(pred, xxs);
     
-    
 }
+
+// summing the elemnts of the list
+
 
 
 
