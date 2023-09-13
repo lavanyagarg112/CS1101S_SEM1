@@ -19,5 +19,19 @@
 
 // alternative definition of trees in terms of pairs - see slides
 
+/*
+
+A tree of a certain data type is
+    either null
+    or a pair
+        - whose tail is a tree of that data type and
+        - whose head is
+            – either of that data type
+            – or a tree of that data type
+
+*/
+
+// counting data items in a tree
+
 
 
