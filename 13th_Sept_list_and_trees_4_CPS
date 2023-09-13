@@ -32,5 +32,17 @@ function append2(xs, ys) {
 
 // now a bit more general - using Continuation-Passing Style (CPS)
 
+function app(current_xs, ys, c) {
+    return is_null(current_xs)
+        ? c(ys)
+        : app(tail(current_xs), ys, x => c(pair(head(current_xs), x)));
 
+}
+
+function append(xs, ys){
+    return app(xs, ys, x => x);
+}
+
+// function that has to be stored until the deferred operations are made
+// additional paramenter c : continuations
 
