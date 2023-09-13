@@ -107,6 +107,14 @@ function list_sum(xs){
         : head(xs) + list_sum(tail(xs));
 }
 
+// operations are going left to right
+// but calculations are happing right to left
+// due to deferred operations and applicative order reduction 
+
+// example if multiplication of all elements then * instead of +
+
+
+
 
 
 
