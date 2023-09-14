@@ -7,7 +7,6 @@ function accumulate(op, initial, xs){
 }
 
 
-
 // Question 1
 // by abstraction
 function flatten_list(lst){
@@ -39,6 +38,16 @@ function tree_sum2(t){
             + tree_sum2(tail(t)));
 }
 
+// using accumulate
+
+function tree_sum3(t){
+    return accumulate( (x, y) => (is_list(x) 
+                                    ? tree_sum3(x)
+                                    : x) 
+                                    + y, 
+                                    0, t);
+}
+
 // Question 3
 function accumulate_tree(f, op, initial, tree) {
     return accumulate(
@@ -49,6 +58,7 @@ function accumulate_tree(f, op, initial, tree) {
              initial,
              tree);
 }
+
 
 function tree_sum(tree) {
     return accumulate_tree(x => x, (x, y) => x + y, 0 , tree);
