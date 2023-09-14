@@ -13,7 +13,13 @@ flatten_list(LoL);
 
 // accumulate is just an abstraction which can be used
 
-
+// Question 2
+function tree_sum2(t){
+    return is_null(t)
+        ? 0
+        : ((is_list(head(t)) ? tree_sum2(head(t)) : head(t))
+            + tree_sum2(tail(t)));
+}
 
 // Question 3
 function accumulate_tree(f, op, initial, tree) {
