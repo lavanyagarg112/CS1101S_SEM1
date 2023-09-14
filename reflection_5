@@ -1,3 +1,21 @@
+// Question 1
+function flatten_list(lst){
+    return accumulate(append, null, lst );
+}
+
+const LoL = list(list(1, 2), list(3, 4, 5, 6), null, list(7, 8, 9)); 
+
+flatten_list(LoL);
+
+// 4 lists in LoL list i.e. list of four list
+
+// when we use draw data, its correct but can be a bit confusing
+
+// accumulate is just an abstraction which can be used
+
+
+
+// Question 3
 function accumulate_tree(f, op, initial, tree) {
     return accumulate(
              ((x,y) => op((
