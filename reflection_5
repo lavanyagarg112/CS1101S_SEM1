@@ -1,3 +1,13 @@
+// accumulate function abstraction (this is how it is predeclared in source)
+
+function accumulate(op, initial, xs){
+    return is_null(xs)
+        ? initial
+        : op(head(xs), accumulate(op, initial, tail(xs)));
+}
+
+
+
 // Question 1
 // by abstraction
 function flatten_list(lst){
