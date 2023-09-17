@@ -1,0 +1,25 @@
+function slice(lst, start, end){
+    
+    if (is_null(lst) || start < 0 || end < 0){
+        return null;
+    }
+    
+    else if (end < length(lst)){
+        
+        return start >= end
+            ? null
+            : append(list(list_ref(lst, start)), slice(lst, start+1, end));
+        
+    }
+    
+    else {
+        return slice(lst, start, length(lst) - 1);
+    }
+    
+}
+
+const xs = list(0,1,2,3,4);
+
+slice(xs, 0, 0);
+
+
