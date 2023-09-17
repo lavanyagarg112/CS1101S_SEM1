@@ -19,21 +19,6 @@ function remove_duplicates(lst){
             : nlst(tail(lst), append(final, list(head(lst))));
     }
     
-    /* 
-    
-    trying to write it in terms of filter
-    
-    function nlst(lst){
-        return is_null(lst)
-            ? null 
-            : !traverse(head(head(lst)), tail(lst))
-            ? nlst(tail(head(lst)))
-            : pair(head(head(lst)), nlst(tail(head(lst))))
-    }
-    */
-    
-    
-    
 
     
     const initial = null;
@@ -52,3 +37,15 @@ display(remove_duplicates(lst));
 remove_duplicates(list("a", "x", "b", "c", "c", "b", "d"));
 
 
+    /* 
+    
+    trying to write it in terms of filter
+    
+    function nlst(lst){
+        return is_null(lst)
+            ? null 
+            : !traverse(head(head(lst)), tail(lst))
+            ? nlst(tail(head(lst)))
+            : pair(head(head(lst)), nlst(tail(head(lst))))
+    }
+    */
