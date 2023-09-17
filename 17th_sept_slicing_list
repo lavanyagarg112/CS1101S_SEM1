@@ -20,6 +20,11 @@ function slice(lst, start, end){
 
 const xs = list(0,1,2,3,4);
 
-slice(xs, 0, 0);
+slice(xs, 0, 4);
+
+// without step value
+// can include step
+
+// source doesnt take -1 as the last element of the list
 
 
