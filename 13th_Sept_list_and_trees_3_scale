@@ -78,7 +78,7 @@ function even_numbers2(xs){
 
 function filter(pred, xs){
     return is_null(xs)
-        ? is_null
+        ? null 
         : pred(head(xs)) // if predicate is true
         ? pair(head(xs), filter(pred, tail(xs)))
         : filter(pred, tail(xs));
