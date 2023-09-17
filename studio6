@@ -16,7 +16,7 @@ function remove_duplicates(lst){
             ? final 
             : traverse(head(lst), final)
             ? nlst(tail(lst), final)
-            : nlst(tail(lst), append(list(head(lst)), final));
+            : nlst(tail(lst), append(final, list(head(lst))));
     }
     
     const initial = null;
@@ -31,5 +31,7 @@ function remove_duplicates(lst){
 const lst = list(3,3,4,5,6,7,2,3,4,3);
 
 display(remove_duplicates(lst));
+
+remove_duplicates(list("a", "x", "b", "c", "c", "b", "d"));
 
 
