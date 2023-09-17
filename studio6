@@ -5,7 +5,7 @@ function remove_duplicates(lst){
         return is_null(lst)
             ? false
             : el === head(lst)
-            ? false
+            ? true
             : traverse(el, tail(lst));
         
     }
@@ -27,7 +27,7 @@ function remove_duplicates(lst){
     
 }
 
-const lst = list(3,4,5,6,7,2,3,4,3);
+const lst = list(3,3,4,5,6,7,2,3,4,3);
 
 display(remove_duplicates(lst));
 
