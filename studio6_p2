@@ -1,1 +1,12 @@
-// start new code here and then save as to actual stuff
+function remove_duplicates(lst){
+    
+    function checklst(item, lst){
+        return !is_null(filter(x => x === item, lst));
+    }
+    
+    return checklst(1, lst);
+    
+    
+}
+
+remove_duplicates(list(1,2,3));
