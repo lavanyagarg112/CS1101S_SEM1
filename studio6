@@ -1,0 +1,34 @@
+function remove_duplicates(lst){
+    
+    function traverse(el, lst){
+        
+        return is_null(lst)
+            ? false
+            : el === head(lst)
+            ? false
+            : traverse(el, tail(lst));
+        
+    }
+
+
+    function nlst (lst, final){
+        return is_null(lst)
+            ? null 
+            : traverse(head(lst), final)
+            ? nlst(tail(lst), final)
+            : append(append(list(head(lst)), final), nlst(tail(lst), append(list(head(lst)), final)));
+    }
+    
+    const initial = null;
+    
+    return nlst(lst, initial);
+    
+    
+    
+}
+
+const lst = list(3,4,5,6,7,2,3,4,3);
+
+display(remove_duplicates(lst));
+
+
