@@ -4,9 +4,18 @@ function remove_duplicates(lst){
         return !is_null(filter(x => x === item, lst));
     }
     
-    return checklst(1, lst);
+    function nlst (lst, final){
+        return is_null(lst)
+            ? final 
+            : checklst(head(lst), final)
+            ? nlst(tail(lst), final)
+            : nlst(tail(lst), append(final, list(head(lst))));
+    }
+    
+    const initial = null;
+    return nlst(lst, initial);
     
     
 }
 
-remove_duplicates(list(1,2,3));
+remove_duplicates(list(1,2,3,2,3,5));
