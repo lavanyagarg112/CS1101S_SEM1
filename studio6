@@ -19,6 +19,7 @@ function remove_duplicates(lst){
             : nlst(tail(lst), append(final, list(head(lst))));
     }
     
+    
     const initial = null;
     
     return nlst(lst, initial);
