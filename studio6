@@ -13,10 +13,10 @@ function remove_duplicates(lst){
 
     function nlst (lst, final){
         return is_null(lst)
-            ? null 
+            ? final 
             : traverse(head(lst), final)
             ? nlst(tail(lst), final)
-            : append(append(list(head(lst)), final), nlst(tail(lst), append(list(head(lst)), final)));
+            : nlst(tail(lst), append(list(head(lst)), final));
     }
     
     const initial = null;
