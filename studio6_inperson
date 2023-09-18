@@ -12,3 +12,35 @@ remove_duplicates(list(1, 2, 3, 4, 4, 3, 2, 1, 2));
 
 // question 2
 
+// either include in the set or not include in the set
+
+function subsets(lst){
+    
+    // element can either be included in set or not be included in set
+    
+    function sub(lst, len){
+        
+        if (len === 0){
+            return null;
+        }
+        
+        else {
+            
+            function subsub(lst, len){
+                
+                return len === 0
+                    ? null 
+                    : append(head(lst), subsub(tail(lst),len-1));
+                
+            }
+            
+            return append(list(subsub(lst, len)), list(sub(lst, len-1)));
+        }
+        
+    }
+    
+    return sub(lst, length(lst));
+    
+}
+
+display_list(subsets(list(1, 2, 3)));
