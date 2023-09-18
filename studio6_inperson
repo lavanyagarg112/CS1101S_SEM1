@@ -42,7 +42,7 @@ remove_duplicates(list(1, 2, 3, 4, 4, 3, 2, 1, 2));
 */
 
 
-/*
+/* my horrible answer not working:
 
 // question 2
 
@@ -80,6 +80,30 @@ function subsets(lst){
 display_list(subsets(list(1, 2, 3)));
 
 */
+
+// question 2: something that kinda works
+
+function subsets(lst){
+    
+    return accumulate((h, t) => 
+                        append(t, 
+                                map(x => pair(h, x), t)),
+                        list(null),
+                        lst);
+    
+}
+
+display_list(subsets(list(1, 2, 3)));
+
+// wishful thinking
+
+// lets say we already solved subsets(list(2,3))
+// then we want another copy and put 1 in front of each list
+
+
+// list() is basically null
+
+
 
 // question 3 
 
