@@ -44,7 +44,7 @@ function remove_duplicates(lst){
 
 remove_duplicates(list(1,2,3,2,3,5));
 
-// same as 2nd one
+// same as 2nd one but going right to left cause accumulate
 // but when q says to use a function, try to use it
 
 // best solution is second solution 
