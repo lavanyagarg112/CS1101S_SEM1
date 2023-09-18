@@ -14,7 +14,8 @@ function makeup_amount(x, coins) {
         // Combinations that use the head coin.
         const combi_C = map(x => pair(head(coins), x), combi_B);
         
-        // adding head(coin) to each element of combi_B
+        // adding head(coin) to each element of combi_B since removing from
+        // combi_B so adding head in each to combi_C
 
         return append(combi_A, combi_C);
         
