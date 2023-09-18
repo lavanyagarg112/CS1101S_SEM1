@@ -1,3 +1,5 @@
+/*
+
 // question 1 with remove_all
 
 
@@ -37,6 +39,10 @@ function remove_duplicates(lst){
 
 remove_duplicates(list(1, 2, 3, 4, 4, 3, 2, 1, 2));
 
+*/
+
+
+/*
 
 // question 2
 
@@ -72,6 +78,8 @@ function subsets(lst){
 }
 
 display_list(subsets(list(1, 2, 3)));
+
+*/
 
 // question 3 
 
