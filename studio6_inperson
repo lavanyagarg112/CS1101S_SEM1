@@ -29,17 +29,17 @@ function subsets(lst){
             function subsub(lst, len){
                 
                 return len === 0
-                    ? head(lst)
-                    : append(head(lst), subsub(tail(lst),len-2));
+                    ? null
+                    : append(head(lst), subsub(tail(lst),len-1));
                 
             }
             
-            return append(list(subsub(lst, len)), list(sub(lst, len-2)));
+            return append(list(subsub(lst, len)), list(sub(lst, len-1)));
         }
         
     }
     
-    return sub(lst, length(lst));
+    return sub(lst, length(lst)-1);
     
 }
 
