@@ -29,12 +29,12 @@ function subsets(lst){
             function subsub(lst, len){
                 
                 return len === 0
-                    ? null 
-                    : append(head(lst), subsub(tail(lst),len-1));
+                    ? head(lst)
+                    : append(head(lst), subsub(tail(lst),len-2));
                 
             }
             
-            return append(list(subsub(lst, len)), list(sub(lst, len-1)));
+            return append(list(subsub(lst, len)), list(sub(lst, len-2)));
         }
         
     }
@@ -44,3 +44,9 @@ function subsets(lst){
 }
 
 display_list(subsets(list(1, 2, 3)));
+
+// question 3 
+
+// permutations
+
+
