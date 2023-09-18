@@ -1,4 +1,5 @@
-// question 1
+// question 1 with remove_all
+
 
 function remove_duplicates(lst){
     
@@ -8,7 +9,34 @@ function remove_duplicates(lst){
     
 }
 
+
+// question 1 with remove
+
+function remove_duplicates(lst){
+    
+    return accumulate((x,acc) => pair(x, remove_all(x, acc)),
+                        null,
+                        lst);
+    
+}
+
+
+// dont need to use remove_all cause remove will check everytime?
+
+
+// question 1 with member
+
+function remove_duplicates(lst){
+    
+    return accumulate(((x,acc) => is_null(member(x,acc)) ? pair(x,acc) : acc),
+                        null,
+                        lst);
+    
+}
+
+
 remove_duplicates(list(1, 2, 3, 4, 4, 3, 2, 1, 2));
+
 
 // question 2
 
