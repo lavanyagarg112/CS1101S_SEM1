@@ -103,7 +103,27 @@ display_list(subsets(list(1, 2, 3)));
 
 // list() is basically null
 
+// method 2 given by TA
 
+function subsets2(set){
+    
+    if (is_null(set)){
+        return list(null);
+    }
+    
+    else {
+        
+        const the_rest = subsets(tail(set));
+        
+        const included = map(x => pair(head(set), x), the_rest);
+        
+        return append(included, the_rest);
+        
+    }
+    
+}
+
+display_list(subsets2(list(1, 2, 3)));
 
 // question 3 
 
