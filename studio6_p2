@@ -1,21 +1,45 @@
+/*
+
 function remove_duplicates(lst){
-    
-    function checklst(item, lst){
-        return !is_null(filter(x => x === item, lst));
-    }
     
     function nlst (lst, final){
         return is_null(lst)
             ? final 
-            : checklst(head(lst), final)
+            : !is_null(filter(x => x === head(lst), final))
             ? nlst(tail(lst), final)
             : nlst(tail(lst), append(final, list(head(lst))));
     }
     
-    const initial = null;
-    return nlst(lst, initial);
+    return nlst(lst, null);
     
     
+}
+
+
+
+remove_duplicates(list(1,2,3,2,3,5));
+*/
+
+/*
+function remove_duplicates(xs){
+    
+    
+    return is_null(xs)
+        ? null 
+        : pair(head(xs), 
+                remove_duplicates(
+                    filter(x => !equal(x, head(xs)), tail(xs))));
+                    
+                    // filtering the tail such that none of the 
+                    // elements are equal to the head
+}
+
+remove_duplicates(list(1,2,3,2,3,5));
+*/
+
+
+function remove_duplicates(lst){
+    return accumulate((h,t) => pair(h, filter(x => x !== h, t)), null, lst);
 }
 
 remove_duplicates(list(1,2,3,2,3,5));
