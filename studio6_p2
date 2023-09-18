@@ -43,3 +43,5 @@ function remove_duplicates(lst){
 }
 
 remove_duplicates(list(1,2,3,2,3,5));
+
+// same as 2nd one
