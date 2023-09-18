@@ -127,6 +127,7 @@ display_list(subsets2(list(1, 2, 3)));
 
 // time complexity - order of growth has to be atleast output set
 // atleast 2^n
+// space also atleast 2^n
 
 // question 3 
 
