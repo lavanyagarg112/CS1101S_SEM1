@@ -95,7 +95,7 @@ function subsets(lst){
 
 display_list(subsets(list(1, 2, 3)));
 
-// wishful thinking
+// method 1 : wishful thinking
 
 // lets say we already solved subsets(list(2,3))
 // then we want another copy and put 1 in front of each list
