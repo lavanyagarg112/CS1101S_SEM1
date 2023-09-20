@@ -1,1 +1,19 @@
-// start new code here and then save as to actual stuff
+// for a pure function keep all the arguments and variables within the scope
+// of the function and not access it from outside
+
+/*
+
+"A pure function is a function where the output is determined solely by its 
+input values, without any side effects or dependency on external state. 
+Given the same input, it will always produce the same output."
+
+Key Characteristics:
+Deterministic: For the same input, the function will always produce the 
+same output.
+No Side Effects: The function doesn't change or affect any state outside of 
+itself; it doesn't read or write to external variables or data structures.
+Independent: It doesn't rely on any external state or data.
+Pure functions are foundational to functional programming, making code 
+easier to test, debug, and understand.
+
+*/
