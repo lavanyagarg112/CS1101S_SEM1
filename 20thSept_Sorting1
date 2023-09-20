@@ -17,6 +17,9 @@
 
 // insert the head in the right place, and sort the tail through wishful thinking
 
+
+// insertion sort for approach A : n-1
+
 function insert(x, xs) {
     return is_null(xs) // null, return x as it is
         ? list(x)
@@ -30,3 +33,32 @@ function insertion_sort(xs) { // wishful thinking, using insert function to chec
         ? xs
         : insert(head(xs), insertion_sort(tail(xs)));
 }
+
+// order of growth in time: is it n^2?
+
+
+// selection sort for approach A : n - 1
+
+// find the smallest element x
+// remove from the list
+// sort the remaining list
+// put x in front
+
+
+
+function smallest(xs) {
+    return accumulate((x, y) => x < y ? x : y,
+                            head(xs), tail(xs));
+}
+
+function selection_sort(xs) {
+    if (is_null(xs)) {
+        return xs;
+    } else {
+        const x = smallest(xs);
+        return pair(x, selection_sort(remove(x, xs)));
+    }
+}
+
+// order of growth of time?
+
