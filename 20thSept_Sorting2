@@ -17,17 +17,13 @@ function middle(n) {
 function take(xs, n) {
     return n===0
         ? null 
-        : list(head(xs), take(tail(xs), n-1));
+        : append(list(head(xs)), take(tail(xs), n-1));
 }
 
 // drop the first n elements from the list and return the rest
 function drop(xs, n) {
     
-    const length = length(xs);
-    
-    return n===0
-        ? null 
-        : list(drop(tail(xs), n-1), list_ref(xs, length - n));
+    return filter(x => is_null(member(x, take(xs,n))), xs);
 }
 
 function merge(xs, ys) {
