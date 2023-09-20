@@ -1,0 +1,37 @@
+// see lecture 3 slides for 
+// constructor, predicate, accessors and selectors
+
+// these functions provide an abstraction of the data structure
+// shield the rest of the program from the implementation of the data structure
+
+// example for eval_symbolic and deriv_symbolic, do not need to know actual implementation
+
+// specification: what is done
+// implementation : how is done
+
+
+
+// set specification
+
+/*
+
+Constructors:
+make_empty_set(), add(e, S), remove(e, S)
+
+Predicates:
+find(e, S)
+
+Contract:
+find(e, add(e, S)) returns true
+find(e, remove(e, S)) returns false
+
+*/
+
+// set implementation version 1
+
+// represent a set by an unordered list
+// consequences for add, remove, find?
+
+// version 2: ordered list
+
+// version 3: binary search tree
