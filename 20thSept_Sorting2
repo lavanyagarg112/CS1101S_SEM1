@@ -23,7 +23,20 @@ function take(xs, n) {
 // drop the first n elements from the list and return the rest
 function drop(xs, n) {
     
-    return filter(x => is_null(member(x, take(xs,n))), xs);
+    // return filter(x => is_null(member(x, take(xs,n))), xs);
+    const len = length(xs);
+        
+    function helper(n){
+            
+        return n === 0
+            ? null 
+            : append(list(list_ref(xs, len - n)), helper(n-1));
+            
+        
+        
+    }
+    
+    return helper(len - n);
 }
 
 function merge(xs, ys) {
