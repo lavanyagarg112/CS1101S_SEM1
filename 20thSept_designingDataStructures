@@ -35,3 +35,5 @@ find(e, remove(e, S)) returns false
 // version 2: ordered list
 
 // version 3: binary search tree
+
+// best implementation depends on which operations are most frequent
