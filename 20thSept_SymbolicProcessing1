@@ -13,8 +13,49 @@ const f_prime = deriv_numeric(f);
 f(3);
 f_prime(3);
 
-/*
+
 // representing functions with data structures
+
+function is_variable(x) {
+    return is_string(x);
+}
+
+function is_same_variable(v1, v2) {
+    return is_variable(v1) && is_variable(v2) && v1 === v2;
+}
+
+function is_sum(x) {
+    return is_pair(x) && head(x) === "+";
+}
+
+function is_product(x) {
+    return is_pair(x) && head(x) === "*";
+}
+
+function addend(s) {
+    return head(tail(s));
+}
+
+function augend(s) {
+    return head(tail(tail(s)));
+}
+
+function multiplier(s) {
+    return head(tail(s));
+}
+
+function multiplicand(s) {
+    return head(tail(tail(s)));
+}
+
+function make_sum(a1, a2) {
+    return list("+", a1, a2);
+}
+
+function make_product(m1, m2) {
+    return list("*", m1, m2);
+}
+
 
 function eval_symbolic(exp, name, val) {
     return is_number(exp)
@@ -36,4 +77,3 @@ const my_exp = make_sum(make_product("x", "x"),
 // Symbolic evaluation:
 eval_symbolic(my_exp, "x", 3);
 // should return 16
-*/
