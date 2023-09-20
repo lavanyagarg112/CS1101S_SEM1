@@ -11,9 +11,9 @@ const f = x => x * x + x + 4;
 const f_prime = deriv_numeric(f);
 
 f(3);
-// f_prime(3);
+f_prime(3);
 
-
+/*
 // representing functions with data structures
 
 function eval_symbolic(exp, name, val) {
@@ -36,3 +36,4 @@ const my_exp = make_sum(make_product("x", "x"),
 // Symbolic evaluation:
 eval_symbolic(my_exp, "x", 3);
 // should return 16
+*/
