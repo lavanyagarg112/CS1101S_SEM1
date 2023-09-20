@@ -34,6 +34,7 @@ function number_equal(exp, num) {
     return is_number(exp) && exp === num;
 }
 
+// make_sum and make_product by expression simplification
 
 function make_sum(a1, a2) {
     return number_equal(a1, 0)
