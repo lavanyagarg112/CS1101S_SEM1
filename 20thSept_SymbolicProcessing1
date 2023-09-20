@@ -1,1 +1,38 @@
-// start new code here and then save as to actual stuff
+// quick sort option seen in mission
+
+// numerical differentiation; simplest method
+function deriv_numeric(f) {
+    const dx = 0.0001;
+    return x => (f(x + dx) - f(x)) / dx;
+}
+
+// Example use:
+const f = x => x * x + x + 4;
+const f_prime = deriv_numeric(f);
+
+f(3);
+// f_prime(3);
+
+
+// representing functions with data structures
+
+function eval_symbolic(exp, name, val) {
+    return is_number(exp)
+           ? exp
+           : is_variable(exp)
+           ? (is_same_variable(exp, name) ? val : NaN)
+           : is_sum(exp)
+           ? eval_symbolic(addend(exp), name, val) +
+               eval_symbolic(augend(exp), name, val)
+           : is_product(exp)
+           ? eval_symbolic(multiplier(exp), name, val) *
+               eval_symbolic(multiplicand(exp), name, val)
+           : error(exp, "unknown expression type");
+}
+
+// my_exp represents x * x + x + 4
+const my_exp = make_sum(make_product("x", "x"),
+                        make_sum("x", 4));
+// Symbolic evaluation:
+eval_symbolic(my_exp, "x", 3);
+// should return 16
