@@ -24,6 +24,9 @@ function take(xs, n) {
 function drop(xs, n) {
     
     // return filter(x => is_null(member(x, take(xs,n))), xs);
+    // above is WRONG cause removes repeated elements from the whole list
+    
+    
     const len = length(xs);
         
     function helper(n){
@@ -37,6 +40,7 @@ function drop(xs, n) {
     }
     
     return helper(len - n);
+    
 }
 
 function merge(xs, ys) {
