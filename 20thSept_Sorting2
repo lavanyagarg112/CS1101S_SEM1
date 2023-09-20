@@ -15,12 +15,19 @@ function middle(n) {
 
 // put the first n elements of xs into a list
 function take(xs, n) {
-    // to be completed
+    return n===0
+        ? null 
+        : list(head(xs), take(tail(xs), n-1));
 }
 
 // drop the first n elements from the list and return the rest
 function drop(xs, n) {
-    // to be completed
+    
+    const length = length(xs);
+    
+    return n===0
+        ? null 
+        : list(drop(tail(xs), n-1), list_ref(xs, length - n));
 }
 
 function merge(xs, ys) {
