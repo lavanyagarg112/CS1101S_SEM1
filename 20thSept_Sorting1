@@ -1,1 +1,20 @@
-// start new code here and then save as to actual stuff
+// A list xs from a given Universe X, and a total order on X
+
+// A permutation of xs such that each element is greater than or 
+// equal to the previous one wrt each other
+
+// comparisons only
+
+
+// wishful thinking
+
+// imagine we can sort lists with m elements, where m < n
+
+// m can be n - 1
+// or m = n/2
+
+// using n-1
+
+// insert the head in the right place, and sort the tail through wishful thinking
+
+
