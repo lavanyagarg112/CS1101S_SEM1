@@ -80,7 +80,7 @@ function deriv_symbolic(exp, variable) {
 const my_exp = make_sum(make_product("x", "x"),
                 make_sum("x", 4));
 
-deriv_symbolic(my_exp, "x");
+display_list(deriv_symbolic(my_exp, "x"));
 // should return make_sum(make_product("x", 2), 1)
 // now returns an expression
 // equivalent to 2 * x + 1
