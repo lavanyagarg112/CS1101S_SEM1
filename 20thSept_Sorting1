@@ -17,4 +17,16 @@
 
 // insert the head in the right place, and sort the tail through wishful thinking
 
+function insert(x, xs) {
+    return is_null(xs) // null, return x as it is
+        ? list(x)
+        : x <= head(xs) // less than head
+        ? pair(x, xs) // include before the list
+        : pair(head(xs), insert(x, tail(xs))); // include first element of head(xs) since it is greater than x and then again check for tail
+}
 
+function insertion_sort(xs) { // wishful thinking, using insert function to check head and repeating for tail
+    return is_null(xs)
+        ? xs
+        : insert(head(xs), insertion_sort(tail(xs)));
+}
