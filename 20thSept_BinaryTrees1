@@ -1,0 +1,71 @@
+// guess the secret number using binary search
+
+const N = 100;
+const SECRET_NUM = math_floor(math_random() * N) + 1; // 1 to N
+
+display(SECRET_NUM, "SECRET_NUM:");
+
+function check_guess(guess) {
+    return guess === SECRET_NUM
+           ? "correct"
+           : guess < SECRET_NUM
+           ? "too low"
+           : "too high";
+}
+
+function guess_secret_num(start, end) {
+    if (start === end) {
+        display(start, "Guess:");
+        return start;
+    } else {
+        const guess = math_floor((start + end) / 2);
+        const check = check_guess(guess);
+
+        display(guess, "Guess:");
+
+        return check === "correct"
+               ? guess
+               : check === "too low"
+               ? guess_secret_num(guess + 1, end)    // when "too low"
+               : guess_secret_num(start, guess - 1); // when "too high"
+    }
+}
+
+guess_secret_num(1, N);
+
+
+// binary search tree -> middle number, check if too low or too high, and then middle of next one etc
+
+/*
+At each step (wrong guess), we cut the search space in half
+If problem size is N = 2k, we get to size 1 after k steps
+Run time: O(log 2 N)
+Equivalent to O(log N)
+*/
+
+
+// A binary search tree BST is an abstraction for binary tree
+
+/*
+The problem
+Check if an entry is included in a collection of entries
+Property of entries
+A total order exists — two entries can be compared
+• They are “equal”, or one is either “smaller” or “larger” than the other
+Examples: Numbers and Strings have such property
+Efficiency
+Need to reach each “middle” entry in O(1) time
+May need a special data structure
+*/
+
+
+/*
+A binary tree is the empty tree, or it has
+an entry (which is the data item)
+a left branch or left subtree (which is a binary tree)
+a right branch or right subtree (which is a binary tree)
+*/
+
+
+
+
