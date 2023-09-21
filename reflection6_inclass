@@ -167,4 +167,5 @@ function drop(xs,n){
 
 // chronologically diff stuff happens
 // can see by adding display messages
+// see reflection6_q2_trace
 
