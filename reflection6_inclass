@@ -100,5 +100,45 @@ function compare(x,y){
 
 // [1 2 3 4 5 6 7 8]
 
+// programming take:
 
+function take(xs, n){
+    return n === 0
+        ? null 
+        : pair(head(xs), take(tail(xs), n-1));
+}
+
+
+function drop(xs,n){
+    return n === 0
+        ? xs 
+        : drop(tail(xs), n-1);
+}
+
+// if we call take(4)
+// call the function three times per call - call head, tail and pair
+// 3 * (n/2)
+
+// if we call drop(4)
+// 1 * n/2 
+// 1 cause only tail
+
+// take + drop = 2n
+
+// for merge sort
+
+// 2.3.n/4 + 2.1.n/4 = c(n)
+// in general log base 2 n steps
+// here 3, n = 8 (assuming n is power of 2)
+
+// merge sort: constant time + constant time for the null cases
+// mid is also constant
+
+// 3 steps -> base case -> 3 steps again (for merging)
+// to merge the lists we need to use up both of the numbers
+// constant amt of work to do the actual merging
+// best case - go down through only one list
+// worst case - both list
+
+// order of growth 
 
