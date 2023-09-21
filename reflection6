@@ -36,6 +36,10 @@ insertion_sort_cmp(xs, (x,y) => x % 2 === 0 && y % 2 !== 0 ? true
                                 : y <= x);
 // Result: list(2, 4, 6, 6, 8, 9, 7, 5, 3, 1)
 
+// extra: trying to sort even and odd alternatively instead
+// even ascending and odd descending
+
+// Result: list(2,9,4,7,6,5,6,3,8,1)
 
 // Answer 2
 
