@@ -137,8 +137,14 @@ function drop(xs,n){
 // 3 steps -> base case -> 3 steps again (for merging)
 // to merge the lists we need to use up both of the numbers
 // constant amt of work to do the actual merging
-// best case - go down through only one list
-// worst case - both list
+// best case - go down through only one list = 1*(n/n) * n/2 times = theta(n)
+// worst case - both list = 2*(n/n) * n/2 times = theta(n)
 
 // order of growth 
+
+// log n steps -> theta(n) each time
+// again log n steps and so on...
+
+// complexity: theta(nlogn)
+// base case: theta(n)
 
