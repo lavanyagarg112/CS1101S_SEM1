@@ -1,0 +1,11 @@
+function gradevar(array){
+    
+    const filt_lst = filter(x => x < head(array), array);
+    const mylst = map(x => pair(head(array),x), filt_lst);
+    return is_null(array)
+        ? null 
+        : append(mylst, gradevar(tail(array)));
+
+}
+
+length(gradevar(list(3,2,4,1)));
