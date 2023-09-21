@@ -148,3 +148,13 @@ function drop(xs,n){
 // complexity: theta(nlogn)
 // base case: theta(n)
 
+// adding them all up
+// big theta (referring as theta here)
+
+// theta(nlogn) + theta(n) + theta(nlogn)
+// look at graphs
+// theta(nlogn) dominates theta(n)
+// 2 * theta(nlogn)
+// constant factors ignored
+// overall complexity of merge sort is theta(nlogn)
+
