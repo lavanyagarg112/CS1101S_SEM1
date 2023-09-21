@@ -1,1 +1,28 @@
-// start new code here and then save as to actual stuff
+// question 1
+// higher order function
+// comparison parameter
+
+// question 1 a
+// wishful thinking
+// wish we have a sorted version of the tail
+// insert the head in the right position
+
+// assuming the xs is always sorted
+
+// for example is x is smaller than head
+// check x < head
+// insert head in beginning
+// cause assuming our xs is already sorted so
+// if x < head than x automatically becomes smallest
+
+// question 1 c
+
+// wishful thinking
+// assuming that our list is reverse???
+// write the condition as false always cause we want our x to be at the 
+// end anyway
+
+// question 1 d
+
+
+
