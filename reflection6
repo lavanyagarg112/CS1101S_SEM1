@@ -35,3 +35,9 @@ insertion_sort_cmp(xs, (x,y) => x % 2 === 0 && y % 2 !== 0 ? true
                                 : x % 2 === 0 && y % 2 === 0 ? x <= y
                                 : y <= x);
 // Result: list(2, 4, 6, 6, 8, 9, 7, 5, 3, 1)
+
+
+// Answer 2
+
+// a) n^2 -> n from take and n from drop
+// b) nlogn -> n from merge sort and logn from merge cause 2^n splitting
