@@ -158,3 +158,13 @@ function drop(xs,n){
 // constant factors ignored
 // overall complexity of merge sort is theta(nlogn)
 
+// splitting
+// base case
+// merging
+
+// analyse each case separately
+// order of growth forumula
+
+// chronologically diff stuff happens
+// can see by adding display messages
+
