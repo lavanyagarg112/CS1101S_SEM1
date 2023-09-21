@@ -1,0 +1,54 @@
+// half, rounded downwards
+function middle(n) {
+    return math_floor(n / 2);
+}
+
+// put the first n elements of xs into a list
+function take(xs, n) {
+    display_list(xs, "take");
+    return n === 0
+        ? null 
+        : pair(head(xs), take(tail(xs), n-1));
+}
+
+// drop the first n elements from the list and return the rest
+function drop(xs, n) {
+    display_list(xs, "drop");
+    return n === 0
+        ? xs 
+        : drop(tail(xs), n-1);
+}
+
+// merge two sorted lists into one sorted list
+function merge(xs, ys) {
+    display_list(pair(xs, ys), "merge");
+    if (is_null(xs)) {
+        return ys;
+    } else if (is_null(ys)) {
+        return xs;
+    } else {
+        const x = head(xs);
+        const y = head(ys);
+        return x < y
+               ? pair(x, merge(tail(xs), ys))
+               : pair(y, merge(xs, tail(ys)));
+    }
+}
+
+// a list with more than one element is sorted
+// by splitting it into two lists of (almost) equal
+// length, sorting the halves and then merging them
+// together
+function merge_sort(xs) {
+    display_list(xs, "merge_sort");
+    if (is_null(xs) || is_null(tail(xs))) {
+        return xs;
+    } else {
+        const mid = middle(length(xs));
+        return merge(merge_sort(take(xs, mid)),
+                     merge_sort(drop(xs, mid)));
+    }
+}
+
+// Test
+merge_sort(list(7, 6, 3, 8, 4, 6, 5, 9, 8, 3, 1, 5, 2));
