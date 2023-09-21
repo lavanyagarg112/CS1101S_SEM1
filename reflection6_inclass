@@ -24,5 +24,44 @@
 
 // question 1 d
 
+// check which one is even and which one is odd
+// 4 possibilities
 
+// helper function
+
+function compare(x,y){
+    const is_even = x => x % 2 === 0;
+    return is_even(x) && !is_even(y)
+    ? true
+    : !is_even(x) && is_even(y)
+    ? false
+    : is_even(x) && is_even(y)
+    ? x < y
+    : x > y
+}
+
+// case 1
+// x is even
+// head is odd
+// assuming sorted list
+// insert the even number at the starting
+// return true
+
+// case 2
+// x is odd
+// head is even
+// skip the beginning
+// return false
+
+// case 3
+// x is even
+// head is even
+// ascending order
+// x < y 
+
+// case 4
+// x is odd
+// head is odd
+// descending order
+// x > y
 
