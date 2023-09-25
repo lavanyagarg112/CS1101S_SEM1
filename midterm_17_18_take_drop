@@ -1,0 +1,20 @@
+function take_drop(xs, k){
+    
+    function take(xs, k){
+        return k === 0 
+            ? list(xs)
+            : append(take(tail(xs), k-1),list(head(xs)));
+    }
+    
+    const output = take(xs, k);
+    display(output);
+    const remaining = reverse(head(output));
+    const x = reverse(tail(output));
+    return pair(x, remaining);
+}
+
+const lst = list(1,2,3,4,5,6);
+head(take_drop(lst, 3));
+
+// cannot use reverse as it counts as a tail count
+// so maybe cannot use append as well?
