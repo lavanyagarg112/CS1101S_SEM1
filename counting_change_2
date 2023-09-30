@@ -1,0 +1,13 @@
+function counting_change(amount, values){
+    
+    return amount === 0
+        ? 1
+        : is_null(values) || amount < 0
+        ? 0
+        : counting_change(amount - denominations(head(values)), tail(values))
+        +
+        counting_change(amount, tail(values));
+    
+}
+
+const denominations = list( )
