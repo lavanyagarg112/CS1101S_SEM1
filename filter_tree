@@ -1,33 +1,18 @@
-function filter(pred, xs){
-    return is_null(xs)
-        ? null 
-        : pred(head(xs))
-        ? pair(head(xs), filter(pred, tail(xs)))
-        : filter(pred, tail(xs));
-        
-}
-/*
+
+
 function filter_tree(pred, tree){
     
-    return is_null(tree)
-        ? null 
-        : is_list(head(tree)) 
-        ? pair(filter_tree(pred, head(tree)), filter_tree(pred, tail(tree)))
-        : (pred(head(tree))
-        ? pair(head(tree), filter_tree(pred, tail(tree)))
-        : filter_tree(pred, tail(tree)));
+    return filter(x => !is_null(x), accumulate((x,y) => is_list(x) ? pair(filter_tree(pred, x),y)
+                                            : pred(x) ? pair(x,y) : y,
+                        null, tree));
         
 }
-*/
 
-function filter_tree(pred, tree){
-    return filter(x => (is_list(x)
-        ? filter_tree(pred, x)
-        : x), tree);
-}
 
-const lst = list(2,8);
+
+const lst = list(9,list(2,8),list(list(2,8,list(2),9),2,3),2);
 display_list(filter_tree(x => x > 3, lst));
+
 
 // accumulate tree 
 
