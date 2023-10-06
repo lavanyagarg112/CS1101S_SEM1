@@ -39,3 +39,11 @@ let n2 = 9;
 const n2 = n2;
 //n2 = const n2;
 */
+
+
+// order of evaluation matters now
+
+// declarations return undefined
+// eg: if const x = 10; is the only statement and if we run it
+// Declarations are non-value-
+//producing statements
