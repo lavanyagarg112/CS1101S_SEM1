@@ -1,5 +1,7 @@
-let age = 18; // variables
-age = age -10;
+const num = 10; // indicated as := in CSE
+
+let age = 18; // variables // indicated as : in CSE
+age = age -10; 
 display(age);
 
 // substitution model breaks down
