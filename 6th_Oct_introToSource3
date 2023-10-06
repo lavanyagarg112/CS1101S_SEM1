@@ -1,0 +1,29 @@
+let age = 18; // variables
+age = age -10;
+display(age);
+
+// substitution model breaks down
+
+let speed = pair(2,3);
+set_head(speed, 3);
+display(speed);
+
+function factorial(n){
+    let i = 1;
+    let result = 1;
+    while (i <= n){
+        result = result * i;
+        i = i + 1;
+    }
+    
+    return result;
+}
+
+display(factorial(3));
+
+
+let i = 10;
+for(i = 8; i > 0; i = i - 1){
+    display(i);
+}
+
