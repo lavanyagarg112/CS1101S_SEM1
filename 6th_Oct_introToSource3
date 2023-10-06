@@ -27,3 +27,13 @@ for(i = 8; i > 0; i = i - 1){
     display(i);
 }
 
+let name = "hi";
+name = 8;
+display(name);
+
+/*
+cannot do these
+let n2 = 9;
+const n2 = n2;
+//n2 = const n2;
+*/
