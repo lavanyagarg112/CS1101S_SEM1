@@ -92,4 +92,5 @@ const z = append(x, y);
 display(z);
 set_head(x, 4); // for x doesnt change anything
 // set_head(y, 4) // changes
+// acc to cse the first element is always there and then rest are referenced?
 display(z);
