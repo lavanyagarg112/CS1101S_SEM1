@@ -1,3 +1,5 @@
+/*
+
 const num = 10; // indicated as := in CSE
 
 let age = 18; // variables // indicated as : in CSE
@@ -33,12 +35,12 @@ let name = "hi";
 name = 8;
 display(name);
 
-/*
-cannot do these
-let n2 = 9;
-const n2 = n2;
+
+//cannot do these
+//let n2 = 9;
+//const n2 = n2;
 //n2 = const n2;
-*/
+
 
 
 // order of evaluation matters now
@@ -81,4 +83,13 @@ display(c);
 // destructive append
 // no new pair must be created
 // result is constructed from existing pairs of input lists 
+*/
 
+
+const x = list(1);
+const y = list(2);
+const z = append(x, y);
+display(z);
+set_head(x, 4); // for x doesnt change anything
+// set_head(y, 4) // changes
+display(z);
