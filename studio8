@@ -1,0 +1,9 @@
+// source academy is left associated
+// stack opp
+// evaluate downwards 
+// functions can only evaluate with the stash, not the control
+
+// + control takes the first two things and then returns the value
+
+1 + (2 + (3 + (4 + (5 + 6))));
+((((1 + 2) + 3) + 4) + 5) + 6;
