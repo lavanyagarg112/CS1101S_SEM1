@@ -4,13 +4,14 @@
 
 
 // from chapter 1:
-
+/*
 function make_adder(x){
     return y => x + y;
 }
 
 const add_4 = make_adder(4);
 add_4(5);
+*/
 
 // but in cse machine: no substitution model
 // so how does add_4 know that x is 4
@@ -35,12 +36,19 @@ add_4(5);
 // a function remembers the environment in which it was created
 // DONT FORGET^
 
+const square = x => x * x;
+square(5);
 
 
+// evaluating a function application
+// evaluate subexpressions in current environmet
+// then (somethinggg)
 
 
-
-
+// create a new frame that points to the environment of the function
+// new frame - bind the parameters to the arguments
+// parameters are variables so assignment allowed
+// evaluate the body block in the new environment
 
 
 
