@@ -27,6 +27,7 @@ function make_withdraw(balance, password) {
 }
 
 const W1 = make_withdraw(100, "my_password");
+W1(40, "my_password");
 W1(40, "his_password");
 W1(40, "his_password");
 W1(40, "his_password");
