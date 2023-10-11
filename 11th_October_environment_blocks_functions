@@ -50,6 +50,25 @@ square(5);
 // parameters are variables so assignment allowed
 // evaluate the body block in the new environment
 
+/*
+.
+.
+.
+.
+.
+*/
+
+
+// state and identity
+// const a = pair(2,3);
+// const b = a;
+// a === b; returns true cause points to same pair 
+
+// const a = pair(2,3);
+// const b = pair(2,3);
+// a === b; returns false cause now points to diff pair
+
+
 
 
 
