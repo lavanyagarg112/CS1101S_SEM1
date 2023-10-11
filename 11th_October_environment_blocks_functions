@@ -1,1 +1,63 @@
-// start new code here and then save as to actual stuff
+// new declaration in new block/scope means new frame in cse machine
+
+// functions
+
+
+// from chapter 1:
+
+function make_adder(x){
+    return y => x + y;
+}
+
+const add_4 = make_adder(4);
+add_4(5);
+
+// but in cse machine: no substitution model
+// so how does add_4 know that x is 4
+
+// new frame with the parameters when we use y => x + y;
+
+// every function application extends the environment in which the 
+// function was created
+
+// the new frame contains bindings of parameters to arguments
+// no new frame if function has no parameters
+// function body block evaluated in this new environment
+
+// for lambda expressions
+// create a function object, represented as two circles
+// one circle points to body (text)
+// other circle to the environment in which the lambda expression was evaluated
+// closures
+
+
+// VERY IMPORTANT:
+// a function remembers the environment in which it was created
+// DONT FORGET^
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
