@@ -4,3 +4,5 @@ function curry(f) {
 
 const curried_pow = curry(math_pow);
 (curried_pow(3))(4);
+
+// step 20 binding to parameter 3
