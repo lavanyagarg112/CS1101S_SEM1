@@ -1,1 +1,25 @@
-// start new code here and then save as to actual stuff
+const abs = x => {
+    if (x>=0){
+        return x;
+    }
+    return -x;
+};
+
+abs(5) + 3;
+
+
+// lambda expression evaluates to function objects (the two circles) and this
+// known as closure
+
+
+// left circle - parameters and body
+// right circle - refers to the environment in which the lambda function
+// is being evaluated
+
+// function object remembers the environment in which it was defined
+
+
+// when we apply a function, we extend the environment of the function
+// by binding of the parameters to the function's environment 
+// binding x to abs
+
