@@ -27,3 +27,5 @@ abs(5) + 3;
 // call instruction - does the actual function calls
 
 // the environment are the most imp stuff (not control and stash in tb)
+
+// once return, pop the rest
