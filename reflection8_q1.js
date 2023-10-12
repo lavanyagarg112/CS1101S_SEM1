@@ -14,7 +14,7 @@ function make_withdraw(balance, password) {
         
         else {
             count = count + 1;
-            if (count >= 3){
+            if (count > 3){
                 return "Account disabled";
             }
             else {
