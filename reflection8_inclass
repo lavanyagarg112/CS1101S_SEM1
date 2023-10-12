@@ -7,6 +7,8 @@ const abs = x => {
 
 abs(5) + 3;
 
+// substitution model changes with this new variable declaration
+// scoping rules remain the same
 
 // lambda expression evaluates to function objects (the two circles) and this
 // known as closure
