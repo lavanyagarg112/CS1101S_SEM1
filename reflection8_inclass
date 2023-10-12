@@ -23,3 +23,7 @@ abs(5) + 3;
 // by binding of the parameters to the function's environment 
 // binding x to abs
 
+
+// call instruction - does the actual function calls
+
+// the environment are the most imp stuff (not control and stash in tb)
