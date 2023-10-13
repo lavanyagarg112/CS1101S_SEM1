@@ -1,5 +1,6 @@
 // array - sequence of data elements
 
+/*
 const seq = [2,3,4,5];
 const empt = [];
 
@@ -19,12 +20,13 @@ seq;
 
 seq[9] = 9;
 seq;
+*/
 
 // [2, 3, "new", 5, "4th", undefined, undefined, undefined, undefined, 9]
 
 // the ones in between become undefined
 
-array_length(seq);
+//array_length(seq);
 
 // random access
 // access in O(1) -> constant time
@@ -42,12 +44,23 @@ array_length(seq);
 
 
 
-
+/*
 
 for(let i = 0; i < 10; i = i + 1){
     display(i);
-    i = i + 3; // not allowed in source - thus not equivalent to while loop, // but allowed in javascript
+    //i = i + 3; // not allowed in source - thus not equivalent to while loop, // but allowed in javascript
 }
+*/
+
+// but this works:
+
+
+let i = undefined;
+for(i = 0; i<10; i = i+1){
+    display(i);
+    i = i+3;
+}
+
 
 
 
