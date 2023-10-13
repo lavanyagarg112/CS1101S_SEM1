@@ -1,0 +1,70 @@
+// array - sequence of data elements
+
+const seq = [2,3,4,5];
+const empt = [];
+
+seq[2]; // indexed
+
+is_null(empt); // false
+
+// data assignment with index
+
+seq[2] = "new"; // change 
+// value producing statement^
+
+seq;
+
+seq[4] = "4th";
+seq;
+
+seq[9] = 9;
+seq;
+
+// [2, 3, "new", 5, "4th", undefined, undefined, undefined, undefined, 9]
+
+// the ones in between become undefined
+
+array_length(seq);
+
+// random access
+// access in O(1) -> constant time
+
+
+// Assigning to an array element A[i], where index
+// i ≥ array_length(A), takes Θ(i – array_length(A)) time
+
+
+// 2 dimensional arrays
+
+
+
+
+
+
+
+
+
+for(let i = 0; i < 10; i = i + 1){
+    display(i);
+    i = i + 3; // not allowed in source - thus not equivalent to while loop, // but allowed in javascript
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
