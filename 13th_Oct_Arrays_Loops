@@ -44,22 +44,23 @@ seq;
 
 
 
-/*
+
 
 for(let i = 0; i < 10; i = i + 1){
     display(i);
     //i = i + 3; // not allowed in source - thus not equivalent to while loop, // but allowed in javascript
 }
-*/
+
 
 // but this works:
 
-
-let i = undefined;
+/*
+let i = 0;
 for(i = 0; i<10; i = i+1){
     display(i);
     i = i+3;
 }
+*/
 
 
 
