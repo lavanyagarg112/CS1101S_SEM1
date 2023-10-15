@@ -3,10 +3,10 @@ function d_filter(pred, xs) {
         // do nothing
     }
     else if (pred(head(xs))){
-        d_filter(pred, tail(xs));
+        set_tail(xs, d_filter(pred, tail(xs)));
     }
     else{
-        d_filter(pred, xs = xs[1]);
+        d_filter(pred, tail(xs));
     }
 }
 
