@@ -1,27 +1,16 @@
 function d_filter(pred, xs) {
     if (is_null(xs)){
-        return null;
+        // do nothing
     }
-    
-    else {
-        if (pred(head(xs))){
-            d_filter(pred, tail(xs));
-        }
-        
-        else {
-            
-            if (is_null(xs[1])){
-                return null;
-            }
-            else{
-                xs = xs[1][1];
-            }
-            
-            d_filter(pred, tail(xs));
-        }
+    else if (pred(head(xs))){
+        d_filter(pred, tail(xs));
+    }
+    else{
+        d_filter(pred, xs = xs[1]);
     }
 }
 
 const L = list(1, 2, 3, 4, 5, 6, 7, 8, 9, 11);
 d_filter(x => x % 2 === 0, L); // returns [2, [4, [6, [8, null]]]]
 L; // What is L now?
+
