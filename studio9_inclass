@@ -1,0 +1,28 @@
+function count_pairs(x){
+    let seen = null;
+    
+    function populate(y) {
+        if (is_pair(y)) {
+            if (member(y, seen) === null) {
+                seen = pair(y, seen);
+                populate(head(y));
+                populate(tail(y));
+            }
+        }
+    }
+    
+    populate(x);
+    return length(seen);
+}
+
+const a = pair(null, null);
+const b = pair(null, null);
+const c = pair(null, null);
+
+set_head(b,c);
+set_tail(b,c);
+
+set_head(a,b);
+set_tail(a,b);
+
+count_pairs(a); // with old code a would have given 7
