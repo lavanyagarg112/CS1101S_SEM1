@@ -1,0 +1,23 @@
+/*
+let i = 0;
+const a = [];
+while (i<3) {
+    a[i] = () => display(i);
+    i = i + 1;
+}
+
+a[1]();
+
+// always 3 cause evaluates the lambda function at end 
+// then goes back to check i
+*/
+
+let i = 0;
+const a = [];
+for (let i = 0; i < 3; i = i + 1){
+    a[i] = () => display(i);
+}
+
+a[2]();
+
+// source creates copy of i;
