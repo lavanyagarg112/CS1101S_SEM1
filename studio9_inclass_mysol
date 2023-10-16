@@ -1,0 +1,35 @@
+function count_pairs(x) { 
+    
+    function helper(x){
+        display(x, "x");
+        if (!is_pair(x)) {
+            return 0; 
+            
+        } else {
+            if (is_null(member(x, lst))){
+                if (is_null(lst)){
+                    lst = list(x);
+                }
+                else {
+                    set_tail(lst, x);
+                }
+                display(lst, "lst");
+                return 1 + helper(head(x)) + helper(tail(x)); 
+                
+            }
+            
+            else {
+                return 0;
+            }
+        }
+        
+    }
+    
+    let lst = list();
+    return helper(x);
+}
+
+
+
+const xs = pair(pair(2,6), pair(3,4));
+count_pairs(xs);
