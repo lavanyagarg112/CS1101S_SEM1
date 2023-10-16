@@ -7,12 +7,7 @@ function count_pairs(x) {
             
         } else {
             if (is_null(member(x, lst))){
-                if (is_null(lst)){
-                    lst = list(x);
-                }
-                else {
-                    set_tail(lst, x);
-                }
+                lst = pair(x, lst);
                 display(lst, "lst");
                 return 1 + helper(head(x)) + helper(tail(x)); 
                 
@@ -25,11 +20,11 @@ function count_pairs(x) {
         
     }
     
-    let lst = list();
+    let lst = null;
     return helper(x);
 }
 
 
 
-const xs = pair(pair(2,6), pair(3,4));
+const xs = pair(pair(3,4), pair(pair(1,2), pair(3,2)));
 count_pairs(xs);
