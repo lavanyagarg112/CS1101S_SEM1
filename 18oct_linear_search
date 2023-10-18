@@ -31,6 +31,8 @@ linear_search([1,2,3,4,5], 0);
 
 // result is O(log n)
 
+
+
 // binary search using recursion
 
 function binary_search(A, v){
