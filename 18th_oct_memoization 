@@ -135,4 +135,6 @@ const memo_trib_better =
 // order of growth: theta(n)
 
 
+// n choose k
+
 
