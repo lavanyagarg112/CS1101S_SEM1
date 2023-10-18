@@ -139,3 +139,55 @@ const memo_trib_better =
 
 // n choose k
 
+// normal implementation
+function choose(n, k) {
+    return k > n
+           ? 0
+           : k === 0 || k === n
+           ? 1
+           : choose(n - 1, k) + choose(n - 1, k - 1);
+}
+
+// order of growth in running time : O(n^k)
+
+
+// 2D arrays to store immediate results
+// choose(n,k) in mem[n][k]
+
+
+// read and write from/to Global 2-D Array
+
+const mem_choose = [];
+
+function read(n, k) { // read how many ways of choosing
+    return mem_choose[n] === undefined
+        ? undefined
+        : mem[n][k];
+}
+
+function write(n,k, value){
+    if (mem_choose[n] === undefined){
+        mem[n] = [];
+    }
+    
+    mem[n][k] = value;
+
+}
+
+function mchoose(n,k){
+    if (read(n,k) !== undefined){
+        return read(n,k);
+    }
+    
+    else {
+        const result = k > n  ? 0
+                        : k === 0 || k ==== n ? 1
+                        : mchoose(n-1, k) +
+                          mchoose(n-1, k-1);
+        write(n,k,result);
+        return result;
+    }
+}
+
+// order of growth in time:
+// order of growth in space:
