@@ -1,1 +1,136 @@
 // memoization 
+
+// for example in fib so many duplicate computations (the tree)
+// memoization : remember what we have computed earlier!
+// memoization 
+// function records values that have previously been computed in local table
+// we can use array as local table
+
+function mfib(n){
+    const mem = [];
+    // serves as memory for already computed results of fib
+    
+    function fib(k){
+        if (mem[k] !== undefined){
+            return mem[k]; // just access memory if already there
+        }
+        
+        else {
+            const result = 
+                k <= 1 ? k : fib(k-1) + fib(k-2);
+            mem[k] = result;
+            return result;
+        }
+    }
+    
+    return fib(n);
+}
+
+// order of growth in time: theta(n)
+// cause the duplicates no longer reevaluated
+
+// using global memory instead:
+
+// saving mem outside function
+
+const mem = [];
+    
+function mfib_global(n){
+
+    if (mem[n] !== undefined){
+        return mem[n]; // just access memory if already there
+    }
+        
+    else {
+        const result = 
+            n <= 1 ? n : mfib_global(n-1) + mfib_global(n-2);
+        mem[n] = result;
+        return result;
+    }
+}
+    
+
+// if we call mfib several times more efficient
+
+
+// tribonacci sequences
+
+// normal implementation:
+
+function trib(n){
+    return n === 0
+        ? 0
+        : n === 1
+        ? 1
+        : n === 2
+        ? 1
+        : trib(n-1) + trib(n-2) + trib(n-3);
+}
+
+
+// using memoization
+
+const tribmem = []; // global memory
+
+function mtrib(n){
+    if (tribmem[n] !== undefined) { // that is it is there in mem
+        return tribmem[n];
+    } 
+    
+    else {
+        const result = 
+            n === 0
+            ? 0
+            : n === 1
+            ? 1
+            : n === 2
+            ? 1
+            : mtrib(n-1) + mtrib(n-2) + mtrib(n-3);
+            
+        tribmem[n] = result;
+        return result;
+    }
+}
+
+
+
+// Memoization abstract:
+
+function memoize(f){
+    const mem = [];
+    
+    function mf(x) {
+        if (mem[x] !== undefined){
+            return mem[x];
+        }
+        
+        else {
+            const result = f(x);
+            mem[x] = result;
+            return result;
+        }
+    }
+    
+    return mf;
+}
+
+
+const memo_trib = memoize(trib); // this is still exponential
+// cause we dont call back mf to access already calculated values
+
+
+const memo_trib_better = 
+    memoize(n => n === 0 ? 0 
+                 : n === 1 ? 1
+                 : n === 2 ? 1
+                 : memo_trib_better(n - 1) + memo_trib_better(n - 2) + memo_trib_better(n - 3));
+
+
+
+// now we call back the original function
+
+//memo_trib_better(23); // faster
+//trib(23);
+
+
+
