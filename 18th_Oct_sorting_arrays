@@ -1,0 +1,175 @@
+// Selection Sort
+
+// logic: find smallest element and remove it from the list
+// sort the remaining list, put the smallest element in the front
+
+// for arrays:
+// build sorted array from left to right
+// for each remaining unsorted portion to the right of position "i", find the 
+// smallest element and swap it in to position i`
+
+
+// selection sort for arrays:
+
+function selection_sort(A){
+    const len = array_length(A);
+    
+    for (let i = 0; i < len - 1; i = i + 1){
+        let min_pos = find_min_pos(A, i, len - 1);
+        swap(A, i, min_pos);
+    }
+}
+
+function find_min_pos(A, low, high){
+    let min_pos = low;
+    
+    for (let j = low + 1; j <= high; j = j + 1) {
+        if (A[j] < A[min_pos]) {
+            min_pos = j;
+        }
+    }
+    
+    return min_pos;
+}
+
+function swap(A, x, y){
+    const temp = A[x];
+    A[x] = A[y];
+    A[y] = temp;
+}
+
+
+// insertion sort for arrays
+// in selection sort, the left side are sorted already, that is their final position
+// in insertion sort, the left side is in ascending order, but not their final position, i.e. not sorted acc to the entire array
+
+// sort the tail of the given list using wishful thinking
+// insert head in right place
+
+// for arrays:
+// move pointer i from left to right
+// the array to the left of i is sorted already
+// swap the value at i with its neighbour to the left
+// until the neighbour is smaller - so the value goes from its position to the left
+
+
+// insertion sort for arrays:
+
+function insertion_sort(A) {
+    const len = array_length(A);
+    
+    for (let i = 1; i < len; i = i + 1){
+        let j = i - 1;
+        
+        while (j >= 0 && A[j] > A[j + 1]){ // here the A[j] keeps becoming A[j+1] so thats the pointer
+            swap(A, j, j + 1);
+            j = j - 1;
+        }
+    }
+}
+
+
+// Alternative for insertion_sort
+// swaps by shifting elements to the right 
+
+function insertion_sort2(A) {
+    
+    const len = array_length(A);
+    
+    for (let i = 1, i < len, i = i + 1){
+        const x = A[i]; // storing value at i
+        
+        let j = i - 1;
+        
+        while (j >= 0 && A[j] > x){
+            A[j + 1] = A[j] // shift to right 
+            j = j - 1;
+        }
+        
+        A[j + 1] = x;
+    }
+}
+
+
+// slightly more efficient?
+
+
+
+// merge sort 
+
+// idea for lists 
+// split the list in half, sort each half using wishful thinking
+// merge the sorted lists together
+
+// for arrays
+// sort the halves
+// merge the halves (using temporary arrays)
+
+
+function merge_sort(A){
+    return merge_sort_helper(A, 0, array_length(A) - 1);
+}
+
+function merge_sort_helper(A, low, high){
+    if (low < high){
+        const mid = math_floor((low + high)/2);
+        merge_sort_helper(A, low, mid); // for left side
+        merge_sort_helper(A, mid + 1, high) // for right side
+        merge(A, low, mid, high);
+        
+    }
+    
+    // cause if low = high, no sort required, just one element left
+}
+
+function merge(A, low, mid, high){
+    const B = [] // copying
+    let left = low;
+    let right = mid + 1;
+    let Bidx = 0;
+    
+    while (left <= mid && right <= high){
+        if (A[left] <= A[right]) {
+            B[Bidx] = A[left];
+            left = left + 1;
+        }
+        
+        else {
+            B[Bidx] = A[right];
+            right = right + 1;
+        }
+        
+        Bidx = Bidx + 1;
+    }
+    
+    while (left <= mid){
+        B[Bidx] = A[left];
+        Bidx = Bidx + 1;
+        left = left + 1;
+    }
+    
+    while (right <= high) {
+        B[Bidx] = A[right];
+        Bidx = Bidx + 1;
+        right = right + 1;
+    }
+    
+    for (let k = 0; k < high - low + 1; k = k + 1){ // high - low + 1 = length of B
+        A[low + k] = B[k];
+    }
+}
+
+
+// see merge again!
+
+
+
+
+
+
+
+
+
+
+
+
