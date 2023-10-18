@@ -162,15 +162,15 @@ const mem_choose = [];
 function read(n, k) { // read how many ways of choosing
     return mem_choose[n] === undefined
         ? undefined
-        : mem[n][k];
+        : mem_choose[n][k];
 }
 
 function write(n,k, value){
     if (mem_choose[n] === undefined){
-        mem[n] = [];
+        mem_choose[n] = [];
     }
     
-    mem[n][k] = value;
+    mem_choose[n][k] = value;
 
 }
 
