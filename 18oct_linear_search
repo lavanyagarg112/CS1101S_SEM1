@@ -10,3 +10,97 @@ function linear_search(A, v){
 }
 
 linear_search([1,2,3,4,5], 0);
+
+// arrays are random access, any element can be accessed in O(1) time
+// here we are making use of random access
+// eg A[2] = 3 in the above list
+
+
+// binary search
+// cannot do binary search of lists so we need to organize it into trees
+// but we can do it efficiently on arrays cause arrays support random access
+// have to make sure that the input array is sorted in ascending order
+
+// same idea as binary search trees
+
+// can actually do binary search in list, using say list ref
+// but list ref is not random access, starts from beginning
+// so not efficient, the run time is huge
+
+// check middle element to cut the search space in half
+
+// result is O(log n)
+
+// binary search using recursion
+
+function binary_search(A, v){
+    
+    function search(low, high){
+        if (low>high){
+            return false;
+        }
+        
+        else {
+            const mid = math_floor((low + high)/2);
+            return (v === A[mid]) ||
+                    (v < A[mid] 
+                    ? search(low, mid - 1)
+                    : search(mid + 1, high)
+                    );
+        }
+    }
+    
+    return search(0, array_length(A) - 1);
+}
+
+binary_search([1,2,3,4,5], 10);
+
+
+// binary search using recursion
+
+function binary_search_loop(A, v){
+    let low = 0;
+    let high = array_length(A) - 1;
+    
+    while (low <= high){
+        const mid = math_floor((low + high)/2);
+        
+        if (v === A[mid]){
+            return true;
+        }
+        
+        else {
+            if (v < A[mid]){
+                high = mid - 1;
+            }
+            else {
+                low = mid + 1;
+            }
+        }
+    }
+    
+    return false;
+}
+
+binary_search_loop([1,2,3,4,5], 10);
+
+// given in slides:
+
+function binary_search_loop_actual(A, v) {
+    let low = 0;
+    let high = array_length(A) - 1;
+
+    while (low <= high) {
+        const mid = math_floor((low + high) / 2 );
+        if (v === A[mid]) {
+            break;
+        } else if (v < A[mid]) {
+            high = mid - 1;
+        } else {
+            low = mid + 1;
+        }
+    }
+    return (low <= high);
+}
+
+binary_search_loop_actual([1,2,3,4,5,6,7,8,9], 8);
