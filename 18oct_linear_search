@@ -1,0 +1,12 @@
+// linear search
+
+function linear_search(A, v){
+    const len = array_length(A);
+    let i = 0;
+    while (i < len && A[i] !== v){
+        i = i + 1;
+    }
+    return (i < len);
+}
+
+linear_search([1,2,3,4,5], 0);
