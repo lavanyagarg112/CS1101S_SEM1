@@ -191,3 +191,6 @@ function mchoose(n,k){
 
 // order of growth in time:
 // order of growth in space:
+
+
+// can every tree recursive problems be memoized?
