@@ -115,7 +115,7 @@ function memoize(f){
 }
 
 
-const memo_trib = memoize(trib); // this is still exponential
+const memo_trib = memoize(trib); // order of growth in time is still exponential
 // cause we dont call back mf to access already calculated values
 
 
@@ -127,10 +127,12 @@ const memo_trib_better =
 
 
 
-// now we call back the original function
+// now we call back the original function... doubt: doesnt the mem[] become empty array again?
 
 //memo_trib_better(23); // faster
 //trib(23);
+
+// order of growth: theta(n)
 
 
 
