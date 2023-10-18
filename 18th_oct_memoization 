@@ -127,7 +127,9 @@ const memo_trib_better =
 
 
 
-// now we call back the original function... doubt: doesnt the mem[] become empty array again?
+// now we call back the original function... 
+// doubt: doesnt the mem[] become empty array again?
+// but i think the memo_trib_better return mf... which is the inner function!
 
 //memo_trib_better(23); // faster
 //trib(23);
