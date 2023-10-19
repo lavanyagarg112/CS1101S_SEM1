@@ -1,0 +1,55 @@
+// q1
+
+// make_search: theta(1) time complexity
+// 1 search in linear search -> theta(n)
+// n searches in linear search -> theta(n^2)
+
+// theta(1) and theta(n^2) combined gives theta(n^2)
+
+// binary search after sorting the array
+
+// time complexity of binary search: theta(log n);
+// n searches: theta(n log n);
+// time complexity of make search: theta(1);
+
+// sort: merge sort (guarantees nlogn time complexity)
+// merge sort is good only if allowed to compare two entries in data
+// not possible to get a better time complexity than nlogn for sorting array
+// theta(nlogn) + theta(nlogn) -> not simultaneously so total: theta(nlogn) ???
+
+function make_optimized_search(A){
+    
+    const len = array_length(A);
+    
+    const B = [] // make copy of A since cant modify A
+    
+    for(let i = 0; i < len; i = i + 1){
+        B[i] = A[i];
+    }
+    
+    merge_sort(B); // merge sort
+    return x => binary_search(B, x); // return binary search
+}
+
+// insertion sort has time complexity theta(n^2)
+// so theta(nlogn) + theta(n^2) = theta(n^2)
+
+// but if we have a fixed number of searches, no need to optimize
+// quite a waste of time
+
+// first rule of optimization is dont do it
+// second rule dont do it yet
+
+// if there is no problem with the given solution, dont try to fix it
+
+
+
+
+
+
+
+
+
+
+
+
