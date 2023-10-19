@@ -55,7 +55,7 @@ function swap(A, x, y){
 
 // insertion sort for arrays:
 
-// time complexity: n^2
+// time complexity: n^2 -> why?
 
 function insertion_sort(A) {
     const len = array_length(A);
