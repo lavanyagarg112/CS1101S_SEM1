@@ -31,3 +31,17 @@ function mchoose(n, k) {
 }
 
 mchoose(7, 4);
+
+
+// order of growth in time: theta(nk);
+
+// cause number of calls to mchoose: theta((n-k) * k)
+// order of growth in time: theta(nk - k^2)
+// ignore k^2 cause constant -> cause n >= k always
+
+
+// order of growth in space: theta(nk)
+
+// max space in memoization table (see nb)
+// is nk
+// thus theta(nk)
