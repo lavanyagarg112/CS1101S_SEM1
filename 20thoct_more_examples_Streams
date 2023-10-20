@@ -1,0 +1,57 @@
+function stream_tail(stream) {
+    return tail(stream)();
+}
+
+function stream_ref(s, n) {
+    return n === 0
+        ? head(s)
+        : stream_ref(stream_tail(s), n - 1);
+}
+
+function stream_filter(p, s) {
+    return is_null(s)
+        ? null
+        : p(head(s))
+            ? pair(head(s),
+                   () => stream_filter(p, stream_tail(s)))
+            : stream_filter(p, stream_tail(s));
+}
+
+function eval_stream(s, n) {
+    return n === 0
+        ? null
+        : pair(head(s),
+               eval_stream(stream_tail(s), n - 1));
+}
+
+function integers_from(n) {
+    return pair(n, () => integers_from(n + 1));
+}
+
+const integers = integers_from(1);
+
+function is_divisible(x, y) {
+    return x % y === 0;
+}
+
+const no_fours = 
+    stream_filter(
+        x => !is_divisible(x, 4),
+        integers
+    ); // positive integers not multiple of 4
+
+stream_ref(no_fours, 3);
+
+//stream_ref(no_fours, 100);
+
+//eval_stream(no_fours, 10);
+
+
+function fibgen(a, b) {
+    return pair(a, () => fibgen(b, a + b));
+}
+
+const fibs = fibgen(0, 1); // infinite stream of fibonacci numbers
+
+eval_stream(fibs, 10);
+
