@@ -59,4 +59,42 @@ head(ones); // 1
 function steam_tail(stream){
     return tail(stream)();
 }
+
+
+
+function enum_stream(low, high){
+    return low > high 
+        ? null 
+        : pair(low, () => enum_stream(low+1, high))
 }
+
+const s = enum_stream(1, 100);
+head(s);
+head(stream_tail(s));
+head(stream_tail(stream_tail(s)));
+
+
+function stream_ref(s, n){
+    return n===0
+        ? head(s)
+        : stream_ref(stream_tail(s), n-1);
+}
+
+function stream_map(f, s){
+    return is_null(s)
+        ? null 
+        : pair(f(head(s)), () => stream_map(f, steam_tail(s)));
+}
+
+function stream_filter(p, s){
+    return is_null(s)
+        ? null 
+        : p(head(s))
+        ? pair(head(s), () => stream_filter(p, stream_tail(s)))
+        : stream_filter(p, stream_tail(s));
+}
+
+// Back to prime example
+
+
+
