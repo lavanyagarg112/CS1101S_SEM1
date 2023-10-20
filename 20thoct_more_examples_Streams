@@ -55,3 +55,13 @@ const fibs = fibgen(0, 1); // infinite stream of fibonacci numbers
 
 eval_stream(fibs, 10);
 
+function more(a, b) {
+    return (a > b)
+        ? more(1, 1 + b)
+        : pair(a, () => more(a + 1, b));
+}
+
+const more_and_more = more(1, 1);
+
+eval_stream(more_and_more, 15);
+
