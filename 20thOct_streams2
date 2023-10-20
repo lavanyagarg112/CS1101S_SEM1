@@ -14,7 +14,24 @@ y();
 
 // say we want 2nd prime number between 10000 and 100000
 
+function is_prime(n) {
+    if (n < 2) {
+        return false;
+    } else if (n === 2) {
+        return true;
+    } else {
+        let prime = true;
+        for (let d = 2; d * d <= n && prime; d = d + 1) {
+            if (n % d === 0) {
+                prime = false;
+            } else {}
+        }
+        return prime;
+    }
+}
+
 /*
+
 head(tail(filter(
     is_prime,
     enum_list(10000, 1000000)
@@ -65,7 +82,7 @@ function steam_tail(stream){
 function enum_stream(low, high){
     return low > high 
         ? null 
-        : pair(low, () => enum_stream(low+1, high))
+        : pair(low, () => enum_stream(low+1, high));
 }
 
 const s = enum_stream(1, 100);
