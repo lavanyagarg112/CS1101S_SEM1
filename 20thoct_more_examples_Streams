@@ -17,7 +17,7 @@ function stream_filter(p, s) {
             : stream_filter(p, stream_tail(s));
 }
 
-function eval_stream(s, n) {
+function eval_stream(s, n) { // diff from enum stream!!!
     return n === 0
         ? null
         : pair(head(s),
