@@ -96,5 +96,8 @@ function stream_filter(p, s){
 
 // Back to prime example
 
+head(stream_tail(stream_filter(is_prime, enum_stream(10000, 1000000))));
+
+// it will stop at 2nd prime!
 
 
