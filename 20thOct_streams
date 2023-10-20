@@ -1,0 +1,33 @@
+// conditionals using functions
+
+function cond(x,y,z){
+    if (x){
+        return y;
+    }
+    
+    else {
+        return z;
+    }
+}
+
+E1 ? E2 : E3;
+
+cond(E1,E2,E3)
+
+// function will evaluate E1,E2,E3 before going into function
+// conditional will evaluate E2 only if E1 is true... and E3 only if E1 is false
+// lazy evaluation
+
+// to make it same as above:
+
+cond(E1, () => E2, () => E3);
+
+function cond(x,y,z){
+    if(x){
+        return y();
+    }
+    
+    else{
+        return z();
+    }
+}
