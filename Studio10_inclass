@@ -27,6 +27,7 @@ const M =
  
 rotate_matrix(M);
 M;
+
 // M should have become
 // [[13,  9, 5, 1], 
 //  [14, 10, 6, 2], 
