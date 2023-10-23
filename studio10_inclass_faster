@@ -4,8 +4,6 @@ function rotate_matrix(M) {
     const half_floor = math_floor(half);
     const half_ceil = math_ceil(half);
     
-    // instead of half_ceil half_floor we can also use
-    // const half_len = math_floor(n/2);
 
     function swap(r1, c1, r2, c2) {
         const temp = M[r1][c1];
@@ -16,6 +14,9 @@ function rotate_matrix(M) {
     for(let i = 0; i < half_ceil; i = i + 1){
         for(let j = 0; j < half_floor; j = j + 1){
             // chain
+            // middle element doesnt swap for odd
+            // swaps for even
+            // that is why using ceil and floor
             swap(i, j, n-1-j, i);
             swap(n-1-j, i, n-1-i, n-1-j);
             swap(n-1-i, n-1-j, j, n-1-i);
