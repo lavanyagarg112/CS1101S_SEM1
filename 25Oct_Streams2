@@ -1,0 +1,81 @@
+// eval stream from streams to list
+
+// replace
+
+
+function more(a, b) {
+    return (a > b)
+        ? more(1, 1 + b)
+        : pair(a, () => more(a + 1, b));
+}
+
+const more_and_more = more(1, 1);
+
+/*
+replace(more_and_more, 1, 0);
+produces the stream that contains
+0, 0, 2, 0, 2, 3, 0, 2, 3, 4, 0, 2, 3, 4, 5, ...
+*/
+
+
+function replace(s, a, b){
+    return is_null(s)
+        ? null 
+        : pair((head(s) === a) ? b : head(s), () => replace(stream_tail(s), a, b));
+}
+
+
+replace(more_and_more, 1, 0);
+
+
+// list to infinite stream
+
+function list_to_inf_stream(xs) { 
+    function helper(ys) {
+        return is_null(ys)
+            ? helper(xs)
+            : pair(head(ys), () => helper(tail(ys)));
+    }
+    return is_null(xs) ? null : helper(xs); 
+}
+
+const s = list_to_inf_stream(list(1, 2, 3));
+
+eval_stream(s, 10);
+// [1, [2, [3, [1, [2, [3, [1, [2, [3, [1, null]]]]]]]]]]
+
+
+// repeating streams
+
+const rep123 = 
+    pair(1, 
+         () => pair(2, 
+                    () => pair(3, 
+                               () => rep123)));
+                               
+eval_stream(rep123, 15);
+
+
+// adding two streams
+
+function add_streams(s1, s2){
+    return is_null(s1)
+        ? s2
+        : is_null(s2)
+        ? s1
+        : pair(head(s1)+ head(s2), () => add_streams(stream_tail(s1), stream_tail(s2)));
+}
+
+
+// fibonacci using add streams
+
+const fibs = pair(0, () => pair(1, () => add_streams(stream_tail(fibs), fibs)));
+eval_stream(fibs, 3);
+
+// here 
+// fibs(1) = 0
+// fibs(2) = 1
+// fibs(3) = add_streams(pair(1, () =>)), pair(0, () =>)) = 1 + 0 = (1, 1,() =>)
+// fibs(4) = add_streams(pair(1, () =>)), pair(1, 1,() =>) [previous fib is 1,] = returns (2, 1,() =>)
+// fibs(5) = add_streams(pair(1, () =>)), pair(2, 1() =>)
+// fibs(6) = 
