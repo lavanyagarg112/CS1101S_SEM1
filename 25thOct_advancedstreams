@@ -1,0 +1,11 @@
+// seive of eratosthenes
+
+function is_divisible(x, y){
+    return x % y === 0;
+}
+
+function seive(s){
+    return pair(head(s), () => seive(stream_filter(x => !is_divisible(x, head(s)), stream_tail(s))));
+}
+
+const primes = seive(integers_from(2));
