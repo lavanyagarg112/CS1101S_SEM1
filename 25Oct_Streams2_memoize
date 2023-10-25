@@ -27,15 +27,17 @@ function ms(m, s) {
     return s;
 }
 
-const ones = pair(1, () => ones);
+//const ones = pair(1, () => ones);
 
-const onesA = pair(1, () => ms("A", onesA));
+//const onesA = pair(1, () => ms("A", onesA));
+//const onesB = pair(1, memo_fun(() => ms("B", onesB)));
 
-const onesB = pair(1, memo_fun(() => ms("B", onesB)));
+const onesC = pair(1, memo_fun(() => onesC));
 
 //stream_ref(ones, 3);
-stream_ref(onesA, 3);
+//stream_ref(onesA, 3);
 //stream_ref(onesB, 3);
+//stream_ref(onesC,3);
 
 
 
@@ -47,10 +49,35 @@ function m_integers_from(n) {
                           m_integers_from(n + 1))));
 }
 
+
+function integers_from(n) {
+    return pair(n, 
+        () => ms("M: " + stringify(n), 
+                          integers_from(n + 1)));
+}
+
 const m_integers = m_integers_from(1);
 
-//stream_ref(m_integers, 0);
-//stream_ref(m_integers, 1);
-//stream_ref(m_integers, 2);
-//stream_ref(m_integers, 5);
-//stream_ref(m_integers, 5);
+/*
+stream_ref(m_integers, 0);
+stream_ref(m_integers, 1);
+stream_ref(m_integers, 2);
+stream_ref(m_integers, 5);
+stream_ref(m_integers, 5);
+
+const integers = integers_from(1);
+stream_ref(integers, 0);
+stream_ref(integers, 1);
+stream_ref(integers, 2);
+*/
+
+// basically here the result of memoized stores the previous computation
+// so now we only have to calculate new one
+
+stream_ref(m_integers, 0);
+stream_ref(m_integers, 1);
+stream_ref(m_integers, 5);
+
+// that is why 1 2 3 4 5 and then 1 1 2 3 4 5
+
+// cause 1's computation is already stored
