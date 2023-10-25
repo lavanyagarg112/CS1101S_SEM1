@@ -9,3 +9,6 @@ function seive(s){
 }
 
 const primes = seive(integers_from(2));
+
+// square roots by newton's method
+
