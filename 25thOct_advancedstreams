@@ -81,8 +81,12 @@ function add_streams(s1, s2) {
 // s0, s0 + s1, s0 + s1 + s2, ...
 
 function partial_sums(s) {
-    return pair(head(pi_summands(1)), add_streams(pi_summands(1), stream_tail(pi_summands(1))));
+    return pair(head(s), () => add_streams(s, stream_tail(s)));
 }
+
+eval_stream(pi_summands(1),3);
+//eval_stream(partial_sums(pi_summands(1)), 3);
+
 
 function scale_stream(s, f) {
     return stream_map(x => x * f, s);
@@ -92,7 +96,7 @@ function scale_stream(s, f) {
 const pi_stream =
     scale_stream(partial_sums(pi_summands(1)), 4);
 
-eval_stream(pi_stream, 8);
+//eval_stream(pi_stream, 8);
 
 //should return:
 // [4,
