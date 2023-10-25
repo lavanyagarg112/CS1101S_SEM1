@@ -73,9 +73,22 @@ const fibs = pair(0, () => pair(1, () => add_streams(stream_tail(fibs), fibs)));
 eval_stream(fibs, 3);
 
 // here 
-// fibs(1) = 0
-// fibs(2) = 1
-// fibs(3) = add_streams(pair(1, () =>)), pair(0, () =>)) = 1 + 0 = (1, 1,() =>)
-// fibs(4) = add_streams(pair(1, () =>)), pair(1, 1,() =>) [previous fib is 1,] = returns (2, 1,() =>)
-// fibs(5) = add_streams(pair(1, () =>)), pair(2, 1() =>)
-// fibs(6) = 
+// see lecture 10 slide 37 onwards again
+
+
+// integers using add stream
+
+const ones = pair(1, () => ones);
+
+const integers = pair(1,() => add_streams(ones, integers));
+
+eval_stream(integers, 10);
+
+// see slide 43
+
+// the 1 from before goes to integers in this next call
+// the two from before goes to integers in the next call..
+
+
+
+
