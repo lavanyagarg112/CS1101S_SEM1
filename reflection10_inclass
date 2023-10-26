@@ -1,2 +1,16 @@
 // reflection 10
 
+// a stream is a null or a pair whose tail is a nullary function
+// that returns a stream
+
+// no base case required
+// can be infinite
+
+
+// fibonacci
+
+function fibgen(a,b) {
+    return pair(a, () => fibgen(b, a + b));
+}
+
+const fibs = fibgen(0,1);
