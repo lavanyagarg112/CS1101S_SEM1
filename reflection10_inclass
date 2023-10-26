@@ -38,8 +38,23 @@ const add_streams = (s1, s2) =>
 const integers = pair(1, () => add_streams(ones, integers));        
         
  
-eval_stream(integers, 10);       
-        
-        
+eval_stream(integers, 10);
+
+function zip_streams(s1, s2){
+    return pair(head(s1), () => zip_streams(s2, stream_tail(s1)));
+}
+
+function zip_list_of_streams(ss){
+    return pair(head(head(ss)), () => zip_list_of_streams(append(tail(ss), list(stream_tail(head(ss))))));
+}
+// throwing the first stream at the back
+
+eval_stream(zip_list_of_streams(list(ones, fibs, integers)), 20);
+
+
+
+
+
+
         
         
