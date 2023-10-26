@@ -41,7 +41,7 @@ const integers = pair(1, () => add_streams(ones, integers));
 eval_stream(integers, 10);
 
 function zip_streams(s1, s2){
-    return pair(head(s1), () => zip_streams(s2, stream_tail(s1)));
+    return pair(head(s1), () => zip_streams(s2, stream_tail(s1))); // order matters!
 }
 
 function zip_list_of_streams(ss){
