@@ -52,9 +52,13 @@ function zip_list_of_streams(ss){
 eval_stream(zip_list_of_streams(list(ones, fibs, integers)), 20);
 
 
+// q3
 
+function partial_sums(s){
+    return pair(head(s), () => add_streams(stream_tail(s), partial_sums(s)));
+}
 
-
+eval_stream(partial_sums(integers), 10);
 
         
         
