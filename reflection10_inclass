@@ -25,4 +25,5 @@ const fibs = fibgen(0,1);
 
 stream_ref(fibs, 3);
 
-// check this in stepper
+// check this in stepper in source 2
+
