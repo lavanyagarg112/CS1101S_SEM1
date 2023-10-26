@@ -13,4 +13,16 @@ function fibgen(a,b) {
     return pair(a, () => fibgen(b, a + b));
 }
 
+function stream_ref(s, n) {
+  return n === 0 ? head(s) : stream_ref(stream_tail(s), n - 1);
+}
+
+function stream_tail(s){
+    return tail(s)();
+}
+
 const fibs = fibgen(0,1);
+
+stream_ref(fibs, 3);
+
+// check this in stepper
