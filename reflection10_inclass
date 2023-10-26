@@ -27,3 +27,4 @@ stream_ref(fibs, 3);
 
 // check this in stepper in source 2
 
+// if we know our streams are infinite we can avoid base cases
