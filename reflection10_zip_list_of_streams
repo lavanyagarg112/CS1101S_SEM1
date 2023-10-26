@@ -6,7 +6,7 @@ function zip_list_of_streams(lst){
         
         if (count === 0){
             xs = map(x => stream_tail(x), lst);
-            return zip_stream(xs);
+            return helper(xs, len);
             
         }
         
@@ -27,4 +27,4 @@ const stream4 = integers_from(30);
 
 const lst = list(stream1, stream2, stream3, stream4);
 
-eval_stream(zip_stream(lst), 10);
+eval_stream(zip_list_of_streams(lst), 10);
