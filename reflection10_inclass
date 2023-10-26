@@ -28,3 +28,18 @@ stream_ref(fibs, 3);
 // check this in stepper in source 2
 
 // if we know our streams are infinite we can avoid base cases
+
+const ones = pair(1, () => ones);
+
+const add_streams = (s1, s2) =>
+        pair(head(s1) + head(s2), () => add_streams(stream_tail(s1), stream_tail(s2)));
+        
+        
+const integers = pair(1, () => add_streams(ones, integers));        
+        
+ 
+eval_stream(integers, 10);       
+        
+        
+        
+        
