@@ -63,7 +63,11 @@ const zeros = scale_stream(0, alt_ones);
 
 eval_stream(zeros, 10);
 
+const s1 = fun_to_series(x => 1);
+eval_stream(s1, 10);
 
+const s2 = fun_to_series(x => x + 1);
+eval_stream(s2, 10);
 
 
 
