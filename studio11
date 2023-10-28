@@ -59,9 +59,10 @@ const alt_ones = pair(1, () => negate_series(alt_ones));
 
 eval_stream(alt_ones, 10);
 
-const zeros = scale_stream(0, alt_ones);
+const zeros = scale_series(0, alt_ones);
 
 eval_stream(zeros, 10);
+
 
 const s1 = fun_to_series(x => 1);
 eval_stream(s1, 10);
