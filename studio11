@@ -1,0 +1,16 @@
+function scale_stream(c, stream) {
+    return stream_map(x => c * x, stream);
+}
+
+const integers = integers_from(1);
+const A = pair(1, () => scale_stream(2, A));
+
+function mul_streams(a,b) {
+    return pair(head(a) * head(b),
+            () => mul_streams(stream_tail(a), stream_tail(b)));
+}
+const B = pair(1, () => mul_streams(B, integers));
+
+eval_stream(A, 10); // 2^n-1
+eval_stream(B, 10); // (n-1)! 
+// where n is the nth term
