@@ -58,11 +58,13 @@ function fun_to_series(fun) {
     return stream_map(fun, non_neg_integers);
 }
 
-const alt_ones = pair(1, () => negate_series(alt_ones)); 
+//const alt_ones = pair(1, () => negate_series(alt_ones)); 
+const alt_ones = pair(1, () => pair(-1, () => alt_ones));
 
-//eval_stream(alt_ones, 10);
+eval_stream(alt_ones, 10);
 
 //const zeros = scale_series(0, alt_ones);
+// const zeros = pair(0, () => zeros);
 const zeros = subtract_series(integers, integers);
 
 //eval_stream(zeros, 10);
