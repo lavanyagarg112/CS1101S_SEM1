@@ -11,7 +11,7 @@ function mul_streams(a,b) {
 }
 const B = pair(1, () => mul_streams(B, integers));
 
-eval_stream(A, 10); // 2^n-1
+//eval_stream(A, 10); // 2^n-1
 //eval_stream(B, 10); // (n-1)! 
 // where n is the nth term
 
@@ -61,13 +61,20 @@ function fun_to_series(fun) {
 //const alt_ones = pair(1, () => negate_series(alt_ones)); 
 const alt_ones = pair(1, () => pair(-1, () => alt_ones));
 
-eval_stream(alt_ones, 10);
+//eval_stream(alt_ones, 10);
 
 //const zeros = scale_series(0, alt_ones);
-// const zeros = pair(0, () => zeros);
-const zeros = subtract_series(integers, integers);
+const zeros = add_streams(alt_ones, stream_tail(alt_ones));
+/*
 
-//eval_stream(zeros, 10);
+1 -1 1 -1 1 -1...
+-1 1 -1 1 -1 1...
+0  0 0 0 0  0...
+*/
+// const zeros = pair(0, () => zeros);
+//const zeros = subtract_series(integers, integers);
+
+eval_stream(zeros, 10);
 
 
 const s1 = fun_to_series(x => 1);
