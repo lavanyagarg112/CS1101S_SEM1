@@ -51,7 +51,8 @@ const s2 = stream_pairs2(integers_from(1));
 
 // for stream_pairs, the stream_tail called continuously so 
 // for infinite streams even that goes to infinity
+// cause stream_tail evaluated... (first???)
 
-// in stream_pairs2 stream_tail is not called, so the error doesnt come up
+// in stream_pairs2 stream_tail is never called, so the error doesnt come up
 
 //eval_stream(s2,10);
