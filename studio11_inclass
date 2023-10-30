@@ -35,7 +35,11 @@ function stream_pairs3(s) {
 
 const test = integers(1,5);
 
-eval_stream(stream_pairs(test),6);
+eval_stream(stream_pairs(test),10);
+
+// pair each element with another just once, order doesnt matter
+// handshake problem
+// we have 5 ppl numbered 1 to 5, what are the diff handshakes
 
 const s2 = stream_pairs3(integers_from(1));
 
