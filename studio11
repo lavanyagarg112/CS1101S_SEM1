@@ -12,8 +12,12 @@ function mul_streams(a,b) {
 const B = pair(1, () => mul_streams(B, integers));
 
 eval_stream(A, 10); // 2^n-1
-eval_stream(B, 10); // (n-1)! 
+//eval_stream(B, 10); // (n-1)! 
 // where n is the nth term
+
+// integers:            1 2 3 4 5 6 ...
+// shifted B stream:    1 1 2 6...
+// B stream:          1 1 2 6 24...
 
 
 // q2
@@ -56,12 +60,12 @@ function fun_to_series(fun) {
 
 const alt_ones = pair(1, () => negate_series(alt_ones)); 
 
-eval_stream(alt_ones, 10);
+//eval_stream(alt_ones, 10);
 
 //const zeros = scale_series(0, alt_ones);
 const zeros = subtract_series(integers, integers);
 
-eval_stream(zeros, 10);
+//eval_stream(zeros, 10);
 
 
 const s1 = fun_to_series(x => 1);
