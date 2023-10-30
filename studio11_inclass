@@ -1,0 +1,42 @@
+// see nb also
+
+function stream_pairs(s) { 
+    return is_null(s)
+        ? null
+        : stream_append(
+            stream_map(
+                sn => pair(head(s), sn),
+                stream_tail(s)),
+            stream_pairs(stream_tail(s)));
+            
+}
+
+function integers(start, end){
+    return start === end + 1
+        ? null 
+        : pair(start, () => integers(start + 1, end));
+}
+
+function stream_pairs2(s) { 
+    return is_null(s)
+           ? null
+           : stream_append(
+               stream_map(
+                   sn => pair(head(s), sn),
+                   stream_tail(s)),
+               () => stream_pairs2(stream_tail(s)));
+}
+
+function stream_pairs3(s) { 
+    return stream_map(
+                   sn => pair(head(s), sn),
+                   stream_tail(s));
+}
+
+const test = integers(1,5);
+
+eval_stream(stream_pairs(test),6);
+
+const s2 = stream_pairs3(integers_from(1));
+
+//eval_stream(s2,10);
