@@ -1,0 +1,31 @@
+function make_postfix_exp(bae){
+    
+    if (is_number(bae)){
+        return [bae];
+    }
+    
+    const postfix = [];
+    
+    function append_array(a){ // add elements to end of array
+        for (let i = 0; i < array_length(a); i = i + 1){
+            postfix[array_length(postfix)] = a[i];
+        }
+    }
+    
+    // tree like structure
+    // wishful thinking
+    
+    const left = make_postfix_exp(bae[0]);
+    const right = make_postfix_exp(bae[2]);
+    const op = bae[1];
+    
+    append_array(left);
+    append_array(right);
+    
+    postfix[array_length(postfix)] = op;
+    
+    return postfix;
+    
+}
+
+make_postfix_exp([[[30, "/", 3], "-", 1], "*", [4, "+", 6]]);
