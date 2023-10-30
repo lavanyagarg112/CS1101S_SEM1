@@ -27,27 +27,38 @@ function stream_pairs2(s) {
                () => stream_pairs2(stream_tail(s)));
 }
 
-/*
-function stream_pairs3(s) { 
-    return stream_map(
-                   sn => pair(head(s), sn),
-                   stream_tail(s));
+function interleave_stream_append(s1, s2) { 
+    return is_null(s1)
+        ? s2
+        : pair(head(s1), () => interleave_stream_append(s2,
+                           stream_tail(s1)));
 }
-*/
 
-// stream_pairs3 just remove the append???
-// cause for infinite it is never going to go to append??
+function stream_pairs3(s) {
+    return (is_null(s) || is_null(stream_tail(s)))
+        ? null
+        : pair(pair(head(s), head(stream_tail(s))),
+                () => interleave_stream_append(
+                    stream_map(x => pair(head(s), x),
+                            stream_tail(stream_tail(s))),
+                 stream_pairs3(stream_tail(s))));
+}
+
+
+
+// stream_pairs3 go zigzag - infinite streams every element accessed
+// interleaving them together - write append for interleave
 
 const test = integers(1,5);
 
-eval_stream(stream_pairs(test),10);
+//eval_stream(stream_pairs(test),10);
 
 // pair each element with another bigger element just once
 // every combination, order doesnt matter
 // handshake problem
 // we have 5 ppl numbered 1 to 5, what are the diff handshakes
 
-const s2 = stream_pairs2(integers_from(1));
+const s2 = stream_pairs3(integers_from(1));
 
 // for stream_pairs, the stream_tail called continuously so 
 // for infinite streams even that goes to infinity
@@ -55,4 +66,4 @@ const s2 = stream_pairs2(integers_from(1));
 
 // in stream_pairs2 stream_tail is never called, so the error doesnt come up
 
-//eval_stream(s2,10);
+eval_stream(s2,10);
