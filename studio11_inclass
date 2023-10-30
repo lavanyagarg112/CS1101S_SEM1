@@ -33,6 +33,9 @@ function stream_pairs3(s) {
                    stream_tail(s));
 }
 
+// stream_pairs3 just remove the append???
+// cause for infinite it is never going to go to append??
+
 const test = integers(1,5);
 
 eval_stream(stream_pairs(test),10);
@@ -42,5 +45,8 @@ eval_stream(stream_pairs(test),10);
 // we have 5 ppl numbered 1 to 5, what are the diff handshakes
 
 const s2 = stream_pairs3(integers_from(1));
+
+// for stream_pairs, the stream_tail called continuously so 
+// for infinite streams even that goes to infinity
 
 //eval_stream(s2,10);
