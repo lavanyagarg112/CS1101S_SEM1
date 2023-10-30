@@ -1,0 +1,19 @@
+function make_array(...A){
+    return A;
+}
+
+// ... only in function arg, take any number and combines to one array
+
+function make_postfix_exp(bae){
+    if(is_number(bae)){
+        return [bae];
+    }
+    
+    else{
+        const A = make_postfix_exp(bae[0]);
+        const B = make_postfix_exp(bae[2]);
+        return make_array(...A, ...B, bae[1]);
+    }
+}
+
+make_postfix_exp([[[30, "/", 3], "-", 1], "*", [4, "+", 6]]);
