@@ -16,7 +16,6 @@ eval_stream(B, 10); // (n-1)!
 // where n is the nth term
 
 
-
 // q2
 
 function add_streams(s1, s2){
