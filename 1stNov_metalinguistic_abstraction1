@@ -1,0 +1,10 @@
+// parsing
+// taking a sequence of strings
+// eg: "8 + 34;" is split into tokens 8 + 34 ;
+// see parse tree in slides
+
+
+const syntax_tree = parse("8 + 34;");
+display_list(syntax_tree);
+
+
