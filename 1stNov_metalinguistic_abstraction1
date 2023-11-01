@@ -9,9 +9,16 @@ display_list(syntax_tree);
 
 
 /*
-calculator language in Backus-Naur Form
+calculator language in 
 
-way to describe syntax trees
+Backus-Naur Form: way to describe syntax trees
+
+stmt::=. expr; (statement is expression followed by semi colon) 
+expr::= (sort of a recursive definition) expr bin-op expr (binary operator combination)
+                                        | number (number expression)
+                                        | (expr) (parenthesised expression)
+                                        
+bin-op::= +|-|*|/. (binary operator)
 
 */
 
