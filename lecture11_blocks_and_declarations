@@ -59,7 +59,8 @@ function evaluate(program) {
             C = pair(block_body(command),
                   pair(make_env_instruction(E),
                     C));
-            E = extend_environment(locals, unassigneds, E);
+            E = extend_environment(locals, unassigneds, E); // extending the given environment
+            // binding the local names to the environment
         } else if (is_declaration(command)) {
             C = pair(make_assignment(
                        declaration_symbol(command),
