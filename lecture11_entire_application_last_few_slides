@@ -115,6 +115,14 @@ function evaluate(program) {
                        
                        
         } else if (is_lambda_expression(command)) { // new predicate
+        // limit attention to lambda expressions whose body
+        // simply have a return statement here... single return statement
+        // keep it simple here
+        
+        // functions whose body is just a return statement are known as:
+        // simple compound functions
+        
+        
             if (is_return_statement(
                    lambda_body(command))) {
                 S = pair(make_simple_function(
@@ -158,8 +166,9 @@ function evaluate(program) {
             E = env_instruction_environment(command);
             
             
-        } else if (is_call_instruction(command)) { // call instructions
+        } else if (is_call_instruction(command)) { // call instructions 
         // new call instruction
+        // seen in cse visualiser
             const arity = call_instruction_arity(command);
             let args = null;
             let n = arity;
