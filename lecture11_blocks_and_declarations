@@ -24,7 +24,10 @@ expr::= ...
 
 
 function evaluate(program) { 
-    let C = list(make_block(program)); // enclose the program in a block
+    let C = list(make_block(program)); // enclose the program in an implicit block
+    // that is why we are scanning out the program variables
+    // we treat the given program as close implicitly
+    
     let S = null;
     let E = null; // initially start with empty environment
     while (! is_null(C)) {
@@ -84,6 +87,12 @@ function evaluate(program) {
             C = pair(block_body(command),
                   pair(make_env_instruction(E),
                     C));
+                // replace our environment E with new environment
+                // but how will we get back to previous environment
+                
+                // this is what is happening here
+                // making an instruction to restore the previous environment
+                // and put it in our control even before evaluating the block
                     
                     
             E = extend_environment(locals, unassigneds, E); // extending the given environment
@@ -95,7 +104,7 @@ function evaluate(program) {
             
             
             
-        } else if (is_declaration(command)) {
+        } else if (is_declaration(command)) { // execution of declaration 
             C = pair(make_assignment(
                        declaration_symbol(command),
                        declaration_value_expression(command)),
@@ -137,6 +146,10 @@ function evaluate(program) {
                assign_instruction_symbol(command), 
                head(S),
                E);
+               
+               // execution of environment instructions
+               // environment restoration instruction
+               // set the envronment back to the environment we have in the control
         } else if (is_env_instruction(command)) { // need to add environments to the machine
             E = env_instruction_environment(command);
         } else {
@@ -149,7 +162,7 @@ function evaluate(program) {
 // scan_out_declarations and list_of_unassigned
 // (SICP JS 4.1.1)
 
-function scan_out_declarations(component) {
+function scan_out_declarations(component) { // scanning
     return is_sequence(component)
            ? accumulate(append,
                         null,
