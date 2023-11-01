@@ -717,6 +717,12 @@ function is_primitive_function(fun) {
 
 function primitive_implementation(fun) { return head(tail(fun)); }
 
+// making a data structure known as primitive functions
+// that maps the given strings to the implementation
+// which we take from the source language of the interpreter
+
+// then scroll downnn... set up initial environment
+// that is our global environment
 const primitive_functions = list(
        list("head",    head             ),
        list("tail",    tail             ),
@@ -745,6 +751,8 @@ const primitive_constant_values =
     map(c => head(tail(c)), primitive_constants);
 
 function apply_primitive_function(fun, arglist) {
+    // apply primitive function
+    // added to source chapter 4 in addition to parse
     return apply_in_underlying_javascript(
                primitive_implementation(fun), arglist);
 }
@@ -758,6 +766,13 @@ function setup_environment() {
 }
 
 const the_global_environment = setup_environment();
+// start the evaluator with a global environment
+// that already has the bindings for
+// the primitive functions
+// pre-declared functions
+// and constants such as math_PI
+
+
 const the_global_frame = head(the_global_environment);
 
 //
