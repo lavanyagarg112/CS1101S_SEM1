@@ -141,7 +141,9 @@ function evaluate(program) {
 
         // machine instructions
         } else if (is_pop_instruction(command)) {
+            // simply removes an element from the stash
             S = tail(S);
+            
         } else if (is_binary_operator_instruction(command)) {
             S = pair(apply_binary(operator_instruction_symbol(command),
                                   head(tail(S)), head(S)),
