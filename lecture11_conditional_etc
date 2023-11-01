@@ -121,6 +121,7 @@ function evaluate(program) {
             C = pair(is_truthy(head(S)) // check our stash and see if the predicate is true
             // is_truthy comes from javascript
             // to convey what is considered to be true in the language
+            // declared later in the language
                      ? branch_instruction_consequent(command) // if predicate true
                      // put the consequent back on control
                      : branch_instruction_alternative(command),
