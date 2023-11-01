@@ -204,7 +204,40 @@ assert("2B_6", () => build_2nd_largest_int([5,5,5,5,5,5,5,5,5,5]),
 //===============================================================
 function build_nth_largest_int(digits, n) {
 
-    // WRITE HERE.
+    function permutations(s){
+    
+        return is_null(s)
+            ? list(null)
+            : accumulate(append, null, 
+                            map(x => map(p => pair(x, p),
+                                permutations(remove(x,s))),
+                                s));
+    
+    
+    }
+    
+    
+    const lst = array_to_list(digits);
+    const perm = permutations(lst);
+    const mapp = map(list_to_array, perm);
+    const map2 = map(digits_to_string, mapp);
+    const arr = list_to_array(map2);
+    
+    
+    sort_ascending(arr);
+    reverse_array(arr);
+    
+    const length = array_length(arr);
+    if (n - 1 >= length){
+        return arr[length - 1];
+    }
+    
+    else {
+        return arr[n-1];
+    }
+    
+    
+    
 
 }
 
