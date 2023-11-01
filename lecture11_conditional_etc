@@ -22,6 +22,25 @@ expr::= ...
 
 */
 
+
+// parsing of conditionals return:
+
+/*
+parse("true ? 42 : 17;");
+
+returns
+list(" conditional_expression ",
+list(" literal ", true),
+list(" literal ", 42),
+list(" literal ", 17))
+
+Syntax predicate: is_conditional
+Selectors: cond_predicate, cond_consequent,
+cond_alternative
+
+
+*/
+
 function evaluate(program) { 
     let C = list(program);
     let S = null;
@@ -56,6 +75,25 @@ function evaluate(program) {
                       pair(make_sequence(tail(body)),
                         C)));
         } else if (is_conditional(command)) {
+            
+            // not evaluate the components of the conditional
+            // until the predicate is evaluated
+            
+            // and then based on that
+            // evaluate one of the consequent or the 
+            // alternative
+            
+            // put the predicate first on the control
+            // since that is the next thing we need to evaluate
+            
+            // then we put special instruction known as branch
+            // branch instruction has consequent and alternative component of the condition
+            
+            // get the result of the predicate from the stash
+            // then take action accordingly from branch instruction
+            // and put it back in the control
+            
+            
             C = pair(conditional_predicate(command),
                   pair(make_branch_instruction(
                          conditional_consequent(command),
