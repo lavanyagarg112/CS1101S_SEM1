@@ -10,6 +10,19 @@ functional programming language, including:
 Examples at the end of the program
 */
 
+/*
+
+stmt::= ...
+        | {stmt} (block)
+        | const name = expr; (constant declaration)
+        
+expr::= ...
+        | name  (name)
+        
+        
+*/
+
+
 function evaluate(program) { 
     let C = list(make_block(program)); // enclose the program in a block
     let S = null;
