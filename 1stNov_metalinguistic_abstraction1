@@ -132,10 +132,18 @@ exit while loop , result on stash
 
 
 
+// Summary
 
 
+// Programs: control, stash, environment: data structures
 
+// Control: list of commands (expressions, statements, instructions)
 
+// Function objects: lists containing parameters, body, environment
+
+// Stash: list of values (including function objects)
+
+// Environments: list of pairs
 
 
 
