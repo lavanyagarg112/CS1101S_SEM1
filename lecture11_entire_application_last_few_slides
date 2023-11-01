@@ -12,6 +12,26 @@ functional programming language, including:
 Examples at the end of the program
 */
 
+/*
+
+Adding simple compound functions
+
+stmt::=  ...
+        | function name (params) {
+            return expr;        (function declaration)
+        }
+        
+expr::=  ...
+        | expr(expr1,... ,exprn )   (function application)
+        | params => expr            (lambda expression)
+        
+        
+eg:
+
+factorial
+
+*/
+
 function evaluate(program) { 
     let C = list(make_block(program));
     let S = null;
