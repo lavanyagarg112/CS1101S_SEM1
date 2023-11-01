@@ -105,6 +105,11 @@ function evaluate(program) {
             
             
         } else if (is_declaration(command)) { // execution of declaration 
+        // treat declarations are assugnments
+        
+        // turn the declarations into assignments and then evaluate
+        
+        // in assignments evaluate right side first 
             C = pair(make_assignment(
                        declaration_symbol(command),
                        declaration_value_expression(command)),
@@ -117,7 +122,16 @@ function evaluate(program) {
                      
                      
         } else if (is_assignment(command)) {
-            C = pair(assignment_value_expression(command),
+            C = pair(assignment_value_expression(command), // take out the value expression out of the assignment
+            // sytax tree and put it first
+            // casue we want to evaluate it first
+            // from right side
+            
+            // then assignment instruction that knows the name "x"
+            
+            // accessing the current environment using the name in the
+            // assigment instruction
+            // look up the name x in the current environment 
                   pair(make_assign_instruction(
                          assignment_symbol(command)),
                        C));
@@ -162,16 +176,36 @@ function evaluate(program) {
 // scan_out_declarations and list_of_unassigned
 // (SICP JS 4.1.1)
 
+
 function scan_out_declarations(component) { // scanning
+// scan out all declarations in the block
+// dont need to worry about inner blocks
+// declare names directly declared in the given block
+// this function does it using accumulate
+// checks if the component is a sequence then scans out all the declarations in 
+// components of sequence using map
+// and it accumulates those declarations using append
+
     return is_sequence(component)
            ? accumulate(append,
                         null,
                         map(scan_out_declarations,
                             sequence_statements(component)))
-           : is_declaration(component)
+                            
+                            
+           : is_declaration(component) // particular names are declared only using declaratiokn
+           // get the names only if the conponent in a declaration
+           
+           // the declaration symbol is the only name declared:
            ? list(declaration_symbol(component))
            : null;
+           
+           // recursive programme
+           // shows how we get all names directly declared in a given block
+           // through this function
 }
+
+
 
 function list_of_unassigned(symbols) {
     return map(symbol => "*unassigned*", symbols);
