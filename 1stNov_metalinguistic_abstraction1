@@ -8,3 +8,140 @@ const syntax_tree = parse("8 + 34;");
 display_list(syntax_tree);
 
 
+/*
+calculator language in Backus-Naur Form
+
+way to describe syntax trees
+
+*/
+
+// parsing the calculator language
+// 1.4 + 2.3 / 70.4;
+
+// Syntax of literals
+
+parse("1.4 + 2.3 / 70.4;"); // returns syntax tree
+
+function is_literal(comp){
+    return is_tagged_list(comp, "literal");
+}
+
+function is_tagged_list(comp, the_tag){
+    return is_pair (comp) && head(comp) === the_tag ;
+}
+
+// selector is "literal_value"
+
+function literal_value(comp){
+    return head(tail(comp));
+}
+
+
+// syntax of operator combinations
+
+parse("1.4 + 2.3 / 70.4;");
+
+// syntax predicate 
+
+const is_bin_op_combination = comp =>
+                    is_tagged_list (comp ," binary_operator_combination ");
+                    
+// selectors
+const operator_symbol = comp => list_ref (comp ,1);
+const first_operand = comp => list_ref (comp ,2);
+const second_operand = comp => list_ref (comp ,3);
+
+function apply_binary (operator , op1 , op2) {
+    return operator === "+"
+        ? op1 + op2
+        : operator === "-"
+        ? op1 - op2
+        : operator === "*"
+        ? op1 * op2
+        : operator === "/"
+        ? op1 / op2
+        : error(" unknown operator ");
+}
+
+
+
+// structure for cs machine for calculator expressions
+
+function evaluate(expr){
+    let C = list(expr);
+    let S = null;
+    
+    while (!is_null(C)){
+        const command = head(C);
+        C = tail(C);
+        if (is_literal(command)){
+            S = pair(literal_value(command), S);
+        }
+        
+        // evaluating operator combinations
+        else if (is_bin_op_combination(command)) {
+            
+            C = pair(first_operand(command), pair(second_operand(command),
+                    pair(make_bin_op_instr(operator_symbol(command)), C)));
+            
+        }
+        
+        else if (is_bin_op_instr(command)){
+            S = pair(apply_binary(op_instr_symbol(command), head(tail(S)),head(S)), tail(tail(S)));
+        }
+        
+        // instr syntax: is_bin_op_instr
+        // instr selector op_instr_symbol
+        
+        else {
+            error(" unknown command ");
+        }
+    }
+    
+    return head(S); // the last value of the stash
+}
+
+/*
+Example for first "if" part
+
+Example: 2.3;
+Control : 2.3
+Stash :
+==>
+Control :
+Stash : 2.3
+==>
+exit while loop , result on stash
+
+
+*/
+
+
+
+// Adding booleans, conditionals and sequences 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
