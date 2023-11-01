@@ -32,6 +32,35 @@ function evaluate(expr) { // syntax tree as argument
             // beginning of the list
             // (in the visualiser at the bottom)
             
+            /* eg here in control the first thing is taken first
+            
+            when we see the cse visualiser we see the literal is actually 
+            at the bottom
+            
+            but the process is the same
+            
+            here the top of our control is actually at the top
+            
+            so it goes forward
+            
+            in cse its reverse so it takes the commands also reverse
+            
+            ***     control     ***                       ""
+list("literal", 1.4)
+list("binary_operator_combination", "/", "...")
+list("binop", "+")
+                                              ""
+***      stash      ***                       ""
+                                              ""
+***     control     ***                       ""
+list("binary_operator_combination", "/", "...")
+list("binop", "+")
+                                              ""
+***      stash      ***                       ""
+1.4
+            
+            */
+            
             // then second operand
             
             // then actual operator 
