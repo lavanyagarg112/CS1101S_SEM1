@@ -87,13 +87,29 @@ function evaluate(program) {
                    
         } else if (is_sequence(command)) {
             const body = sequence_statements(command);
-            C = is_null(body)
-                ? pair(make_literal(undefined), C)
+            C = is_null(body) // if sequence is empty - undefined
+                ? pair(make_literal(undefined), C) 
+                // put the literal value undefined
+                // back to control
+                // if given sequence empty
+                
                 : is_null(tail(body))
+                // if sequence has one element
+                // put that element in control
                 ? pair(head(body), C)
+                
+                // finally if sequence has more than one element
+                // first evaluate the first component of sequence 
+                // that is put it first on the control
+                // then put the pop instruction on the control
+                // to get rid of its value on the stash
+                // and then put remaining components of the 
+                // sequence on the control
+                // sequence one lesser
+                // recursive
                 : pair(head(body),
                     pair(make_pop_instruction(),
-                      pair(make_sequence(tail(body)),
+                      pair(make_sequence(tail(body)), // resursive nature, putting remaining elements of sequence back on control
                         C)));
                         
                         
