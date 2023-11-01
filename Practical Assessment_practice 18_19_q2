@@ -159,7 +159,27 @@ assert("2A_6", () => build_largest_int([5,5,5,5,5,5,5,5,5,5]),
 //===============================================================
 function build_2nd_largest_int(digits) {
 
-    // WRITE HERE.
+    sort_ascending(digits);
+    
+    const length = array_length(digits);
+    let i = 0;
+    
+    while (i + 1 < length && digits[i] === digits[i+1]){
+        i = i + 1;
+    }
+    
+    if (length === 1 || i === length - 1){
+        return digits_to_string(digits);
+    }
+    
+    else {
+        swap(digits, i, i + 1);
+        reverse_array(digits);
+        return digits_to_string(digits);
+    }
+    
+    
+    
 
 }
 
