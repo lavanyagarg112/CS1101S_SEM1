@@ -129,9 +129,7 @@ function evaluate(program) {
             
             // then assignment instruction that knows the name "x"
             
-            // accessing the current environment using the name in the
-            // assigment instruction
-            // look up the name x in the current environment 
+           
                   pair(make_assign_instruction(
                          assignment_symbol(command)),
                        C));
@@ -153,7 +151,11 @@ function evaluate(program) {
                      : branch_instruction_alternative(command),
                      C);
             S = tail(S);
-            
+         
+        // in assignment instruction
+         // accessing the current environment using the name in the
+            // assigment instruction
+            // look up the name x in the current environment   
             
         } else if (is_assign_instruction(command)) {
             assign_symbol_value(
@@ -161,6 +163,7 @@ function evaluate(program) {
                head(S),
                E);
                
+               // in environment instruction
                // execution of environment instructions
                // environment restoration instruction
                // set the envronment back to the environment we have in the control
