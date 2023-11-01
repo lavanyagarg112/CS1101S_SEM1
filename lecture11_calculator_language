@@ -24,8 +24,25 @@ function evaluate(expr) { // syntax tree as argument
         // move the literal from the control to the stash
         // push the literal to the stash (put it in front)
             S = pair(literal_value(command), S);
+           
+        // if command is binary operator combination: 
+        } else if (is_binary_operator_combination(command)) { 
+            // split the combination into its components
+            // first operand as first item on control
+            // beginning of the list
+            // (in the visualiser at the bottom)
             
-        } else if (is_binary_operator_combination(command)) {
+            // then second operand
+            
+            // then actual operator 
+            // from the selector operator_symbol(command)
+            // and make instructions out of that
+            
+            // in control: program components and instructions
+            // in binary operator combinations -
+            // making binary operator instruction
+            // and putting it on the control
+            
             C = pair(first_operand(command),
                  pair(second_operand(command),
                   pair(make_binary_operator_instruction(
@@ -33,7 +50,16 @@ function evaluate(expr) { // syntax tree as argument
                    C)));
 
         // machine instructions
+        // from the previous step after making the instruction 
+        // and putting it in the control
+        
+        // when we encounter the binary operator instruction
         } else if (is_binary_operator_instruction(command)) {
+            
+            // find the arguments i.e. operands on the stash
+            // remove the two arguments from the stash
+            // apply the binary operator corresponding to the operator symbol
+            // put the result back onto the stash
             S = pair(apply_binary(operator_instruction_symbol(command),
                                   head(tail(S)), head(S)),
                  tail(tail(S)));
@@ -44,6 +70,8 @@ function evaluate(expr) { // syntax tree as argument
     return head(S); // return the top thing on the stash ("top" on stash)
 }
 
+// apply binary operator 
+// like symbolic evaluator
 function apply_binary(operator, op1, op2) {
     return operator === "+"
            ? op1 + op2
