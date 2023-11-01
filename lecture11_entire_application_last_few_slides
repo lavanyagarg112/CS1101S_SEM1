@@ -135,10 +135,12 @@ function evaluate(program) {
             if (is_primitive_function(fun)) { // check if function is primitive function
                 S = pair(apply_primitive_function(fun, args),
                       S);
-            } else if (is_simple_function(fun)) {
+            } else if (is_simple_function(fun)) { // function is two eyeballs - simple function
+            // then evaluate body of function and put back in control
+        
                 C = pair(function_body(fun), 
                       pair(make_env_instruction(E),
-                        C));
+                        C)); // have to make sure we dont lose our environment so put it in control as well
                 E = extend_environment(
                        function_parameters(fun), 
                        args, 
