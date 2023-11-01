@@ -544,6 +544,7 @@ function is_truthy(x) {
 // function objects
 
 function make_simple_function(parameters, body, env) {
+    // put these in a data structure and push it onto the stash
     return list("simple_function", parameters, body, env);
 }
 function is_simple_function(f) {
