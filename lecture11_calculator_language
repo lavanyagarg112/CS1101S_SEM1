@@ -108,7 +108,7 @@ function operator_instruction_symbol(component) {
     return list_ref(component, 1);
 }
 function make_binary_operator_instruction(symbol) {
-    return list("binop", x`symbol);
+    return list("binop", symbol);
 }
 function make_unary_operator_instruction(symbol) {
     return list("unop", symbol);
