@@ -1,0 +1,149 @@
+/*
+CS1101S Lecture L11: CSE Machine
+
+This program contains a CSE machine for a 
+calculator language
+
+Examples at the end of the program
+*/
+
+function evaluate(expr) { 
+    let C = list(expr);
+    let S = null;
+    while (! is_null(C)) {
+        display_control(C);
+        display_stash(S);
+        const command = head(C);
+        C = tail(C);
+        
+        // expressions and statements
+        if (is_literal(command)) {
+            S = pair(literal_value(command), S);
+        } else if (is_binary_operator_combination(command)) {
+            C = pair(first_operand(command),
+                 pair(second_operand(command),
+                  pair(make_binary_operator_instruction(
+                   operator_symbol(command)),
+                   C)));
+
+        // machine instructions
+        } else if (is_binary_operator_instruction(command)) {
+            S = pair(apply_binary(operator_instruction_symbol(command),
+                                  head(tail(S)), head(S)),
+                 tail(tail(S)));
+        } else {
+           error(command, "unknown command:");
+        }
+    }
+    return head(S); 
+}
+
+function apply_binary(operator, op1, op2) {
+    return operator === "+"
+           ? op1 + op2
+           : operator === "-"
+           ? op1 - op2 
+           : operator === "*" 
+           ? op1 * op2 
+           : operator === "/" 
+           ? op1 / op2
+           : error(operator, "Unknown operator");
+}
+
+//
+// syntax functions (SICP JS 4.1.2)
+//
+
+function is_tagged_list(component, the_tag) {
+    return is_pair(component) && head(component) === the_tag;
+}
+
+// literals
+
+function is_literal(component) {
+    return is_tagged_list(component, "literal");
+}
+function literal_value(component) {    
+    return head(tail(component));
+}
+function make_literal(val) {
+    return list("literal", val);
+}
+
+// operator combinations
+
+function is_operator_combination(component) {	    
+    return is_unary_operator_combination(component) ||
+           is_binary_operator_combination(component);
+}
+function is_unary_operator_combination(component) {	    
+    return is_tagged_list(component, "unary_operator_combination");
+}
+function is_binary_operator_combination(component) {	    
+    return is_tagged_list(component, "binary_operator_combination");
+}
+function operator_symbol(component) {
+    return list_ref(component, 1);
+}
+function first_operand(component) {
+    return list_ref(component, 2);
+}
+function second_operand(component) {
+    return list_ref(component, 3);
+}
+
+//
+// CSE machine instructions
+//
+
+// operators instructions
+
+function is_binary_operator_instruction(component) {	    
+    return is_tagged_list(component, "binop");
+}
+function is_unary_operator_instruction(component) {	    
+    return is_tagged_list(component, "unop");
+}
+function operator_instruction_symbol(component) {
+    return list_ref(component, 1);
+}
+function make_binary_operator_instruction(symbol) {
+    return list("binop", x`symbol);
+}
+function make_unary_operator_instruction(symbol) {
+    return list("unop", symbol);
+}
+
+//
+// testing
+//
+
+function display_control(C) {
+    display("", "***     control     ***                      ");
+    for_each(command => 
+                 is_literal(command) ||
+                 is_binary_operator_instruction(command)
+                 ? display_list(command)
+                 : display_list(list(head(command), 
+                                     head(tail(command)),
+                                     "...")), 
+             C);
+    display("", "                                             ");
+}
+
+function display_stash(S) {
+    display("", "***      stash      ***                      ");
+    for_each(value => {
+                 display_list(value);
+            }, 
+            S);
+    display("", "                                             ");
+}
+
+function parse_and_evaluate(string) {
+    return evaluate(parse(string));
+}
+
+parse_and_evaluate("1.4 + 2.3 / 70.4;");
+
+
