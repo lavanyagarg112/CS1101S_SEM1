@@ -113,7 +113,7 @@ function evaluate(program) {
                          symbol_of_name(command),
                          E),
                      S);
-        } else if (is_assignment(command)) { // new predicate
+        } else if (is_assignment(command)) { 
             C = pair(assignment_value_expression(command),
                   pair(make_assign_instruction(
                          assignment_symbol(command)),
@@ -146,7 +146,23 @@ function evaluate(program) {
             } else {
                 error(command, "body must be return statement");
             }
-        } else if (is_application(command)) {
+            
+            
+        } else if (is_application(command)) { // new predicate
+        // what we do with the application
+        // is the central idea of what the lecture is
+        // closer look at what happens when we apply functions
+        
+        // eg: fact(n-1);
+        // function applications have function expressions: fact
+        // and argument expressions: n-1
+        
+        // we need to evaluate the function expression
+        // and all argument expressions
+        
+        //put function expressions on the control
+        // followed by the argument expressions
+        // followed by whatever we had on the control before
             const arg_exprs = arg_expressions(command);
             C = pair(function_expression(command),
                   append(arg_exprs, 
@@ -425,6 +441,11 @@ function function_declaration_body(component) {
     return list_ref(component, 3);
 }
 function function_decl_to_constant_decl(component) {
+    // simply makes a constant of the function declaration
+    // parameters and body
+    
+    // and function declaration name is the name we put
+    // in the declaration
     return make_constant_declaration(
                function_declaration_name(component),
                make_lambda_expression(
