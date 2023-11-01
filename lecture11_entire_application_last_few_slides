@@ -122,10 +122,14 @@ function evaluate(program) {
         // functions whose body is just a return statement are known as:
         // simple compound functions
         
-        
+        // if not a simple return statement - next lecture
             if (is_return_statement(
                    lambda_body(command))) {
-                S = pair(make_simple_function(
+                S = pair(make_simple_function( // make our eyeballs
+                // which have parameters, body and environment
+                // of the function
+                // eyeballs on left is parameters and body
+                // eyeballs on right is current environment at the time of defining the function
                            lambda_parameter_symbols(command),
                            return_expression(lambda_body(command)),
                            E),
