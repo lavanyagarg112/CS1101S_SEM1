@@ -95,6 +95,12 @@ function evaluate(program) {
             
             
         } else if (is_function_declaration(command)) { // new predicate
+        // function declaration is just a way of writing a constant declaration
+        // our interpretor sees a function declaration and translates it into
+        // a constant declaration
+        
+        // we dont have to worry about it anymore
+        // its a constant declaration now
             C = pair(function_decl_to_constant_decl(command),
                      C);
         } else if (is_declaration(command)) {
