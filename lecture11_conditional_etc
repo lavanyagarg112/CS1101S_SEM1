@@ -10,6 +10,18 @@ functional programming language, including:
 Examples at the end of the program
 */
 
+
+/*
+
+stmt::= ...
+        | stmt1 .... stmtn (statement sequence)
+        
+expr::= ...
+        | true | false  (boolean literals)
+        | expr1 ? expr2 : expr3  (conditional expression)
+
+*/
+
 function evaluate(program) { 
     let C = list(program);
     let S = null;
