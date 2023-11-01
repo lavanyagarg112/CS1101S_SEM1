@@ -12,7 +12,7 @@
 // make a pair of that
 // head gives name, tail gives values
 
-
+// environment structure that is outside the control and stash but related to both
 
 function enclosing_environment(env) { return tail(env); }
 
