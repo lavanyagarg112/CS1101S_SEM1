@@ -54,7 +54,8 @@ function evaluate(program) {
         } else if (is_block(command)) {
             const locals = scan_out_declarations(
                              block_body(command));
-            const unassigneds = list_of_unassigned(locals); // initially all are considered unassigned. if we access unassigned names, we get an error
+            const unassigneds = list_of_unassigned(locals); 
+            // initially all are considered unassigned. if we access unassigned names, we get an error
             C = pair(block_body(command),
                   pair(make_env_instruction(E),
                     C));
