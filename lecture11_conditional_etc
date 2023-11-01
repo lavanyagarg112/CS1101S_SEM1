@@ -41,6 +41,25 @@ cond_alternative
 
 */
 
+
+/*
+
+Parsing of sequences return
+
+parse("1; 2; 3;");
+
+returns
+list(" sequence ",
+list(list(" literal ", 1),
+list(" literal ", 2),
+list(" literal ", 3))
+
+
+Syntax predicate: is_sequence
+Selector: sequence_statements
+
+*/
+
 function evaluate(program) { 
     let C = list(program);
     let S = null;
@@ -64,6 +83,8 @@ function evaluate(program) {
                   pair(make_unary_operator_instruction(
                    operator_symbol(command)),
                    C));
+                   
+                   
         } else if (is_sequence(command)) {
             const body = sequence_statements(command);
             C = is_null(body)
@@ -74,6 +95,8 @@ function evaluate(program) {
                     pair(make_pop_instruction(),
                       pair(make_sequence(tail(body)),
                         C)));
+                        
+                        
         } else if (is_conditional(command)) {
             
             // not evaluate the components of the conditional
