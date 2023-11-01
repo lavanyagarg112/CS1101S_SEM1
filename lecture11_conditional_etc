@@ -1,0 +1,265 @@
+/*
+CS1101S Lecture L11: CSE Machine
+
+This program contains a CSE machine for a simple
+functional programming language, including:
+* literal values: numbers, booleans, strings
+* conditional statements and expressions
+* sequences
+
+Examples at the end of the program
+*/
+
+function evaluate(program) { 
+    let C = list(program);
+    let S = null;
+    while (! is_null(C)) {
+        display_control(C);
+        display_stash(S);   
+        const command = head(C);
+        C = tail(C);
+        
+        // expressions and statements
+        if (is_literal(command)) {
+            S = pair(literal_value(command), S);
+        } else if (is_binary_operator_combination(command)) {
+            C = pair(first_operand(command),
+                 pair(second_operand(command),
+                  pair(make_binary_operator_instruction(
+                   operator_symbol(command)),
+                   C)));
+        } else if (is_unary_operator_combination(command)) {
+            C = pair(first_operand(command),
+                  pair(make_unary_operator_instruction(
+                   operator_symbol(command)),
+                   C));
+        } else if (is_sequence(command)) {
+            const body = sequence_statements(command);
+            C = is_null(body)
+                ? pair(make_literal(undefined), C)
+                : is_null(tail(body))
+                ? pair(head(body), C)
+                : pair(head(body),
+                    pair(make_pop_instruction(),
+                      pair(make_sequence(tail(body)),
+                        C)));
+        } else if (is_conditional(command)) {
+            C = pair(conditional_predicate(command),
+                  pair(make_branch_instruction(
+                         conditional_consequent(command),
+                         conditional_alternative(command)),
+                    C));
+
+        // machine instructions
+        } else if (is_pop_instruction(command)) {
+            S = tail(S);
+        } else if (is_binary_operator_instruction(command)) {
+            S = pair(apply_binary(operator_instruction_symbol(command),
+                                  head(tail(S)), head(S)),
+                 tail(tail(S)));
+        } else if (is_unary_operator_instruction(command)) {
+            S = pair(apply_unary(operator_instruction_symbol(command),
+                       head(S)),
+                 tail(S));
+        } else if (is_branch_instruction(command)) {
+            C = pair(is_truthy(head(S))
+                     ? branch_instruction_consequent(command)
+                     : branch_instruction_alternative(command),
+                     C);
+            S = tail(S);
+        } else {
+           error(command, "unknown command:");
+        }
+    }
+    return head(S); 
+}
+
+function apply_binary(operator, op1, op2) {
+    return operator === "+"
+           ? op1 + op2
+           : operator === "-"
+           ? op1 - op2 
+           : operator === "*" 
+           ? op1 * op2 
+           : operator === "/" 
+           ? op1 / op2
+           : operator === "%" 
+           ? op1 % op2
+           : operator === "<" 
+           ? op1 < op2
+           : operator === ">" 
+           ? op1 > op2
+           : operator === "<=" 
+           ? op1 <= op2
+           : operator === ">=" 
+           ? op1 >= op2
+           : operator === "===" 
+           ? op1 === op2
+           : operator === "!==" 
+           ? op1 !== op2
+           : error(operator, "Unknown operator");
+}
+
+function apply_unary(operator, op) {
+    return operator === "-unary"
+           ? - op
+           : operator === "!"
+           ? ! op
+           : error(operator, "Unknown operator");
+}
+//
+// syntax functions (SICP JS 4.1.2)
+//
+
+function is_tagged_list(component, the_tag) {
+    return is_pair(component) && head(component) === the_tag;
+}
+
+// literals
+
+function is_literal(component) {
+    return is_tagged_list(component, "literal");
+}
+function literal_value(component) {    
+    return head(tail(component));
+}
+function make_literal(val) {
+    return list("literal", val);
+}
+
+// operator combinations
+
+function is_operator_combination(component) {	    
+    return is_unary_operator_combination(component) ||
+           is_binary_operator_combination(component);
+}
+function is_unary_operator_combination(component) {	    
+    return is_tagged_list(component, "unary_operator_combination");
+}
+function is_binary_operator_combination(component) {	    
+    return is_tagged_list(component, "binary_operator_combination");
+}
+function operator_symbol(component) {
+    return list_ref(component, 1);
+}
+function first_operand(component) {
+    return list_ref(component, 2);
+}
+function second_operand(component) {
+    return list_ref(component, 3);
+}
+
+// sequences
+
+function is_sequence(stmt) {
+   return is_tagged_list(stmt, "sequence");
+}
+function sequence_statements(stmt) {   
+   return head(tail(stmt));
+}
+function make_sequence(stmts) {   
+   return list("sequence", stmts);
+}
+
+// conditionals 
+
+function is_conditional(component) {
+    return is_tagged_list(component, "conditional_expression") ||
+           is_tagged_list(component, "conditional_statement");
+}
+function conditional_predicate(component) {
+   return list_ref(component, 1);
+}
+function conditional_consequent(component) {
+   return list_ref(component, 2);
+}
+function conditional_alternative(component) {
+   return list_ref(component, 3);
+}
+
+//
+// CSE machine instructions
+//
+
+// operators instructions
+
+function is_binary_operator_instruction(component) {	    
+    return is_tagged_list(component, "binop");
+}
+function is_unary_operator_instruction(component) {	    
+    return is_tagged_list(component, "unop");
+}
+function operator_instruction_symbol(component) {
+    return list_ref(component, 1);
+}
+function make_binary_operator_instruction(symbol) {
+    return list("binop", symbol);
+}
+function make_unary_operator_instruction(symbol) {
+    return list("unop", symbol);
+}
+
+// pop instructions
+
+function is_pop_instruction(component) {	    
+    return is_tagged_list(component, "pop");
+}
+function make_pop_instruction() {
+    return list("pop");
+}
+
+// branch instructions
+
+function is_branch_instruction(component) {
+    return is_tagged_list(component, "branch");
+}
+function branch_instruction_consequent(component) {
+   return list_ref(component, 1);
+}
+function branch_instruction_alternative(component) {
+   return list_ref(component, 2);
+}
+function make_branch_instruction(consequent, alternative) {
+    return list("branch", consequent, alternative);
+}
+
+//
+// evaluator data structures (SICP JS 4.1.3)
+//
+
+// Booleans
+
+function is_truthy(x) {
+    return is_boolean(x) 
+           ? x
+           : error(x, "boolean expected, received");
+}
+
+//
+// testing
+//
+
+function display_control(C) {
+    display("", "***     control     ***                      ");
+    for_each(command => 
+                 is_literal(command) ||
+                 is_pop_instruction(command) ||
+                 is_binary_operator_instruction(command) ||
+                 is_unary_operator_instruction(command)
+                 ? display_list(command)
+                 : display_list(list(head(command), "...")), 
+             C);
+    display("", "                                             ");
+}
+
+function display_stash(S) {
+    display("", "***      stash      ***                      ");
+    for_each(value => display_list(value), S);
+    display("", "                                             ");
+}
+
+function parse_and_evaluate(string) {
+    return evaluate(parse(string));
+}
+
+parse_and_evaluate("true ? 42 : 17;");
