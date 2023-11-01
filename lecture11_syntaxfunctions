@@ -27,9 +27,17 @@ function literal_value(component) {    // selector
 
 // operator combinations
 
-function is_binary_operator_combination(component) {	    
+function is_binary_operator_combination(component) {	     // predicate
     return is_tagged_list(component, "binary_operator_combination");
 }
+
+// for this parse returns list("binary_operator_combination", "+", 
+//                                    list("literal", 2.3),
+//                                    list("literal", 70.4))....
+
+
+// so based on this format:
+
 function operator_symbol(component) {
     return list_ref(component, 1);
 }
