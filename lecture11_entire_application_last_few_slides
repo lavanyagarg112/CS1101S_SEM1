@@ -32,6 +32,17 @@ factorial
 
 */
 
+/*
+
+add three new predicates:
+is_lambda_expression(command)
+is_function_declaration(command)
+is_application(command)
+
+and one new call instruction:
+is_call_instruction(command)
+*/
+
 function evaluate(program) { 
     let C = list(make_block(program));
     let S = null;
@@ -81,7 +92,9 @@ function evaluate(program) {
                   pair(make_env_instruction(E),
                     C));
             E = extend_environment(locals, unassigneds, E);
-        } else if (is_function_declaration(command)) {
+            
+            
+        } else if (is_function_declaration(command)) { // new predicate
             C = pair(function_decl_to_constant_decl(command),
                      C);
         } else if (is_declaration(command)) {
@@ -94,12 +107,14 @@ function evaluate(program) {
                          symbol_of_name(command),
                          E),
                      S);
-        } else if (is_assignment(command)) {
+        } else if (is_assignment(command)) { // new predicate
             C = pair(assignment_value_expression(command),
                   pair(make_assign_instruction(
                          assignment_symbol(command)),
                        C));
-        } else if (is_lambda_expression(command)) {
+                       
+                       
+        } else if (is_lambda_expression(command)) { // new predicate
             if (is_return_statement(
                    lambda_body(command))) {
                 S = pair(make_simple_function(
@@ -141,7 +156,10 @@ function evaluate(program) {
                E);
         } else if (is_env_instruction(command)) {
             E = env_instruction_environment(command);
+            
+            
         } else if (is_call_instruction(command)) { // call instructions
+        // new call instruction
             const arity = call_instruction_arity(command);
             let args = null;
             let n = arity;
