@@ -15,12 +15,16 @@ function evaluate(expr) { // syntax tree as argument
     // and decide what to do next
         display_control(C);
         display_stash(S);
-        const command = head(C); // take head 
+        const command = head(C); // take head
         C = tail(C); // and remove it from C
+        // take action on command accordingly
         
         // expressions and statements
-        if (is_literal(command)) {
+        if (is_literal(command)) { // if command is literal
+        // move the literal from the control to the stash
+        // push the literal to the stash (put it in front)
             S = pair(literal_value(command), S);
+            
         } else if (is_binary_operator_combination(command)) {
             C = pair(first_operand(command),
                  pair(second_operand(command),
@@ -37,7 +41,7 @@ function evaluate(expr) { // syntax tree as argument
            error(command, "unknown command:");
         }
     }
-    return head(S); 
+    return head(S); // return the top thing on the stash
 }
 
 function apply_binary(operator, op1, op2) {
