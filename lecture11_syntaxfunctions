@@ -1,0 +1,48 @@
+//
+// syntax functions (SICP JS 4.1.2)
+//
+
+function is_tagged_list(component, the_tag) {
+    return is_pair(component) && head(component) === the_tag;
+}
+
+// literals
+
+function is_literal(component) {
+    return is_tagged_list(component, "literal");
+}
+function literal_value(component) {    
+    return head(tail(component));
+}
+
+// operator combinations
+
+function is_binary_operator_combination(component) {	    
+    return is_tagged_list(component, "binary_operator_combination");
+}
+function operator_symbol(component) {
+    return list_ref(component, 1);
+}
+function first_operand(component) {
+    return list_ref(component, 2);
+}
+function second_operand(component) {
+    return list_ref(component, 3);
+}
+
+display_list(parse("1.4 + 2.3 / 70.4;"));
+
+//is_binary_operator_combination(parse("1.4 + 2.3 / 70.4;"));
+
+//operator_symbol(parse("1.4 + 2.3 / 70.4;"));
+
+//display_list(first_operand(parse("1.4 + 2.3 / 70.4;")));
+
+//display_list(second_operand(parse("1.4 + 2.3 / 70.4;")));
+
+//is_literal(parse("1.4;"));
+
+//literal_value(parse("1.4;"));
+
+
+
