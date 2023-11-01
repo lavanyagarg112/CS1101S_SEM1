@@ -11,7 +11,7 @@ Examples at the end of the program
 */
 
 function evaluate(program) { 
-    let C = list(make_block(program));
+    let C = list(make_block(program)); // enclose the program in a block
     let S = null;
     let E = null;
     while (! is_null(C)) {
@@ -56,6 +56,7 @@ function evaluate(program) {
                              block_body(command));
             const unassigneds = list_of_unassigned(locals); 
             // initially all are considered unassigned. if we access unassigned names, we get an error
+            // like source first writes all names then assigns
             C = pair(block_body(command),
                   pair(make_env_instruction(E),
                     C));
