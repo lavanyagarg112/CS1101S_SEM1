@@ -19,6 +19,10 @@ function enclosing_environment(env) { return tail(env); }
 function first_frame(env) { return head(env); }
 
 const the_empty_environment = null;
+// const the_global_environment = the_empty_environment;
+
+// null is our empty environment
+// the global environment is initially the empty environment
 
 function make_frame(symbols, values) { return pair(symbols, values); }
 
@@ -34,8 +38,6 @@ function frame_values(frame) { return tail(frame); }
 
 // so environments are just lists of frames
 
-// null is our empty environment
-// the global environment is initially the empty environment
 
 function extend_environment(symbols, vals, base_env) {
     return length(symbols) === length(vals)
