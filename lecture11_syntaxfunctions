@@ -2,16 +2,26 @@
 // syntax functions (SICP JS 4.1.2)
 //
 
+// analysing the parse tree
+
 function is_tagged_list(component, the_tag) {
-    return is_pair(component) && head(component) === the_tag;
+    return is_pair(component) && head(component) === the_tag; 
 }
+
+// eg when we parse "1.4;" we get list("literal", 1.4), that is how
+// it checks
 
 // literals
 
-function is_literal(component) {
+// component corresponds to program component - expressions or statements
+
+function is_literal(component) { // is_literal is a predicate
     return is_tagged_list(component, "literal");
 }
-function literal_value(component) {    
+
+display(is_literal(parse("1.4;"))); // returns true
+
+function literal_value(component) {    // selector
     return head(tail(component));
 }
 
