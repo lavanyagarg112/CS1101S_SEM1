@@ -130,6 +130,9 @@ function evaluate(program) {
                 // of the function
                 // eyeballs on left is parameters and body
                 // eyeballs on right is current environment at the time of defining the function
+                
+                // shows what happens when we construct a function object
+                // when we construct a "closure"
                            lambda_parameter_symbols(command),
                            return_expression(lambda_body(command)),
                            E),
