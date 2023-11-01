@@ -41,7 +41,7 @@ function evaluate(expr) { // syntax tree as argument
            error(command, "unknown command:");
         }
     }
-    return head(S); // return the top thing on the stash
+    return head(S); // return the top thing on the stash ("top" on stash)
 }
 
 function apply_binary(operator, op1, op2) {
