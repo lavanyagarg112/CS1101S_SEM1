@@ -64,6 +64,8 @@ function evaluate(program) {
                          conditional_consequent(command),
                          conditional_alternative(command)),
                     C));
+                    
+                    
         } else if (is_block(command)) {
             const locals = scan_out_declarations(
                              block_body(command));
@@ -85,6 +87,8 @@ function evaluate(program) {
                          symbol_of_name(command),
                          E),
                      S);
+                     
+                     
         } else if (is_assignment(command)) {
             C = pair(assignment_value_expression(command),
                   pair(make_assign_instruction(
@@ -108,12 +112,14 @@ function evaluate(program) {
                      : branch_instruction_alternative(command),
                      C);
             S = tail(S);
+            
+            
         } else if (is_assign_instruction(command)) {
             assign_symbol_value(
                assign_instruction_symbol(command), 
                head(S),
                E);
-        } else if (is_env_instruction(command)) {
+        } else if (is_env_instruction(command)) { // need to add environments to the machine
             E = env_instruction_environment(command);
         } else {
            error(command, "unknown command:");
