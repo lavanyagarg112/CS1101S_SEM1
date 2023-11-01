@@ -2,6 +2,18 @@
 // environments
 //
 
+// represent environments in environment diagrams
+
+// do this using frames
+// frames has two lists
+// list of names
+// list of corresponding values
+
+// make a pair of that
+// head gives name, tail gives values
+
+
+
 function enclosing_environment(env) { return tail(env); }
 
 function first_frame(env) { return head(env); }
@@ -13,6 +25,17 @@ function make_frame(symbols, values) { return pair(symbols, values); }
 function frame_symbols(frame) { return head(frame); }
 
 function frame_values(frame) { return tail(frame); }
+
+
+// extends the given encironment by taking
+// given list of names, list of values and enclosing environment
+// makes a new environment that extends the enclosing environement
+// by making a new frame
+
+// so environments are just lists of frames
+
+// null is our empty environment
+// the global environment is initially the empty environment
 
 function extend_environment(symbols, vals, base_env) {
     return length(symbols) === length(vals)
