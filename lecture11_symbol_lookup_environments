@@ -12,6 +12,10 @@
 // make a pair of that
 // head gives name, tail gives values
 
+// how do we actually access the environments
+
+``
+
 // environment structure that is outside the control and stash but related to both
 
 function enclosing_environment(env) { return tail(env); }
@@ -51,6 +55,10 @@ function extend_environment(symbols, vals, base_env) {
                    stringify(vals));
 }
 
+
+// access function
+// start from innermost frame (current environment)
+// and go up until find what we are looking for
 function lookup_symbol_value(symbol, env) {
     function env_loop(env) {
         function scan(symbols, vals) {
@@ -70,6 +78,8 @@ function lookup_symbol_value(symbol, env) {
     return env_loop(env);
 }
 
+
+// program than assigns a given value to a new value
 function assign_symbol_value(symbol, val, env) {
     function env_loop(env) {
         function scan(symbols, vals) {
