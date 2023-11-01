@@ -8,15 +8,15 @@ Examples at the end of the program
 */
 
 function evaluate(expr) { // syntax tree as argument
-    let C = list(expr); 
+    let C = list(expr); // C is the whole program first
     // control - when we start, the given program is the only thing on the control
     let S = null; // stash
     while (! is_null(C)) { // in loop keep taking the next element from the control
     // and decide what to do next
         display_control(C);
         display_stash(S);
-        const command = head(C);
-        C = tail(C);
+        const command = head(C); // take head 
+        C = tail(C); // and remove it from C
         
         // expressions and statements
         if (is_literal(command)) {
