@@ -7,10 +7,12 @@ calculator language
 Examples at the end of the program
 */
 
-function evaluate(expr) { 
-    let C = list(expr);
-    let S = null;
-    while (! is_null(C)) {
+function evaluate(expr) { // syntax tree as argument
+    let C = list(expr); 
+    // control - when we start, the given program is the only thing on the control
+    let S = null; // stash
+    while (! is_null(C)) { // in loop keep taking the next element from the control
+    // and decide what to do next
         display_control(C);
         display_stash(S);
         const command = head(C);
