@@ -26,7 +26,7 @@ expr::= ...
 function evaluate(program) { 
     let C = list(make_block(program)); // enclose the program in a block
     let S = null;
-    let E = null;
+    let E = null; // initially start with empty environment
     while (! is_null(C)) {
         display_control(C);
         display_stash(S);   
@@ -67,16 +67,34 @@ function evaluate(program) {
                     
                     
         } else if (is_block(command)) {
+            // decided to use particular strings as labels in the syntax tree
+            // in that case "arbitary" - decided by designers of parsers
+            
+            // frist when we see the block
+            // find out all the names declared in the block
+            // scan out te declarations
+            
+            // give the locally declared name scanned as unassigned name
             const locals = scan_out_declarations(
                              block_body(command));
             const unassigneds = list_of_unassigned(locals); 
             // initially all are considered unassigned. if we access unassigned names, we get an error
             // like source first writes all names then assigns
+            
             C = pair(block_body(command),
                   pair(make_env_instruction(E),
                     C));
+                    
+                    
             E = extend_environment(locals, unassigneds, E); // extending the given environment
-            // binding the local names to the environment
+            // by binding the local names to these unassigned local values
+            // and continue our execution
+            
+            // now we have CSE
+            // Control, Stash, Environment
+            
+            
+            
         } else if (is_declaration(command)) {
             C = pair(make_assignment(
                        declaration_symbol(command),
