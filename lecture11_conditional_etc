@@ -111,11 +111,21 @@ function evaluate(program) {
             S = pair(apply_unary(operator_instruction_symbol(command),
                        head(S)),
                  tail(S));
+                 
         } else if (is_branch_instruction(command)) {
-            C = pair(is_truthy(head(S))
-                     ? branch_instruction_consequent(command)
+            
+            // when this is encountered, we assume that the predicate
+            // has already been evaluated (from the is_conditional(command))
+            // and assume that the result is already on the stash
+            
+            C = pair(is_truthy(head(S)) // check our stash and see if the predicate is true
+            // is_truthy comes from javascript
+            // to convey what is considered to be true in the language
+                     ? branch_instruction_consequent(command) // if predicate true
+                     // put the consequent back on control
                      : branch_instruction_alternative(command),
                      C);
+                     // otherwise put alternate back on control
             S = tail(S);
         } else {
            error(command, "unknown command:");
