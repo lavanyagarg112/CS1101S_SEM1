@@ -121,7 +121,7 @@ function evaluate(program) {
                E);
         } else if (is_env_instruction(command)) {
             E = env_instruction_environment(command);
-        } else if (is_call_instruction(command)) {
+        } else if (is_call_instruction(command)) { // call instructions
             const arity = call_instruction_arity(command);
             let args = null;
             let n = arity;
@@ -132,7 +132,7 @@ function evaluate(program) {
             }
             const fun = head(S);
             S = tail(S);
-            if (is_primitive_function(fun)) {
+            if (is_primitive_function(fun)) { // check if function is primitive function
                 S = pair(apply_primitive_function(fun, args),
                       S);
             } else if (is_simple_function(fun)) {
