@@ -3,6 +3,11 @@
 // eg: "8 + 34;" is split into tokens 8 + 34 ;
 // see parse tree in slides
 
+/*
+Parsing, syntax analysis, or syntactic analysis is the process of analyzing 
+a string of symbols, either in natural language, computer languages or 
+data structures, conforming to the rules of a formal grammar. 
+*/
 
 const syntax_tree = parse("8 + 34;");
 display_list(syntax_tree);
@@ -28,6 +33,8 @@ bin-op::= +|-|*|/. (binary operator)
 // Syntax of literals
 
 parse("1.4 + 2.3 / 70.4;"); // returns syntax tree
+// we also have
+// apply_primitive_function in source ch4 (see lecture11_entire_application_last_few_slides)
 
 function is_literal(comp){
     return is_tagged_list(comp, "literal");
@@ -135,7 +142,7 @@ exit while loop , result on stash
 // lecture11_blocks_and_declarations
 // lecture11_symbol_lookup_environments
 // lecture11_entire_application_last_few_slides
-// lecture11_entire_application_last_few_slides_primitive - see line 636
+// lecture11_entire_application_last_few_slides_primitive - see line 636 (havent edited this for explanation)
 
 
 
