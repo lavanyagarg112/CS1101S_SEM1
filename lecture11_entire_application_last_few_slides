@@ -169,6 +169,15 @@ function evaluate(program) {
                     pair(make_call_instruction(
                            length(arg_exprs)), C)));
                            
+        // call instruction - imp
+        // once we have evaluated the function and argument expression
+        // have those results on our stash
+        // now get to the business of actually calling the function
+        
+        // call instruction knows how many arguments the function will take
+        // will remember the length of the argument expressions
+        
+                           
         // machine instructions
         } else if (is_pop_instruction(command)) {
             S = tail(S);
@@ -198,29 +207,80 @@ function evaluate(program) {
         } else if (is_call_instruction(command)) { // call instructions 
         // new call instruction
         // seen in cse visualiser
+        
+        // what exactly happens when we encounter such a call instruction
+        // we have already evaluated our components in the stash
+        // function and argument expressions
+        
+        // eg if we have three argument expressions applying function g
+        // g(1,3,5)
+        // once we encounter call instruction
+        // 5 first in our stash
+        // followed by 3
+        // followed by 1
+        // followed by function object - the closure
+        // this is what happens when we encouter call instruction
+        
+        // take all these values from the stash
+        // and place them
+        
             const arity = call_instruction_arity(command);
+            /*
+            In logic, mathematics, and computer science, arity is the number of 
+            arguments or operands taken by a function, operation or relation.
+            */
+            // we know the arity of the function we want to call
             let args = null;
+            // start with empty list of arguments, and then 
+            // construct the list of arguments we want to pass to the function
+            // and want to make sure that this list is in the right order
+            // but actually in the reverse order
+            
+            // taking element by element from the stash and placing in list of arguments
+            // first in stash : 5 , places at end
+            
             let n = arity;
             while (n > 0) {
-                args = pair(head(S), args);
-                S = tail(S);
+                args = pair(head(S), args); // args places at end
+                // 5 placed at end
+                // and so on
+                S = tail(S); // remove the elements from the stash
                 n = n - 1;
             }
-            const fun = head(S);
+            const fun = head(S); // function object
+            // we need to apply this function object
+            
+            
             S = tail(S);
             if (is_primitive_function(fun)) { // check if function is primitive function
+            // primitive functions eg: math_pow
                 S = pair(apply_primitive_function(fun, args),
                       S);
-            } else if (is_simple_function(fun)) { // function is two eyeballs - simple function
-            // then evaluate body of function and put back in control
+            } else if (is_simple_function(fun)) { // but if function is two eyeballs 
+            // that comes from construting simple function object
+            // then evaluate body of function and put body back in control
         
                 C = pair(function_body(fun), 
                       pair(make_env_instruction(E),
-                        C)); // have to make sure we dont lose our environment so put it in control as well
+                        C)); // have to make sure we dont lose our environment so 
+                        // make an environment instruction and put it in control as well
+                        // so that we can go back to the environment
+                        // which we had before we called the function
                 E = extend_environment(
                        function_parameters(fun), 
                        args, 
                        function_environment(fun));
+                       
+                       // the environment used to evaluate the body of the function
+                      // is the environment that results from extending the 
+                      // functions environment with a binding of the parameters 
+                      // of the function we get from the two eyeballs
+                      // to the arguments that we just obtained from the stash
+                      
+                      // that is the envrionment wrt which we evaluate the body of the
+                      // function
+                       
+                       
             } else {
                 error(fun, "unknown function type -- call");
             }
