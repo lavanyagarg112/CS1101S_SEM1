@@ -1,4 +1,5 @@
 // reflection 11
+// see reflection_11_shortversion for inclass notes and more
 
 function evaluate(program) { 
     let C = list(make_block(program));
@@ -761,6 +762,10 @@ function parse_and_evaluate(string) {
 //parse_and_evaluate("3 % 4;");
 parse_and_evaluate("false && 0();");
 //display_list(parse_and_evaluate(`parse('parse("1;");');`));
+// last semicolon is for parse_and_evaluate
+// second last for function call parse('parse("1;")');
+// third last for function call parse("1;");
+// last for the expression "1;"
 
 
 
