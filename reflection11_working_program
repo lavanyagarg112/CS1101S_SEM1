@@ -94,6 +94,8 @@ function evaluate(program) {
         
             // q2 logical composition       
         } else if (is_logical_composition(command)){
+            
+            /*
             if (logical_symbol(command) === "&&"){
                 C = pair(make_conditional_expression(logical_composition_first_component(command),
                                     logical_composition_second_component(command), make_literal(false)), C);
@@ -105,6 +107,21 @@ function evaluate(program) {
                                     make_literal(true), logical_composition_second_component(command)), C);
                 
             }
+            */
+            
+            // can also write as:
+            
+            C = pair(
+                
+                    logical_symbol(command) === "&&"
+                    ? 
+                    make_conditional_expression(logical_composition_first_component(command),
+                                    logical_composition_second_component(command), make_literal(false))
+                    :
+                    make_conditional_expression(logical_composition_first_component(command),
+                                    make_literal(true), logical_composition_second_component(command))
+                
+                , C);
             
         // machine instructions
         } else if (is_pop_instruction(command)) {
