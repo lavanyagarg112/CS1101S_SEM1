@@ -621,7 +621,8 @@ const primitive_functions = list(
        list("display", display          ),
        list("error",   error            ),
        list("math_pow",math_pow         ),
-       list("parse", parse              )
+       list("parse", parse              ),
+       list("stringify", stringify      )
        );
 const primitive_function_symbols =
     map(head, primitive_functions);
@@ -762,9 +763,17 @@ function parse_and_evaluate(string) {
 //parse_and_evaluate("3 % 4;");
 //parse_and_evaluate("false && 0();");
 
-//display_list(parse_and_evaluate(`parse("parse('parse(\'1\;');');");`));
-//display_list(parse_and_evaluate(`parse("parse('parse(1;);');");`));
-display_list(parse_and_evaluate(`parse("1;");`));
+display_list(parse_and_evaluate(`
+
+const expr = "1";
+parse("parse('parse(expr);');");`));
+
+//display_list(parse_and_evaluate(`parse("parse('1;');");`)); 
+// function application whose name is parse
+// and returns parse('1;') which evaluates to literal 1
+
+
+//display_list(parse_and_evaluate(`parse("1;");`));
 
 // make parse a primitive function
 // semicolons always mean end of expression statements
