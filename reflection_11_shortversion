@@ -26,6 +26,8 @@ function apply_binary(operator, op1, op2) {
            : error(operator, "Unknown operator");
 }
 
+// yes it works for a % b % c
+
 // q2
 
 if (is_logical_composition(command)){
