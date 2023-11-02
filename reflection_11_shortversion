@@ -1,0 +1,87 @@
+//  q1
+
+function apply_binary(operator, op1, op2) {
+    return operator === "+"
+           ? op1 + op2
+           : operator === "-"
+           ? op1 - op2 
+           : operator === "*" 
+           ? op1 * op2 
+           : operator === "/" 
+           ? op1 / op2
+           : operator === "%" 
+           ? math_sqrt(op1*op1 + op2*op2)
+           : operator === "<" 
+           ? op1 < op2
+           : operator === ">" 
+           ? op1 > op2
+           : operator === "<=" 
+           ? op1 <= op2
+           : operator === ">=" 
+           ? op1 >= op2
+           : operator === "===" 
+           ? op1 === op2
+           : operator === "!==" 
+           ? op1 !== op2
+           : error(operator, "Unknown operator");
+}
+
+// q2
+
+if (is_logical_composition(command)){
+        if (logical_symbol(command) === "&&"){
+            C = pair(make_conditional_expression(logical_composition_first_component(command),
+                                logical_composition_second_component(command), make_literal(false)), C);
+        }
+            
+        else {
+                
+            C = pair(make_conditional_expression(logical_composition_first_component(command),
+                                make_literal(true), logical_composition_second_component(command)), C);
+                
+        }
+}
+
+// C is control in original program
+
+// the syntax predicate
+function is_logical_composition(component) {
+    return is_tagged_list(component, "logical_composition");
+}
+
+// selectors
+function logical_symbol(comp) {
+    return list_ref(comp, 1);
+}
+function logical_composition_first_component(comp) {
+    return list_ref(comp, 2);
+}
+function logical_composition_second_component(comp) {
+    return list_ref(comp, 3);
+}
+
+// helper to make a conditional expression
+function make_conditional_expression(pred, cons, alt) {
+    return list("conditional_expression", pred, cons, alt);
+}
+// helper to make a literal value
+function make_literal(value) {
+    return list("literal", value);
+}
+
+
+// q3
+
+// make parse a primitive function
+
+const primitive_functions = list(
+       list("head",    head             ),
+       list("tail",    tail             ),
+       list("pair",    pair             ),
+       list("list",    list             ),
+       list("is_null", is_null          ),
+       list("display", display          ),
+       list("error",   error            ),
+       list("math_pow",math_pow         ),
+       list("parse", parse              )
+       );
