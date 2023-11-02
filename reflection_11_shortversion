@@ -128,8 +128,13 @@ const primitive_functions = list(
        
 
 // parse_and_evaluate(‘parse(’parse("1;");’);‘);
+
 // semicolons always mean end of expression statements
 // last semicolon is for parse_and_evaluate
 // second last for function call parse('parse("1;")');
 // third last for function call parse("1;");
 // last for the expression "1;"
+
+
+// how to add more parse... we are out of different types of quotes
+// what will be the output
