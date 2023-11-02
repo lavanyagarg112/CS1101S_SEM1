@@ -128,6 +128,7 @@ const primitive_functions = list(
        
 
 // parse_and_evaluate(‘parse(’parse("1;");’);‘);
+// semicolons always mean end of expression statements
 // last semicolon is for parse_and_evaluate
 // second last for function call parse('parse("1;")');
 // third last for function call parse("1;");
