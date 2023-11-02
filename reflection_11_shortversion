@@ -29,6 +29,14 @@ function apply_binary(operator, op1, op2) {
 
 // yes it works for a % b % c
 
+// but for example if it was math_pow(op1, op2)
+
+// a ^ (b^c) is not same as (a ^ b)^c
+// we need to do right to left 
+// but here source does left to right 
+
+// so here a % b % c not same
+
 // q2
 
 if (is_logical_composition(command)){
