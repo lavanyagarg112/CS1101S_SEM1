@@ -58,6 +58,11 @@ if (is_logical_composition(command)){
 
 // C is control in original program
 
+// && can be written as 
+/*
+E1 ? E2 : false;
+*/
+
 // the syntax predicate
 function is_logical_composition(component) {
     return is_tagged_list(component, "logical_composition");
