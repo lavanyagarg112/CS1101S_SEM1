@@ -760,9 +760,9 @@ function parse_and_evaluate(string) {
 
 
 //parse_and_evaluate("3 % 4;");
-parse_and_evaluate("false && 0();");
+//parse_and_evaluate("false && 0();");
 
-//display_list(parse_and_evaluate(`parse('parse("1;");');`));
+display_list(parse_and_evaluate(`parse('parse("1;");');`));
 
 // make parse a primitive function
 // semicolons always mean end of expression statements
