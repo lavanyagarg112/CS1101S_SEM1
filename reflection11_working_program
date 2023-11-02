@@ -331,7 +331,7 @@ function apply_binary(operator, op1, op2) {
            : operator === "/" 
            ? op1 / op2
            : operator === "%" 
-           ? math_sqrt(op1*op1 + op2*op2)
+           ? math_hypot(op1, op2)
            : operator === "<" 
            ? op1 < op2
            : operator === ">" 
@@ -874,7 +874,8 @@ function parse_and_evaluate(string) {
 }
 
 
-parse_and_evaluate("false && 0();");
+parse_and_evaluate("3 % 4;");
+//parse_and_evaluate("false && 0();");
 //display_list(parse_and_evaluate(`parse('parse("1;");');`));
 
 
