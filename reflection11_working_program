@@ -874,7 +874,7 @@ function parse_and_evaluate(string) {
 }
 
 
-parse_and_evaluate(`parse('parse("1;");');`);
+display_list(parse_and_evaluate(`parse('parse("1;");');`));
 
 
 
