@@ -63,6 +63,9 @@ if (is_logical_composition(command)){
 E1 ? E2 : false;
 */
 
+// "syntactic sugar"
+// doesnt really add much value, just makes it better sometimes
+
 // the syntax predicate
 function is_logical_composition(component) {
     return is_tagged_list(component, "logical_composition");
