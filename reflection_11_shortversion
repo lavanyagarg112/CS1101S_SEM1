@@ -37,6 +37,9 @@ function apply_binary(operator, op1, op2) {
 
 // so here a % b % c not same
 
+// parser is a black box for us rn (level 4 mod)
+// cant do anything now
+
 // q2
 
 if (is_logical_composition(command)){
