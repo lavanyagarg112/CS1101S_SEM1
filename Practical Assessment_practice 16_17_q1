@@ -71,7 +71,8 @@ function oxoguanine_repair(xs) {
 ////////////////////////////////////////////////////////////
 
 function find_gene_start(xs) {
-
+    
+    
     function helper(xs, flag){
 
         
