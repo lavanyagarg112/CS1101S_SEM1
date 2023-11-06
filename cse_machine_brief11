@@ -93,9 +93,23 @@ function evaluate(program) {
                         list(
                           lambda_body(command),
                           make_return_statement(
-                            make_literal(undefined)))),
+                            make_literal(undefined)))), // return undefined after every function body
                       E),
                   S);
+                  
+        // if we have complex function
+        // make pair of eyeballs whose body is not the original body
+        // but a sequence with the original body in the first component
+        // and undefined in the second component
+        
+        // so if we encounter no return statement in evaluation of body, 
+        // we will execute the artificial return statement we have executed after the body
+        // ensure that functions that dont encounter return statement in their body
+        // will always return undefined
+        
+        // this is how we handle missing return statement
+        // or when we dont evaluate return statement
+        
         } else if (is_application(command)) {
             const arg_exprs = arg_expressions(command);
             C = pair(function_expression(command),
