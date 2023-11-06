@@ -118,6 +118,15 @@ function evaluate(program) {
                       logical_composition_second_component(command)),
                 C);
         } else if (is_return_statement(command)) {
+            // evaluate by putting the return expression onto the control
+            // return expression could be anything... another function, complex expression
+            
+            // then put return instruction onto the control
+            // when we evaluate the return instruction
+            // we will have the result of evaluating the result expression on our stash
+            // then return instruction can take the result of this evaluation from the stash
+            // and do what needs to be done
+            
             C = pair(return_expression(command),
                   pair(make_return_instruction(),
                     C));
@@ -204,14 +213,43 @@ function evaluate(program) {
                 S = pair(apply_primitive_function(fun, args),
                       S);
             } else if (is_simple_function(fun)) {
+                // put the body of the function on the control
+                // actually evaluate it
+                // store the environment in environment instruction
+                // to restore the current environment when we return from functions
+                // and when we exit blocks
                 C = pair(function_body(fun), 
                       pair(make_env_instruction(E),
                         C));
+                        
+                // not executing the function body yet
+                // just putting it on the control
+                
                 E = extend_environment(
                        function_parameters(fun), 
                        args, 
                        function_environment(fun));
+                       
+            // extend the function environemnt
+            // i.e. the right eye ball
+            // by a binding of the function's parameters
+            // to the arguments we have removed from the stash 
+            
+            
+            
             } else { // it's a complex function
+            
+            // place the entire body onto the control
+            // followed by a marker
+            // so that in case the evaluation of the
+            // body of the function encounters a return statement
+            // we can do back to the marker
+            // and remove everything accumulated on the control
+            // from the time we called the function
+            // i.e. from the time we pushed the function body onto the control
+            
+            // then the environment instruction to restore the environment
+            
                 C = pair(function_body(fun), 
                       pair(make_marker(),
                         pair(make_env_instruction(E),
@@ -222,6 +260,33 @@ function evaluate(program) {
                        function_environment(fun));
             }
         } else if (is_return_instruction(command)) {
+            
+            // if the next instruction in our control in a return instruction
+            // we need to pop all control items (seen in C = tail(C))
+            
+            // but more complicated
+            // if we have a return instruction, we know that the return value is on the stash
+            // we need to remove all items from the control until the next marker
+            // if the head of control is already the marker, we just need to 
+            // remove the marker and proceed without evalutation
+            
+            // that is the base case where we are done removing all the items
+            // until the next marker
+            
+            // in else:
+            // if head of control is not a marker, we need to ignore the head of control
+            // we put the return statement back onto the control
+            // replacing the next instruction
+            // throw away the next instruction
+            // see still return instruction
+            // now check if marker again..
+            // keep going until encounter marker
+            // and we keep removing commands from control until we hit the marker
+            
+            // and remove the marker and we are done (in the if condition)
+            
+            // then go to the next instruction that is the environment restoration instruction
+            
             if (is_marker(head(C))) {
                 C = tail(C);
             } else {
