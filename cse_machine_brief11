@@ -242,7 +242,30 @@ function evaluate(program) {
                               for_loop_body(command),
                               for_loop_update(command)
                               )))))), C);
+                              
+                              
          } else if (is_array_expression(command)) {
+             // array instructions take the value in the array expression
+             // and place them into an array
+             // represent arrays in the interpreted language
+             // by arrays in the interpreting language
+             
+             // same for array access
+             // represent the array access expression 
+             // by a sequence of commands in control
+             // so we evaluate array itself,
+             // evaluate the array index
+             // evaluate array access instruction
+             // which finds already evaluated components from the stash
+             // remove them from the stash
+             // carry out the actual array index
+             // put the result of array access onto the stash
+             
+             // similar for array assignment
+             // decompose into parts: expression, index, value expression
+             // then when we actually evaluate/ execute array assignment instruction (in the control)
+             // see the is_array_assignment_instruction
+             
              const array_expressions = array_elements(command);
              C = append(array_expressions,
                    pair(make_array_instruction(
@@ -256,9 +279,10 @@ function evaluate(program) {
          } else if (is_array_assignment(command)) {
              const access = 
                  array_assignment_access(command);
-             C = pair(array_access_array_expression(access),
-                   pair(array_access_index_expression(access),
-                     pair(array_assignment_value_expression(
+                 // decompose into parts:
+             C = pair(array_access_array_expression(access), // expression
+                   pair(array_access_index_expression(access), // index
+                     pair(array_assignment_value_expression( // value expression
                             command),
                        pair(make_array_assignment_instruction(),
                          C)))); 
@@ -395,6 +419,19 @@ function evaluate(program) {
             const array = head(tail(S));
             S = pair(array[index], tail(tail(S)));
         } else if (is_array_assignment_instruction(command)) {
+            
+            // on evaluating/excuting this instruction,
+            // we take the correct values from the stash
+            // the index, the array
+            
+            // then we carry out actual array assignment
+            // executing the assignment of the array under the index to the value
+            // then we remove these three items from the stash
+            // and place the value itself onto the stash
+            
+            // the assignment produces value of the expression on right hand side
+            // and places it back onto the stash
+            
             const val = head(S);
             const index = head(tail(S));
             const array = head(tail(tail(S)));
