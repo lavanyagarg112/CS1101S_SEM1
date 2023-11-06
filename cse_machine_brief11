@@ -94,7 +94,7 @@ function evaluate(program) {
                           lambda_body(command),
                           make_return_statement(
                             make_literal(undefined)))), // return undefined after every function body
-                      E),
+                      E), // environment at the end
                   S);
                   
         // if we have complex function
