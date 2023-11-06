@@ -24,7 +24,7 @@ function evaluate(program) {
         const command = head(C);
         C = tail(C);
         
-        // expressions and statements
+        // expressions and statements -> add to control
         if (is_literal(command)) {
             S = pair(literal_value(command), S);
         } else if (is_binary_operator_combination(command)) {
@@ -287,7 +287,7 @@ function evaluate(program) {
                        pair(make_array_assignment_instruction(),
                          C)))); 
                         
-        // machine instructions
+        // machine instructions -> take from stash
         } else if (is_pop_instruction(command)) {
             S = tail(S);
         } else if (is_binary_operator_instruction(command)) {
