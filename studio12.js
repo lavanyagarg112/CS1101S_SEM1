@@ -58,7 +58,22 @@ function evaluate(program) {
             const locals = scan_out_declarations(
                              block_body(command));
             const unassigneds = list_of_unassigned(locals);
-            C = pair(block_body(command),
+            
+             function helper(c){
+
+                const z=is_sequence(c) // take a list of all not function declarations
+                       ? filter(x=>!is_function_declaration(c),sequence_statements(c))
+                       : null;
+                let t=is_sequence(c) // add it after all function declarations
+                       ? append(list("sequence"),list(append(filter(x=>is_function_declaration(x),sequence_statements(c)),z)))
+                       : c;
+                
+                return t;
+            }
+            const t=helper(block_body(command));            
+
+            
+            C = pair(t,
                   pair(make_env_instruction(E),
                     C));
             E = extend_environment(locals, unassigneds, E);
@@ -1042,8 +1057,9 @@ a;
 */
 
 parse_and_evaluate(`
-function f(x) {
-    12;
+const x = f(8);
+function f(y) {
+    return y + 34;
 }
-f(49);
+x;
 `);
