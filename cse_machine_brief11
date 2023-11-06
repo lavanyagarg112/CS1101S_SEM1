@@ -190,6 +190,7 @@ function evaluate(program) {
             E = env_instruction_environment(command);
         } else if (is_call_instruction(command)) {
             const arity = call_instruction_arity(command);
+            // arity: number of arguments a function can take
             let args = null;
             let n = arity;
             while (n > 0) {
