@@ -145,15 +145,79 @@ function evaluate(program) {
                   pair(make_return_instruction(),
                     C));
         } else if (is_while_loop(command)) {
+            // treat while loops as syntactic sugar
+            // replace the while loop with a conditional
+            // whose predicate is predicate of while loop
+            // whose consequent is body of while loop
+            // whose alternative expression is empty sequence to show we are done with the while loop
+            
+            // but we have to go in a loop
+            // the consequent has not only the body of the while loop
+            // but also the entire while loop, after the body
+            // as we evaluate the body, then evaluate whole while loop again
+            // trick to implement while loops
+            
             C = pair(
                   make_conditional_statement(
                     while_loop_predicate(command),
                     make_sequence(
                       list(while_loop_body(command),
-                           command)),
-                    make_sequence(null)),
+                           command)), // put command back... i.e. the while loop`
+                    make_sequence(null)), // make sequence null - 
+                    // the evaluation of the whole while loop
+                    // would lead to value undefined
+                    // because every statement in this implementation need to produce a value
+                    // and sequence null produces undefined
+                    // same as having the literal undefined
+                    // it is basically "do nothing"
+                    // and every statement needs to produce a value
+                    // and do nothing produces undefined
+                    
                   C);
         } else if (is_for_loop(command)) {
+            // (E1; E2; E3)
+            // E1: initialisation
+            // E2: predicate
+            // E3: update
+            
+            // can explain this simply as a while loop
+            /*
+            
+            E1;
+            
+            while (E2){
+                statements (same as those in the for loop body)
+                E3;
+            }
+            
+            */
+            
+            // implement for loops as syntactic sugar for while loops
+            // just another way of writing while loops
+            
+            // first approximation
+            
+            // (copy of i, which haappens in for loop, not included in this...?)
+            // every iteration of the body has its own copy of loop control variable in source
+            // that is why if we have:
+            
+            /*
+            
+            const a = [];
+            for ( let i = 0; i < 10; i = i + 1) {
+                a [ i ] = x = > x + i ;
+            }
+            a [5](100);
+            
+            gives 105 cause i = 5 is stores as a copy
+            that is why doesnt take i = 10 (the value after last iteration)
+            
+            but in this cse machine, we get 110
+            cause we are not producing the copy in this program
+            */
+            
+            
+            
             C = pair(
                   make_block(
                     make_sequence(
@@ -814,6 +878,9 @@ function is_simple_function(f) {
     return is_tagged_list(f, "simple_function");
 }
 function make_complex_function(parameters, body, env) {
+    // eyeballs for complex function look just like the eyeballs for simple function
+    // the body now is the complete body
+    // plus the return undefined
     return list("complex_function", parameters, body, env);
 }
 function is_complex_function(f) {
@@ -1121,9 +1188,22 @@ a;
 `);
 */
 
+/*
 parse_and_evaluate(`
 function f(x) {
     12;
 }
 f(49);
+`);
+
+*/
+
+
+
+parse_and_evaluate(`
+const a = [];
+for ( let i = 0; i < 10; i = i + 1) {
+    a [ i ] = x => x + i ;
+}
+a [5](100);
 `);
