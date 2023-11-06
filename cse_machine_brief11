@@ -214,6 +214,18 @@ function evaluate(program) {
             
             but in this cse machine, we get 110
             cause we are not producing the copy in this program
+            
+            the declaration of i is outside here
+            and i has value 10 at the end
+            
+            so all of the functions that this array refers to
+            refers to the value i = 10
+            
+            whereas if we treat i as diff i referring to the current
+            value of the loop value (more intuitive)
+            designers of javascript thought this was important
+            
+            
             */
             
             
@@ -1199,7 +1211,8 @@ f(49);
 */
 
 
-
+// 110 here
+// 105 in source
 parse_and_evaluate(`
 const a = [];
 for ( let i = 0; i < 10; i = i + 1) {
