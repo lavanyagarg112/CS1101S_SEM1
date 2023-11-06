@@ -95,7 +95,7 @@ function evaluate(program) {
                           make_return_statement(
                             make_literal(undefined)))), // return undefined after every function body
                       E), // environment at the end
-                  S);
+                  S); // and then pair the complex function with the rest of S
                   
         // if we have complex function
         // make pair of eyeballs whose body is not the original body
