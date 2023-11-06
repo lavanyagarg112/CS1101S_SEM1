@@ -13,6 +13,16 @@ functional programming language, including:
 Examples at the end of the program
 */
 
+
+/*
+
+Question 2: make blocks
+do the same thing as evaluate just dont evaluate, only check for names
+
+basically going through the syntax tree created by parse
+
+*/
+
 function evaluate(program) { 
     let C = list(make_block(program));
     let S = null;
