@@ -7,15 +7,19 @@
 // results not affected my memoization
 
 function memo_fun(fun) {
+    display(fun);
+    display("hi");
     let already_run = false;
     let result = undefined;
-
+    
     function mfun() {
         if (!already_run) {
             result = fun();
             already_run = true;
+            display(result);
             return result;
         } else {
+            display("result");
             return result;
         }
     }
@@ -32,7 +36,7 @@ function ms(m, s) {
 //const onesA = pair(1, () => ms("A", onesA));
 //const onesB = pair(1, memo_fun(() => ms("B", onesB)));
 
-const onesC = pair(1, memo_fun(() => onesC));
+//const onesC = pair(1, memo_fun(() => onesC));
 
 //stream_ref(ones, 3);
 //stream_ref(onesA, 3);
